@@ -1,0 +1,12 @@
+node_modules/
+dist/
+
+# Keep private source material and duplicate originals out of the public repository.
+Personal_Data_Organized.docx
+Personal_Data_Organized.pdf
+Me.png
+Resume.pdf
+AI job Agent.png
+AI job reccomendation.png
+APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent.png
+Enterprise RAG.png
