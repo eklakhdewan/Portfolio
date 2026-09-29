@@ -1,159 +1,67 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="google-site-verification" content="qeSryJSsPl8k2VkrwseV6yJHseoWYbOPd9TFnW3kv6M" />
-  <meta name="description" content="Eklakh Dewan | AI Systems Engineer" />
+    <meta name="google-site-verification" content="qeSryJSsPl8k2VkrwseV6yJHseoWYbOPd9TFnW3kv6M" />
+    <meta name="description" content="Eklakh Dewan | AI Systems Engineer" />
 
-  <title>Eklakh Dewan | Portfolio</title>
-  <link rel="stylesheet" href="src/styles.css" />
-  <style>
-    /* Bot Widget Styles */
-    #bot-widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      font-family: inherit;
-    }
-    #bot-toggle {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: white;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #bot-panel {
-      position: absolute;
-      bottom: 70px;
-      right: 0;
-      width: 320px;
-      height: 450px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      display: none; /* hidden by default */
-    }
-    .bot-header {
-      background: var(--blue);
-      color: white;
-      padding: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 700;
-    }
-    #bot-close {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-    }
-    #chat-messages {
-      flex: 1;
-      padding: 12px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .message {
-      padding: 8px 12px;
-      border-radius: 8px;
-      max-width: 80%;
-      font-size: 0.9rem;
-    }
-    .message-bot {
-      background: var(--tint);
-      color: var(--ink);
-      align-self: flex-start;
-    }
-    .message-user {
-      background: var(--cyan);
-      color: white;
-      align-self: flex-end;
-    }
-    .chat-input-area {
-      display: flex;
-      border-top: 1px solid var(--line);
-    }
-    #chat-input {
-      flex: 1;
-      border: none;
-      padding: 12px;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: inherit;
-    }
-    #chat-input:focus {
-      outline: none;
-    }
-    #chat-submit {
-      background: var(--blue);
-      color: white;
-      border: none;
-      padding: 0 15px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    
-    /* Animation classes */
-    .in-view {
-      animation: rise-in 0.7s cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    @keyframes rise-in {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <nav class="nav container" aria-label="Primary navigation">
-      <a class="brand" href="#landing" aria-label="Eklakh Dewan home">ED<span aria-hidden="true">.</span></a>
-      <div id="nav-links" class="nav-links">
-        <a href="#landing">Home</a>
-      </div>
-    </nav>
-  </header>
+    <title>Eklakh Dewan | Portfolio</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <style>
+      #bot-widget{position:fixed;bottom:20px;right:20px;z-index:9999;font-family:inherit}
+      #bot-toggle{width:60px;height:60px;border-radius:50%;background:var(--blue);color:white;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);font-size:24px;display:flex;align-items:center;justify-content:center}
+      #bot-panel{position:absolute;bottom:70px;right:0;width:320px;height:450px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.15);display:none;flex-direction:column;overflow:hidden}
+      .bot-header{background:var(--blue);color:white;padding:12px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+      #bot-close{background:none;border:none;color:white;font-size:20px;cursor:pointer}
+      #chat-messages{flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+      .message{padding:8px 12px;border-radius:8px;max-width:80%;font-size:.9rem}
+      .message-bot{background:var(--tint);color:var(--ink);align-self:flex-start}
+      .message-user{background:var(--cyan);color:white;align-self:flex-end}
+      .chat-input-area{display:flex;border-top:1px solid var(--line)}
+      #chat-input{flex:1;border:none;padding:12px;background:var(--paper);color:var(--ink);font-family:inherit}
+      #chat-input:focus{outline:none}
+      #chat-submit{background:var(--blue);color:white;border:none;padding:0 15px;cursor:pointer;font-weight:bold}
+      .in-view{animation:rise-in .7s cubic-bezier(.2,.75,.25,1) forwards;opacity:0}
+      @keyframes rise-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Primary navigation">
+        <a class="brand" href="#landing" aria-label="Eklakh Dewan home">ED<span aria-hidden="true">.</span></a>
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">Menu</button>
+        <div id="nav-links" class="nav-links">
+          <a href="#landing" data-nav="home">Home</a>
+          <a href="#landing" data-nav="roles">Roles</a>
+          <a href="#contact" data-nav="contact">Contact</a>
+          <button class="nav-cta nav-haya" type="button" data-nav="haya">Haya</button>
+        </div>
+      </nav>
+    </header>
 
-  <main id="app-root"></main>
+    <main id="app-root"></main>
 
-  <div id="bot-widget">
-    <button id="bot-toggle">💬</button>
-    <div id="bot-panel">
-      <div class="bot-header">
-        <span>Haya — AI Concierge</span>
-        <button id="bot-close">×</button>
-      </div>
-      <div id="chat-messages"></div>
-      <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off"/>
-        <button id="chat-submit">Send</button>
+    <div id="bot-widget">
+      <button id="bot-toggle" aria-label="Open Haya AI concierge">💬</button>
+      <div id="bot-panel">
+        <div class="bot-header">
+          <span>Haya — AI Concierge</span>
+          <button id="bot-close" aria-label="Close Haya">×</button>
+        </div>
+        <div id="chat-messages"></div>
+        <div class="chat-input-area">
+          <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off"/>
+          <button id="chat-submit">Send</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <footer class="site-footer">
-    <div class="container footer-inner"><span>© 2026 Eklakh Dewan</span><span>Built for clarity, evidence, and responsible AI.</span></div>
-  </footer>
-  
-  <script type="module" src="src/main.js"></script>
-</body>
+    <footer class="site-footer">
+      <div class="container footer-inner"><span>© 2026 Eklakh Dewan</span><span>Built for clarity, evidence, and responsible AI.</span></div>
+    </footer>
+    
+    <script type="module" src="src/main.js"></script>
+  </body>
 </html>
