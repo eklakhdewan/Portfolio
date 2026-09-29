@@ -496,3 +496,15 @@ const TAXTRACE_PROJECT = {
     role.projects.unshift({ ...TAXTRACE_PROJECT });
   }
 });
+
+
+// Normalize every project to the same schema so the renderer and Haya can consume it consistently.
+Object.values(ROLES).forEach(role => {
+  role.projects.forEach(project => {
+    project.category ||= role.title;
+    project.stack ||= [...(project.tags || [])];
+    project.engineering ||= [...(project.tags || [])];
+    project.metrics ||= [];
+    project.featured ||= false;
+  });
+});
