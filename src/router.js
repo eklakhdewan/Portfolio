@@ -28,6 +28,7 @@ export function initRouter(bot) {
     if (hash === 'landing') {
       appRoot.innerHTML = renderLandingView();
       bot.updateContext('landing');
+      attachFormSubmitHandler();
       if (pendingSection) {
         const section = pendingSection;
         pendingSection = null;
