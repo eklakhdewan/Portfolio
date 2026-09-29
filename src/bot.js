@@ -5,7 +5,7 @@ let messageHistory = [];
 
 // NOTE: Move this to a Cloudflare Worker before deploying publicly.
 // See cloudflare-worker.js for step-by-step instructions.
-const OPENROUTER_API_KEY = "";
+// const OPENROUTER_API_KEY = "";
 
 export function initBot() {
   const botWidget = document.getElementById('bot-widget');
@@ -114,7 +114,7 @@ RULES:
 5. No markdown formatting. Plain text only.`;
 
     try {
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const response = await fetch("https://portfolio-bot-proxy.eklakhdewan78.workers.dev", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
