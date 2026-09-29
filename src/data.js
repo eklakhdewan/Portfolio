@@ -392,3 +392,107 @@ Object.values(ROLES).forEach(role => {
     evidence: "Certificate available"
   }];
 });
+
+
+const PROJECT_ENRICHMENTS = {
+  "Enterprise RAG / AI Search Platform": {
+    featured: true,
+    category: "AI Search / Retrieval Engineering",
+    problem: "Enterprise documents are difficult to search reliably when keyword and semantic retrieval disagree and generated answers can drift beyond the evidence.",
+    architecture: "Document ingestion → chunking → dense retrieval with FAISS → sparse retrieval with BM25 → hybrid fusion → cross-encoder reranking → evidence-constrained generation → citation validation.",
+    engineering: ["Dense + sparse retrieval", "Hybrid fusion", "Cross-encoder reranking", "Citation mapping", "Faithfulness verification", "Pipeline observability"],
+    evidence: "Built around explicit retrieval and grounding stages so relevance and answer provenance can be inspected independently.",
+    metrics: ["Recall@K", "MRR", "nDCG"],
+    stack: ["Python", "FastAPI", "FAISS", "BM25", "SentenceTransformers", "React"]
+  },
+  "APX — Accounts Payable Exception Agent": {
+    featured: true,
+    category: "Agentic Systems / Financial Automation",
+    problem: "Accounts-payable exceptions require evidence gathering and controlled resolution rather than unconstrained LLM decisions.",
+    architecture: "Evidence corpus → BM25 + dense retrieval → hybrid fusion → cross-encoder reranking → evidence validity checks → deterministic decision pipeline → persistence.",
+    engineering: ["Deterministic foundation", "Hybrid evidence retrieval", "RRF fusion", "Cross-encoder reranking", "Evidence validity checks", "Persistence"],
+    evidence: "The project was developed in staged phases from deterministic foundation through retrieval, agent, decision pipeline, and persistence.",
+    stack: ["Python", "BM25", "Dense Retrieval", "Reranking", "LLMs", "SQLite"]
+  },
+  "APX — Exception Resolution Architecture": {
+    featured: true,
+    category: "AI Systems / Backend Architecture",
+    problem: "Exception-resolution workflows need controlled execution, traceability, and failure handling before automated actions can be trusted.",
+    architecture: "Evidence retrieval → validation → deterministic decision logic → guarded agent workflow → persistence and audit trail.",
+    engineering: ["Idempotency", "Retry handling", "Guardrails", "Evidence validation", "Persistence", "Observability"],
+    evidence: "APX was developed through five documented phases: deterministic foundation, retrieval, agent, decision pipeline, and persistence foundation.",
+    stack: ["Python", "BM25", "Dense Retrieval", "FastAPI", "SQLite", "LLMs"]
+  },
+  "AI-Powered Job Recommendations Dashboard": {
+    featured: true,
+    category: "ML / Recommendation",
+    problem: "Job discovery requires matching unstructured resume content against job descriptions while preserving an interpretable relevance signal.",
+    architecture: "Resume/job text → TF-IDF representation + dense embeddings → similarity scoring → ranked recommendations → Streamlit dashboard.",
+    engineering: ["Text normalization", "TF-IDF", "Dense embeddings", "Semantic matching", "Skill-gap analysis", "Interactive reporting"],
+    evidence: "Combines sparse lexical matching with semantic embeddings instead of relying on a single representation.",
+    stack: ["Python", "scikit-learn", "SentenceTransformers", "Streamlit", "Pandas"]
+  },
+  "AI-Powered Business Operations SaaS": {
+    category: "Full-Stack / AI Systems",
+    problem: "Business workflows need a multi-tenant application layer capable of handling asynchronous AI tasks without coupling user requests to long-running processing.",
+    architecture: "React frontend → NestJS API → PostgreSQL → Redis/BullMQ task processing → AI service integration → Dockerized deployment.",
+    engineering: ["Multi-tenancy", "RBAC", "Async processing", "Queue-based execution", "API design", "Containerization"],
+    evidence: "The architecture separates synchronous application requests from background AI workloads.",
+    stack: ["React", "TypeScript", "NestJS", "PostgreSQL", "Redis", "BullMQ", "Docker"]
+  },
+  "Intelligent Recruitment Platform": {
+    category: "AI / NLP",
+    problem: "Recruitment workflows require structured candidate information and relevance matching from unstructured resumes and job descriptions.",
+    architecture: "Resume ingestion → parsing → structured profile extraction → lexical/semantic matching → candidate ranking → API delivery.",
+    engineering: ["Resume parsing", "NLP preprocessing", "Semantic matching", "Structured extraction", "API integration"],
+    evidence: "Designed as an end-to-end pipeline rather than a standalone model, connecting document processing to ranking and application delivery.",
+    stack: ["Python", "FastAPI", "NLP", "Transformers", "React"]
+  },
+  "Portfolio Site Architecture": {
+    category: "Frontend / AI Integration",
+    problem: "A recruiter-facing portfolio needs role-specific content without duplicating pages and needs an AI concierge without exposing provider credentials.",
+    architecture: "Vite SPA → hash-based role routing → data-driven renderer → Haya client → Cloudflare Worker → OpenRouter.",
+    engineering: ["Data-driven rendering", "Role-based views", "GitHub Pages deployment", "Cloudflare Worker proxy", "Secret isolation", "LLM integration"],
+    evidence: "The public frontend contains no OpenRouter API secret; Haya requests are routed through the Cloudflare Worker.",
+    stack: ["Vite", "Vanilla JavaScript", "HTML/CSS", "Cloudflare Workers", "OpenRouter", "GitHub Actions"]
+  },
+  "TaxTrace": {
+    featured: true,
+    category: "AI-Assisted Tax Reconciliation / Compliance",
+    problem: "Tax reconciliation workflows can require manual comparison, exception investigation, and fragmented notice-response handling.",
+    architecture: "FastAPI backend → SQLAlchemy/PostgreSQL → reconciliation and exception workflow → Next.js review workspace → React Query → Tailwind UI → Alembic migrations.",
+    engineering: ["Exception review workspace", "Relational persistence", "Schema migrations", "Review workflows", "API-driven frontend", "Tested backend changes"],
+    evidence: "Stage 6 added task descriptions, exception and notice-case relationships, and a drafts model; the backend test suite had 91 passing tests for the stage.",
+    metrics: ["91 backend tests passing at Stage 6"],
+    stack: ["FastAPI", "Next.js", "TypeScript", "SQLAlchemy", "PostgreSQL", "React Query", "Tailwind CSS", "Alembic"]
+  }
+};
+
+Object.values(ROLES).forEach(role => {
+  role.projects.forEach(project => {
+    const enrichment = PROJECT_ENRICHMENTS[project.name];
+    if (enrichment) Object.assign(project, enrichment);
+  });
+});
+
+const TAXTRACE_PROJECT = {
+  name: "TaxTrace",
+  description: "AI-assisted tax reconciliation and compliance platform focused on turning GST discrepancies into explainable, reviewable, and actionable workflows.",
+  link: "https://github.com/eklakhdewan",
+  tags: ["FastAPI", "Next.js", "PostgreSQL", "SQLAlchemy", "Alembic"],
+  featured: true,
+  category: "AI-Assisted Tax Reconciliation / Compliance",
+  problem: "Tax reconciliation workflows can require manual comparison, exception investigation, and fragmented notice-response handling.",
+  architecture: "FastAPI backend → SQLAlchemy/PostgreSQL → reconciliation and exception workflow → Next.js review workspace → React Query → Tailwind UI → Alembic migrations.",
+  engineering: ["Exception review workspace", "Relational persistence", "Schema migrations", "Review workflows", "API-driven frontend", "Tested backend changes"],
+  evidence: "Stage 6 added task descriptions, exception and notice-case relationships, and a drafts model; the backend test suite had 91 passing tests for the stage.",
+  metrics: ["91 backend tests passing at Stage 6"],
+  stack: ["FastAPI", "Next.js", "TypeScript", "SQLAlchemy", "PostgreSQL", "React Query", "Tailwind CSS", "Alembic"]
+};
+
+["ai-engineer", "ai-systems", "web-developer"].forEach(roleId => {
+  const role = ROLES[roleId];
+  if (role && !role.projects.some(p => p.name === "TaxTrace")) {
+    role.projects.unshift({ ...TAXTRACE_PROJECT });
+  }
+});
