@@ -22,49 +22,49 @@ function projectEvidenceHtml(project) {
 
 function capabilitiesHtml(role) {
   const groups = role.capabilities || { Core: role.skills || [] };
-  return Object.entries(groups).map(([group, items]) => \`
+  return Object.entries(groups).map(([group, items]) => `
     <article class="capability-card">
-      <p class="capability-label">\${group}</p>
+      <p class="capability-label">${group}</p>
       <div class="capability-list">
-        \${items.map(item => \`<span>\${item}</span>\`).join('')}
+        ${items.map(item => `<span>${item}</span>`).join('')}
       </div>
     </article>
-  \`).join('');
+  `).join('');
 }
 
 function proofHtml(role) {
-  return (role.proof || []).map(item => \`
+  return (role.proof || []).map(item => `
     <article class="proof-card">
-      <strong>\${item.value}</strong>
-      <span>\${item.label}</span>
+      <strong>${item.value}</strong>
+      <span>${item.label}</span>
     </article>
-  \`).join('');
+  `).join('');
 }
 
 function signalsHtml(role) {
-  return (role.engineeringSignals || []).map(signal => \`<span class="signal-chip">\${signal}</span>\`).join('');
+  return (role.engineeringSignals || []).map(signal => `<span class="signal-chip">${signal}</span>`).join('');
 }
 
 function educationHtml(role) {
-  return (role.education || []).map(item => \`
+  return (role.education || []).map(item => `
     <article class="info-card">
       <p class="eyebrow">Education</p>
-      <h3>\${item.degree}</h3>
-      <p>\${item.institution} · \${item.year}</p>
-      <strong>\${item.result}</strong>
+      <h3>${item.degree}</h3>
+      <p>${item.institution} · ${item.year}</p>
+      <strong>${item.result}</strong>
     </article>
-  \`).join('');
+  `).join('');
 }
 
 function credentialsHtml(role) {
-  return (role.credentials || []).map(item => \`
+  return (role.credentials || []).map(item => `
     <article class="info-card">
       <p class="eyebrow">Credential</p>
-      <h3>\${item.name}</h3>
-      <p>\${item.issuer} · \${item.duration}</p>
-      <span class="credential-badge">\${item.evidence}</span>
+      <h3>${item.name}</h3>
+      <p>${item.issuer} · ${item.duration}</p>
+      <span class="credential-badge">${item.evidence}</span>
     </article>
-  \`).join('');
+  `).join('');
 }
 
 export function renderRoleView(roleId) {
