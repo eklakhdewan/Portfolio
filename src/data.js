@@ -251,7 +251,7 @@ export const ROLES = {
         name: "Portfolio Site Architecture",
         description: "Designed a single-page, dynamically routed portfolio utilizing Vite, vanilla JavaScript, and semantic HTML. Implemented a custom LLM concierge (Haya) via OpenRouter API and set up automated CI/CD for GitHub Pages deployment.",
         tags: ["HTML/CSS/JS", "Vite", "OpenRouter API", "CI/CD"],
-        link: "https://eklakhdewan.com.np/"
+        link: "https://github.com/eklakhdewan/trial-portfolio"
       }
     ],
     skills: [
@@ -271,3 +271,124 @@ export const ROLES = {
     ]
   }
 };
+
+
+const ROLE_ENRICHMENTS = {
+  "ai-engineer": {
+    proof: [
+      { value: "8.55", label: "CGPA" },
+      { value: "2027", label: "Graduation" },
+      { value: "4 wk", label: "AI internship" },
+      { value: "RAG", label: "Primary focus" }
+    ],
+    capabilities: {
+      "AI & LLM": ["RAG", "Agentic workflows", "LLM APIs", "Prompt engineering", "Guardrails"],
+      "Retrieval & NLP": ["FAISS", "BM25", "Hybrid search", "RRF", "Cross-encoder reranking", "Embeddings"],
+      "Backend & Data": ["FastAPI", "Async Python", "PostgreSQL", "REST APIs"],
+      "Infrastructure": ["Docker", "GitHub Actions", "Cloudflare Workers", "CI/CD"],
+      "Frontend": ["JavaScript", "React", "Vite", "Responsive UI"]
+    },
+    engineeringSignals: ["Grounded generation", "Evidence validation", "Hybrid retrieval", "Reranking", "Observability", "Evaluation-first workflows"]
+  },
+  "ml-engineer": {
+    proof: [
+      { value: "8.55", label: "CGPA" },
+      { value: "2027", label: "Graduation" },
+      { value: "NLP", label: "Focus area" },
+      { value: "ML", label: "Applied stack" }
+    ],
+    capabilities: {
+      "AI & LLM": ["Embeddings", "LLM APIs", "Prompt engineering"],
+      "Retrieval & NLP": ["SentenceTransformers", "TF-IDF", "Semantic search", "Hybrid retrieval", "Reranking"],
+      "Backend & Data": ["Python", "scikit-learn", "Pandas", "NumPy", "FastAPI"],
+      "Infrastructure": ["Docker", "GitHub Actions", "Reproducible pipelines"],
+      "Frontend": ["Streamlit", "Interactive dashboards"]
+    },
+    engineeringSignals: ["Recall@K", "MRR", "nDCG", "Feature engineering", "Model evaluation", "Reproducibility"]
+  },
+  "ai-systems": {
+    proof: [
+      { value: "8.55", label: "CGPA" },
+      { value: "2027", label: "Graduation" },
+      { value: "91", label: "TaxTrace backend tests" },
+      { value: "AI", label: "Systems focus" }
+    ],
+    capabilities: {
+      "AI & LLM": ["RAG", "Agentic workflows", "LLM API integration", "AI task orchestration"],
+      "Retrieval & NLP": ["Hybrid retrieval", "Evidence pipelines", "Embeddings"],
+      "Backend & Data": ["FastAPI", "NestJS", "PostgreSQL", "REST APIs", "Async processing"],
+      "Infrastructure": ["Docker", "Redis", "BullMQ", "GitHub Actions", "Cloudflare Workers"],
+      "Frontend": ["TypeScript", "React", "Next.js", "Vite"]
+    },
+    engineeringSignals: ["Idempotency", "Retries", "Persistence", "Observability", "CI/CD", "91 backend tests in TaxTrace Stage 6"]
+  },
+  "data-science": {
+    proof: [
+      { value: "8.55", label: "CGPA" },
+      { value: "2027", label: "Graduation" },
+      { value: "NLP", label: "Focus area" },
+      { value: "ML", label: "Applied stack" }
+    ],
+    capabilities: {
+      "AI & LLM": ["NLP", "Embeddings", "LLM-assisted workflows"],
+      "Retrieval & NLP": ["TF-IDF", "SentenceTransformers", "Semantic similarity", "Text classification"],
+      "Backend & Data": ["Python", "Pandas", "NumPy", "SQL", "scikit-learn"],
+      "Infrastructure": ["Reproducible pipelines", "GitHub Actions"],
+      "Frontend": ["Streamlit", "Data dashboards"]
+    },
+    engineeringSignals: ["EDA", "Hypothesis testing", "Classification", "SMOTE", "Cosine similarity", "Explainable analysis"]
+  },
+  "data-analyst": {
+    proof: [
+      { value: "8.55", label: "CGPA" },
+      { value: "2027", label: "Graduation" },
+      { value: "SQL", label: "Core strength" },
+      { value: "BI", label: "Focus" }
+    ],
+    capabilities: {
+      "AI & LLM": ["AI-assisted analytics", "NLP-driven matching"],
+      "Retrieval & NLP": ["TF-IDF", "Semantic matching", "Text analysis"],
+      "Backend & Data": ["Advanced SQL", "PostgreSQL", "MySQL", "Pandas", "Data cleaning"],
+      "Infrastructure": ["CSV automation", "Reporting workflows"],
+      "Frontend": ["Streamlit", "Interactive dashboards", "Data visualization"]
+    },
+    engineeringSignals: ["Window functions", "Reporting", "Data aggregation", "Dashboards", "Skill-gap analysis", "Business intelligence"]
+  },
+  "web-developer": {
+    proof: [
+      { value: "8.55", label: "CGPA" },
+      { value: "2027", label: "Graduation" },
+      { value: "Full-stack", label: "Focus" },
+      { value: "AI", label: "Integration" }
+    ],
+    capabilities: {
+      "AI & LLM": ["LLM API integration", "AI-enabled workflows", "Prompt-driven features"],
+      "Retrieval & NLP": ["Resume parsing", "Semantic matching", "Embeddings"],
+      "Backend & Data": ["NestJS", "FastAPI", "Node.js", "PostgreSQL", "REST APIs"],
+      "Infrastructure": ["Docker", "GitHub Actions", "CI/CD", "Cloudflare Workers"],
+      "Frontend": ["React", "TypeScript", "JavaScript", "CSS Grid", "Responsive UI"]
+    },
+    engineeringSignals: ["Multi-tenant architecture", "RBAC", "WebSockets", "Optimistic UI", "API integration", "Deployment automation"]
+  }
+};
+
+Object.entries(ROLE_ENRICHMENTS).forEach(([roleId, enrichment]) => {
+  if (ROLES[roleId]) Object.assign(ROLES[roleId], enrichment);
+});
+
+// Education is shared across every role view.
+Object.values(ROLES).forEach(role => {
+  role.education = [{
+    degree: "B.Tech — Artificial Intelligence & Data Science",
+    institution: "KPRIET",
+    year: "2027",
+    result: "CGPA 8.55"
+  }];
+
+  role.credentials = [{
+    name: "Artificial Intelligence Internship",
+    issuer: "Flowrage Technology",
+    duration: "4 weeks (Virtual)",
+    evidence: "Certificate available"
+  }];
+});
