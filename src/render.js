@@ -39,7 +39,7 @@ export function renderRoleView(roleId) {
           </div>
         </div>
         <p style="color: var(--ink-soft); font-size: 0.95rem; margin-top: 15px;">${exp.description}</p>
-        <a class="exp-cert-link" style="color: ${role.accent}; margin-top: 15px; display: inline-block;" href="EKLAKH%20DEWAN-%20Internship%20Certificate.png" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+        <a class="exp-cert-link" style="color: ${role.accent}; margin-top: 15px; display: inline-block;" href="${import.meta.env.BASE_URL}EKLAKH%20DEWAN-%20Internship%20Certificate.png" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
       </div>
     </article>
   `).join('');
@@ -57,7 +57,7 @@ export function renderRoleView(roleId) {
       </div>
       <aside class="hero-visual" aria-label="Profile and Summary">
         <div class="portrait-wrap">
-          <img src="me.png" alt="Eklakh Dewan" class="portrait" style="height: 380px; margin-bottom: 20px;" />
+          <img src="${import.meta.env.BASE_URL}me.png" alt="Eklakh Dewan" class="portrait" style="height: 380px; margin-bottom: 20px;" />
         </div>
         <div style="background: var(--white); padding: 24px; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
           <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: ${role.accent};">Professional Summary</h3>
@@ -164,7 +164,7 @@ export function renderLandingView() {
       </div>
       <aside class="hero-visual" aria-label="Profile and current focus">
         <div class="portrait-wrap">
-          <img src="me.png" alt="Eklakh Dewan in a navy suit" class="portrait" />
+          <img src="${import.meta.env.BASE_URL}me.png" alt="Eklakh Dewan in a navy suit" class="portrait" />
           <span class="portrait-badge">AI systems<br /><strong>with proof</strong></span>
         </div>
         <div class="hero-card">
