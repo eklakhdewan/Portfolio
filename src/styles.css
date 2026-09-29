@@ -62,3 +62,6 @@ html[data-theme="dark"]{--ink:#e8f0f7;--ink-soft:#adc0d1;--paper:#0b1726;--tint:
 @media(prefers-reduced-motion:reduce){
   .signal-chip,.role-directory-item,.role-directory-item>span:last-child{transition:none}
 }
+
+.nav-haya{background:transparent;color:var(--ink);font:inherit;cursor:pointer}.nav-haya:hover{background:var(--ink);color:var(--white)}
+@media(max-width:850px){.nav-haya{padding:9px 15px}}
