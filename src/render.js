@@ -1,64 +1,70 @@
 import { ROLES } from './data.js';
 
-function projectEvidenceHtml(project, role) {
+function projectEvidenceHtml(project) {
   const architecture = project.architecture
     ? '<div class="project-proof"><strong>Architecture</strong><br />' + project.architecture + '</div>'
+    : '';
+  const engineering = project.engineering?.length
+    ? '<div class="project-proof"><strong>Engineering</strong><br />' + project.engineering.join(' · ') + '</div>'
     : '';
   const evidence = project.evidence
     ? '<div class="project-proof"><strong>Evidence</strong><br />' + project.evidence + '</div>'
     : '';
+  const metrics = project.metrics?.length
+    ? '<div class="project-metrics">' + project.metrics.map(metric => '<span>' + metric + '</span>').join('') + '</div>'
+    : '';
+  const stack = project.stack?.length
+    ? '<div class="project-stack"><span>STACK</span>' + project.stack.map(item => '<b>' + item + '</b>').join('') + '</div>'
+    : '';
 
-  return architecture + evidence;
+  return '<div class="project-evidence">' + architecture + engineering + evidence + metrics + stack + '</div>';
 }
 
 function capabilitiesHtml(role) {
-  const groups = role.capabilities || {
-    "Core": role.skills || []
-  };
-
-  return Object.entries(groups).map(([group, items]) => `
+  const groups = role.capabilities || { Core: role.skills || [] };
+  return Object.entries(groups).map(([group, items]) => \`
     <article class="capability-card">
-      <p class="capability-label">${group}</p>
+      <p class="capability-label">\${group}</p>
       <div class="capability-list">
-        ${items.map(item => `<span>${item}</span>`).join('')}
+        \${items.map(item => \`<span>\${item}</span>\`).join('')}
       </div>
     </article>
-  `).join('');
+  \`).join('');
 }
 
 function proofHtml(role) {
-  return (role.proof || []).map(item => `
+  return (role.proof || []).map(item => \`
     <article class="proof-card">
-      <strong>${item.value}</strong>
-      <span>${item.label}</span>
+      <strong>\${item.value}</strong>
+      <span>\${item.label}</span>
     </article>
-  `).join('');
+  \`).join('');
 }
 
 function signalsHtml(role) {
-  return (role.engineeringSignals || []).map(signal => `<span class="signal-chip">${signal}</span>`).join('');
+  return (role.engineeringSignals || []).map(signal => \`<span class="signal-chip">\${signal}</span>\`).join('');
 }
 
 function educationHtml(role) {
-  return (role.education || []).map(item => `
+  return (role.education || []).map(item => \`
     <article class="info-card">
       <p class="eyebrow">Education</p>
-      <h3>${item.degree}</h3>
-      <p>${item.institution} · ${item.year}</p>
-      <strong>${item.result}</strong>
+      <h3>\${item.degree}</h3>
+      <p>\${item.institution} · \${item.year}</p>
+      <strong>\${item.result}</strong>
     </article>
-  `).join('');
+  \`).join('');
 }
 
 function credentialsHtml(role) {
-  return (role.credentials || []).map(item => `
+  return (role.credentials || []).map(item => \`
     <article class="info-card">
       <p class="eyebrow">Credential</p>
-      <h3>${item.name}</h3>
-      <p>${item.issuer} · ${item.duration}</p>
-      <span class="credential-badge">${item.evidence}</span>
+      <h3>\${item.name}</h3>
+      <p>\${item.issuer} · \${item.duration}</p>
+      <span class="credential-badge">\${item.evidence}</span>
     </article>
-  `).join('');
+  \`).join('');
 }
 
 export function renderRoleView(roleId) {
@@ -73,9 +79,10 @@ export function renderRoleView(roleId) {
       </div>
       <h3>${p.name}</h3>
       <p>${p.description}</p>
-      ${projectEvidenceHtml(p, role)}
+      <p class="project-category">${p.category || role.title}</p>
+      ${projectEvidenceHtml(p)}
       <ul class="tag-list">
-        ${p.tags.map(t => `<li>${t}</li>`).join('')}
+        ${(p.tags || p.stack || []).map(t => `<li>${t}</li>`).join('')}
       </ul>
       <div class="card-links">
         <a class="text-link" style="color: ${role.accent}" href="${p.link}" target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">↗</span></a>
@@ -83,7 +90,6 @@ export function renderRoleView(roleId) {
     </article>
   `).join('');
 
-  const skills = Object.values(role.capabilities || {}).flat();
   const experienceHtml = (role.experience || []).map((exp, index) => `
     <article class="timeline-item in-view" style="animation-delay: ${index * 0.15}s; border-left-color: ${role.accent};">
       <div class="timeline-date" style="color: ${role.accent};">${exp.duration}</div>
@@ -159,12 +165,24 @@ export function renderRoleView(roleId) {
             <p>${featured.problem || 'A production-oriented engineering problem where correctness, reliability, and measurable behavior matter.'}</p>
           </div>
           <div class="case-panel">
-            <span class="case-label">Approach</span>
+            <span class="case-label">Architecture</span>
             <p>${featured.architecture || 'A layered architecture combining data, retrieval, application logic, and observable interfaces.'}</p>
+          </div>
+          <div class="case-panel">
+            <span class="case-label">Engineering</span>
+            <p>${(featured.engineering || []).join(' · ') || 'Implementation details and engineering decisions are documented in the project repository.'}</p>
           </div>
           <div class="case-panel">
             <span class="case-label">Evidence</span>
             <p>${featured.evidence || 'Repository evidence, implementation details, evaluation dimensions, and deployment artifacts.'}</p>
+          </div>
+          <div class="case-panel">
+            <span class="case-label">Metrics</span>
+            <p>${(featured.metrics || []).join(' · ') || 'Evaluation and test evidence where available.'}</p>
+          </div>
+          <div class="case-panel">
+            <span class="case-label">Stack</span>
+            <p>${(featured.stack || featured.tags || []).join(' · ')}</p>
           </div>
         </div>
       </div>
