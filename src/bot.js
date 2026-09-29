@@ -5,7 +5,7 @@ let messageHistory = [];
 
 // NOTE: Move this to a Cloudflare Worker before deploying publicly.
 // See cloudflare-worker.js for step-by-step instructions.
-// const OPENROUTER_API_KEY = "";
+
 
 export function initBot() {
   const botWidget = document.getElementById('bot-widget');
@@ -117,7 +117,7 @@ RULES:
       const response = await fetch("https://portfolio-bot-proxy.eklakhdewan78.workers.dev", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+          
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
