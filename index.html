@@ -4,342 +4,156 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta
-    name="google-site-verification"
-    content="qeSryJSsPl8k2VkrwseV6yJHseoWYbOPd9TFnW3kv6M"
-  />
+  <meta name="google-site-verification" content="qeSryJSsPl8k2VkrwseV6yJHseoWYbOPd9TFnW3kv6M" />
+  <meta name="description" content="Eklakh Dewan | AI Systems Engineer" />
 
-  <meta
-    name="description"
-    content="Eklakh Dewan | AI Systems Engineer — RAG pipelines, agentic LLM workflows, and NLP backends. B.Tech AI&DS 2027, KPRIET. Open to roles and internships."
-  />
-
-  <link rel="canonical" href="https://eklakhdewan.com.np/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://eklakhdewan.com.np/" />
-  <meta property="og:title" content="Eklakh Dewan | AI Systems Engineer" />
-  <meta
-    property="og:description"
-    content="Eklakh Dewan | AI Systems Engineer — RAG pipelines, agentic LLM workflows, and NLP backends. B.Tech AI&DS 2027, KPRIET. Open to roles and internships."
-  />
-  <meta
-    property="og:image"
-    content="https://eklakhdewan.com.np/me.png"
-  />
-
-  <!-- X / Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Eklakh Dewan | AI Systems Engineer" />
-  <meta
-    name="twitter:description"
-    content="Eklakh Dewan | AI Systems Engineer — RAG pipelines, agentic LLM workflows, and NLP backends. B.Tech AI&DS 2027, KPRIET. Open to roles and internships."
-  />
-  <meta
-    name="twitter:image"
-    content="https://eklakhdewan.com.np/me.png"
-  />
-
-  <!-- Person structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Eklakh Dewan",
-    "url": "https://eklakhdewan.com.np/",
-    "image": "https://eklakhdewan.com.np/me.png",
-    "jobTitle": "AI Systems Engineer",
-    "description": "AI Systems Engineer specialising in RAG pipelines, agentic LLM workflows, and NLP backends. B.Tech AI&DS 2027, KPRIET.",
-    "email": "eklakh.inplace@gmail.com",
-    "sameAs": [
-      "https://github.com/eklakhdewan",
-      "https://www.linkedin.com/in/eklakhdewan/",
-      "https://leetcode.com/u/eklakh-dewan/"
-    ],
-    "knowsAbout": ["Retrieval-Augmented Generation", "Large Language Models", "Natural Language Processing", "Agentic AI Systems", "FastAPI", "Python", "FAISS", "SentenceTransformers"],
-    "alumniOf": {"@type": "CollegeOrUniversity", "name": "KPR Institute of Engineering and Technology", "alternateName": "KPRIET"}
-  }
-  </script>
-
-  <meta name="theme-color" content="#10243e" />
-
-  <title>Eklakh Dewan | AI Systems Engineer</title>
-
+  <title>Eklakh Dewan | Portfolio</title>
   <link rel="stylesheet" href="src/styles.css" />
+  <style>
+    /* Bot Widget Styles */
+    #bot-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      font-family: inherit;
+    }
+    #bot-toggle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #bot-panel {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 320px;
+      height: 450px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      display: none; /* hidden by default */
+    }
+    .bot-header {
+      background: var(--blue);
+      color: white;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+    }
+    #bot-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    #chat-messages {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .message {
+      padding: 8px 12px;
+      border-radius: 8px;
+      max-width: 80%;
+      font-size: 0.9rem;
+    }
+    .message-bot {
+      background: var(--tint);
+      color: var(--ink);
+      align-self: flex-start;
+    }
+    .message-user {
+      background: var(--cyan);
+      color: white;
+      align-self: flex-end;
+    }
+    .chat-input-area {
+      display: flex;
+      border-top: 1px solid var(--line);
+    }
+    #chat-input {
+      flex: 1;
+      border: none;
+      padding: 12px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: inherit;
+    }
+    #chat-input:focus {
+      outline: none;
+    }
+    #chat-submit {
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 0 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    /* Animation classes */
+    .in-view {
+      animation: rise-in 0.7s cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <header class="site-header">
-      <nav class="nav container" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="Eklakh Dewan home">ED<span aria-hidden="true">.</span></a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-        <div id="nav-links" class="nav-links">
-          <a href="#work">Work</a>
-          <a href="#evidence">Evidence</a>
-          <a href="#all-projects">Projects</a>
-          <a href="#skills">Lab</a>
-          <a href="#about">About</a>
-          <a class="nav-cta" href="#contact">Let's connect</a>
-        </div>
-      </nav>
-    </header>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#landing" aria-label="Eklakh Dewan home">ED<span aria-hidden="true">.</span></a>
+      <div id="nav-links" class="nav-links">
+        <a href="#landing">Home</a>
+      </div>
+    </nav>
+  </header>
 
-    <main id="main-content">
-      <section id="top" class="hero container">
-        <div class="hero-copy">
-          <p class="eyebrow">Open to AI / ML &amp; software opportunities</p>
-          <h1>I build AI systems that retrieve, reason, recommend and execute.</h1>
-          <p class="hero-summary">AI systems engineer focused on RAG, backend systems, agentic automation, and measurable AI workflows. Available for roles, placement, and internships.</p>
-          <p class="hero-status"><span class="status-pulse" aria-hidden="true"></span><span>Currently exploring:</span> <a href="#case-hcad" class="status-link">HCAD-RAG</a><span class="status-desc">— medical retrieval research</span></p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↗</span></a>
-            <a class="button button-secondary" href="mailto:eklakh.inplace@gmail.com">Contact me</a>
-          </div>
-          <div class="hero-actions hero-actions-compact">
-            <a class="text-link" href="Resume.pdf" target="_blank" rel="noreferrer">View résumé ↗</a>
-            <a class="text-link" href="Resume.pdf" download>Download résumé ↓</a>
-          </div>
-          <div class="hero-links" aria-label="Professional links">
-            <a href="https://github.com/eklakhdewan" target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/eklakhdewan/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-            <a href="https://eklakhdewan.com.np/" target="_blank" rel="noreferrer">Website ↗</a>
-          </div>
-          <ul class="proof-points proof-strip" aria-label="Professional proof">
-            <li><strong>Public project work</strong><span>Repositories and case studies</span></li>
-            <li><strong>Phase 6D complete</strong><span>APX · observability &amp; security</span></li>
-            <li><strong>3 featured systems</strong><span>RAG · agents · automation</span></li>
-          </ul>
-          <p class="footnote">Focused on RAG, NLP, backend systems, and applied machine learning.</p>
-        </div>
-        <aside class="hero-visual" aria-label="Profile and current focus">
-          <div class="portrait-wrap">
-            <img src="me.png" alt="Eklakh Dewan in a navy suit" class="portrait" />
-            <span class="portrait-badge">AI systems<br /><strong>with proof</strong></span>
-          </div>
-          <div class="hero-card">
-            <div class="status-dot" aria-hidden="true"></div>
-            <p class="card-label">Current focus</p>
-            <h2>Reliable RAG &amp; applied AI</h2>
-            <p>Retrieval, validation, evaluation, and observability for useful AI systems.</p>
-            <div class="signal-list">
-              <span>Hybrid retrieval</span><span>Evidence grounding</span><span>Agentic workflows</span>
-            </div>
-          </div>
-        </aside>
-      </section>
+  <main id="app-root"></main>
 
-      <section id="work" class="section section-dark">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Selected work</p>
-            <h2>From model experiments to dependable systems.</h2>
-            <p>Each project is framed around the engineering question, the system design, and how success should be measured.</p>
-          </div>
-          <div class="project-grid">
-            <article class="project-card project-featured" data-animate>
-              <div class="project-image"><img src="Enterprise RAG.png" alt="Enterprise RAG system cover" loading="lazy" /></div>
-              <div class="project-meta"><span>01</span><span>AI search · RAG</span></div>
-              <h3>Enterprise RAG / AI Search Platform</h3>
-              <p>A retrieval and generation platform designed to make answers traceable, testable, and observable.</p>
-              <ul class="tag-list"><li>Hybrid search</li><li>Cross-encoder reranking</li><li>Citation validation</li><li>FastAPI + React</li></ul>
-              <div class="card-links"><a class="text-link" href="#case-rag">Read the case study <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/eklakhdewan/-ENTERPRISE-RAG" target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a></div>
-            </article>
-            <article class="project-card" data-animate data-animate-delay="1">
-              <div class="project-image"><img src="AI job Agent.png" alt="AI Job Agent system cover" loading="lazy" /></div>
-              <div class="project-meta"><span>02</span><span>Agentic systems · workflow automation</span></div>
-              <h3>AI Job Agent</h3>
-              <p>An explainable, stateful workflow for discovering, evaluating, and preparing job applications.</p>
-              <ul class="tag-list"><li>Job matching</li><li>Recommendation workflow</li><li>Streamlit dashboard</li></ul>
-              <div class="card-links"><a class="text-link" href="#case-agent">Read the case study <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/eklakhdewan/AI-Job-Agent" target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a></div>
-            </article>
-            <article class="project-card" id="case-hcad-overview" data-animate data-animate-delay="2">
-              <div class="project-meta"><span>03</span><span>Medical AI · retrieval research</span></div>
-              <h3>HCAD-RAG — Medical Retrieval Architecture</h3>
-              <p>A research-oriented retrieval architecture for clinical question answering, focused on structured evidence grounding and domain-aware ranking.</p>
-              <ul class="tag-list"><li>Dense + sparse retrieval</li><li>Evidence grounding</li><li>Clinical QA research</li></ul>
-              <a class="text-link" href="#case-hcad">Read the case study <span aria-hidden="true">→</span></a>
-            </article>
-            <article class="project-card" data-animate data-animate-delay="3">
-              <div class="project-image"><img src="APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent.png" alt="APX accounts payable exception resolution agent cover" loading="lazy" /></div>
-              <div class="project-meta"><span>04</span><span>Open-source financial automation</span></div>
-              <h3>APX Exception Resolution Agent</h3>
-              <p>An evidence-grounded workflow for detecting, investigating, and resolving accounts-payable exceptions. Dashboard values are illustrative interface content, not production results.</p>
-              <ul class="tag-list"><li>Risk engine</li><li>Guardrails</li><li>Observability</li></ul>
-              <a class="text-link" href="https://github.com/eklakhdewan/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent" target="_blank" rel="noreferrer">Open repository <span aria-hidden="true">↗</span></a>
-            </article>
-          </div>
-        </div>
-      </section>
+  <div id="bot-widget">
+    <button id="bot-toggle">💬</button>
+    <div id="bot-panel">
+      <div class="bot-header">
+        <span>Haya — AI Concierge</span>
+        <button id="bot-close">×</button>
+      </div>
+      <div id="chat-messages"></div>
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off"/>
+        <button id="chat-submit">Send</button>
+      </div>
+    </div>
+  </div>
 
-      <section id="evidence" class="section container case-studies">
-        <div class="section-heading">
-          <p class="eyebrow">Evidence / 001</p>
-          <h2>Claims are cheap. Evidence is the useful part.</h2>
-          <p>Selected systems are described with current status, implementation scope, and verification boundaries.</p>
-        </div>
-        <article id="case-rag" class="case-study">
-          <div class="case-number">01</div>
-          <div>
-            <p class="eyebrow">Enterprise RAG / AI search platform</p>
-            <h3>Ground the answer in evidence, then measure the ground.</h3>
-            <div class="case-columns">
-              <div><h4>Challenge</h4><p>Naive vector search can return plausible but weak evidence. A useful enterprise assistant needs retrieval quality, citation traceability, and a way to inspect failures.</p></div>
-              <div><h4>Approach</h4><p>Combine document ingestion, dense retrieval, BM25, hybrid rank fusion, cross-encoder reranking, evidence-constrained generation, citation validation, and pipeline observability.</p></div>
-              <div><h4>Measure</h4><p>Evaluate Recall@5, MRR, nDCG, citation validity, faithfulness, latency, and token cost. These are evaluation dimensions, not claimed results.</p></div>
-            </div>
-            <p class="case-stack"><strong>Stack:</strong> Python · FastAPI · React · FAISS · BM25 · SentenceTransformers · LLM APIs</p>
-          </div>
-        </article>
-        <article id="case-agent" class="case-study">
-          <div class="case-number">02</div>
-          <div>
-            <p class="eyebrow">Job recommendation system</p>
-            <h3>Turn the job search into an explainable engineering workflow.</h3>
-            <div class="case-columns">
-              <div><h4>Problem</h4><p>Job search repeats discovery, fit evaluation, decision-making, application preparation, and follow-up without durable state or traceability.</p></div>
-              <div><h4>System</h4><p>AI Job Agent models jobs, candidates, decisions, rules, and audit information through small, testable components and explicit interfaces.</p></div>
-              <div><h4>Interface</h4><p>A Streamlit dashboard presents recommendations and skill gaps so that ranking logic remains inspectable.</p></div>
-            </div>
-            <p class="case-stack"><strong>Repository:</strong> <a href="https://github.com/eklakhdewan/AI-Job-Agent" target="_blank" rel="noopener noreferrer">AI Job Agent on GitHub ↗</a></p>
-          </div>
-        </article>
-        <article id="case-hcad" class="case-study">
-          <div class="case-number">03</div>
-          <div>
-            <p class="eyebrow">HCAD-RAG · medical retrieval research</p>
-            <h3>Make clinical answers inspectable through relevant supporting evidence.</h3>
-            <div class="case-columns">
-              <div><h4>Challenge</h4><p>Medical question answering needs retrieval that prioritises relevant source passages instead of relying on plausible generated text alone.</p></div>
-              <div><h4>Approach</h4><p>Explore hybrid dense and sparse retrieval, domain-aware ranking, and evidence-constrained answer generation for clinical question-answering workflows.</p></div>
-              <div><h4>Measure</h4><p>Assess retrieval relevance, citation support, groundedness, and response latency before making any performance claims.</p></div>
-            </div>
-            <p class="case-stack"><strong>Focus:</strong> Python · FAISS · BM25 · SentenceTransformers · FastAPI · LangChain</p>
-          </div>
-        </article>
-        <article id="case-jobs" class="case-study">
-          <div class="case-number">03</div>
-          <div>
-            <p class="eyebrow">Recommendation system</p>
-            <h3>Turn a resume into an explainable job search workflow.</h3>
-            <div class="case-columns">
-              <div><h4>Input</h4><p>Resume and job-description text are parsed into structured skills, requirements, and profile signals.</p></div>
-              <div><h4>System</h4><p>TF-IDF and dense semantic representations support relevance scoring, ranked recommendations, and skill-gap analysis.</p></div>
-              <div><h4>Interface</h4><p>A Streamlit dashboard makes recommendations and missing skills visible to the user rather than hiding the ranking logic.</p></div>
-            </div>
-            <p class="case-stack"><strong>Stack:</strong> Python · scikit-learn · embeddings · Streamlit · SQL</p>
-          </div>
-        </article>
-        <article id="case-apx" class="case-study">
-          <div class="case-number">04</div>
-          <div>
-            <p class="eyebrow">Open-source engineering system</p>
-            <h3>Keep financial automation controlled, auditable, and evidence-grounded.</h3>
-            <div class="case-columns">
-              <div><h4>Input</h4><p>Invoices, purchase orders, receipts, vendor data, and accounts-payable exception signals.</p></div>
-              <div><h4>Decision pipeline</h4><p>Deterministic validation, hybrid evidence retrieval, temporal anchoring, investigation, risk policy, approval boundaries, and guarded actions.</p></div>
-              <div><h4>Engineering lens</h4><p>Persistence, idempotency, retries, compensation, dead-letter handling, dry runs, observability, security, and evaluation remain explicit.</p></div>
-            </div>
-            <p class="case-stack"><strong>Repository:</strong> <a href="https://github.com/eklakhdewan/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent" target="_blank" rel="noreferrer">APX on GitHub ↗</a></p>
-          </div>
-        </article>
-      </section>
-
-      <section id="all-projects" class="section section-tint project-directory">
-        <div class="container">
-          <div class="section-heading"><p class="eyebrow">Project directory</p><h2>More systems I’ve built and explored.</h2><p>Selected work gets the full case-study treatment. This index keeps the breadth visible without diluting the main story.</p></div>
-          <div class="mini-cards-grid">
-            <article class="mini-card" data-animate><p class="mini-card-category">NLP · verification</p><h3>ClaimAI</h3><p>Structured claim-verification pipeline using NLP and evidence retrieval.</p><div class="mini-card-tags"><span>Python</span><span>NLP</span><span>FastAPI</span></div></article>
-            <article class="mini-card" data-animate data-animate-delay="1"><p class="mini-card-category">Agentic · workflows</p><h3>Agent Workflow Automation</h3><p>Declarative YAML-driven agent task orchestration exposed through an API.</p><div class="mini-card-tags"><span>YAML</span><span>FastAPI</span><span>LangGraph</span></div></article>
-            <article class="mini-card" data-animate data-animate-delay="2"><p class="mini-card-category">Explainable ML · career</p><h3>AI Career Path Recommendation</h3><p>Career-trajectory recommender with feature attribution for explainable suggestions.</p><div class="mini-card-tags"><span>SHAP</span><span>FastAPI</span><span>Streamlit</span></div></article>
-            <article class="mini-card" data-animate data-animate-delay="3"><p class="mini-card-category">Classification · risk</p><h3>Fraud Detection &amp; Risk Prediction</h3><p>Transaction fraud classification with risk scoring and audit logging.</p><div class="mini-card-tags"><span>scikit-learn</span><span>MySQL</span><span>Python</span></div></article>
-            <article class="mini-card" data-animate><p class="mini-card-category">NLP · multilingual</p><h3>Multilingual NLP Backend</h3><p>Async REST APIs for multilingual text processing and language detection.</p><div class="mini-card-tags"><span>spaCy</span><span>FastAPI</span><span>Async</span></div></article>
-            <article class="mini-card" data-animate data-animate-delay="1"><p class="mini-card-category">Backend · inventory</p><h3>Smart Inventory Management</h3><p>Inventory management system with CRUD operations and transactional data handling.</p><div class="mini-card-tags"><span>Java</span><span>JDBC</span><span>SQL</span></div></article>
-            <article class="mini-card" data-animate data-animate-delay="2"><p class="mini-card-category">Data · analytics</p><h3>SQL Analytics Platform</h3><p>Analytical queries, stored procedures, and indexed views for business intelligence.</p><div class="mini-card-tags"><span>SQL</span><span>MySQL</span><span>Procedures</span></div></article>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="section section-tint">
-        <div class="container split-layout">
-          <div class="section-heading">
-            <p class="eyebrow">Experience &amp; evidence</p>
-            <h2>Early-career experience with a systems mindset.</h2>
-          </div>
-          <div class="timeline">
-            <article class="timeline-item">
-              <div class="timeline-date">4-week virtual internship</div>
-              <h3>Artificial Intelligence Intern · Flowrage Technology</h3>
-              <div class="experience-card">
-                <div class="exp-header"><div><p class="exp-role">Artificial Intelligence Intern</p><p class="exp-company">Flowrage Technology</p></div><div class="exp-meta"><p>4 weeks · Virtual</p><span>Certificate-backed</span></div></div>
-                <ul class="exp-bullets"><li>Worked with Google Gemini API integration, resume parsing, job matching, and ranking workflows.</li><li>Explored enterprise recommendation architecture using TF-IDF and dense embeddings.</li><li>Practised REST API concepts and data-engineering patterns across ingestion, transformation, and ranking components.</li></ul>
-                <a class="exp-cert-link" href="EKLAKH%20DEWAN-%20Internship%20Certificate.png" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" class="section container">
-        <div class="section-heading">
-          <p class="eyebrow">Capabilities</p>
-          <h2>A focused toolkit for applied AI.</h2>
-        </div>
-        <div class="skills-grid">
-          <div class="skill-group"><h3>AI &amp; retrieval</h3><p>RAG · hybrid search · BM25 · reranking · embeddings · LLM applications · evaluation · citation validation · SHAP</p></div>
-          <div class="skill-group"><h3>Backend &amp; data</h3><p>Python · FastAPI · REST APIs · Pydantic · SQL · MySQL · vector search · async services · OpenAPI</p></div>
-          <div class="skill-group"><h3>Delivery &amp; interfaces</h3><p>React · Streamlit · Docker · Docker Compose · Git · Playwright · workflow automation · observability</p></div>
-          <div class="skill-group"><h3>Foundations</h3><p>NLP · machine learning · deep learning · feature engineering · ranking · data structures · algorithms</p></div>
-        </div>
-      </section>
-
-      <section id="about" class="section section-tint">
-        <div class="container split-layout about-layout">
-          <div class="section-heading"><p class="eyebrow">About</p><h2>Curious enough to explore. Rigorous enough to verify.</h2></div>
-          <div>
-            <p class="large-copy">I’m an Artificial Intelligence &amp; Data Science engineer at KPRIET, building practical AI systems that go beyond isolated model demos.</p>
-            <p>My work sits at the intersection of retrieval engineering, natural language processing, backend development, and intelligent automation. I care about the layers that make AI dependable: ranking, validation, evaluation, reproducibility, and observability.</p>
-            <p class="callout">Primary differentiator: I don’t stop at “the model generated an answer.” I ask whether it retrieved the right evidence, whether the answer is grounded, and how we can prove it.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="education" class="section container compact-section">
-        <div class="section-heading"><p class="eyebrow">Education &amp; credentials</p><h2>Building the foundation in public.</h2></div>
-        <div class="credentials-grid">
-          <article class="education-card"><p class="credential-type">2024–2027</p><h3>B.Tech · Artificial Intelligence &amp; Data Science</h3><p>KPRIET — KPR Institute of Engineering and Technology</p><details class="edu-coursework"><summary>Relevant coursework</summary><ul><li>Natural Language Processing</li><li>Machine Learning &amp; Deep Learning</li><li>Database Management Systems</li><li>Data Structures &amp; Algorithms</li><li>Computer Vision</li><li>Probability &amp; Statistics</li></ul></details></article>
-          <article><p class="credential-type">Certifications</p><div class="certs-grid"><div class="cert-card"><p class="cert-issuer">Coursera / DeepLearning.AI</p><h3>Natural Language Processing Specialization</h3></div><div class="cert-card"><p class="cert-issuer">Coursera / IBM</p><h3>Business Intelligence &amp; Analytics</h3></div><div class="cert-card"><p class="cert-issuer">AWS</p><h3>AWS Cloud Practitioner</h3></div><div class="cert-card"><p class="cert-issuer">Coursera / DeepLearning.AI</p><h3>Deep Learning Specialization</h3></div><div class="cert-card"><p class="cert-issuer">Coursera / Google</p><h3>Google Data Analytics Certificate</h3></div></div><p class="muted">Credential IDs and verification links are available on request.</p></article>
-        </div>
-      </section>
-
-      <section id="contact" class="section contact-section container">
-        <div class="contact-card contact-intro">
-          <div>
-            <p class="eyebrow">06 / Contact</p>
-            <h2>If the system is interesting,<br /><em>let’s talk about it.</em></h2>
-            <p>I’m interested in AI/ML engineering, backend systems, and software roles where there is something real to measure, debug, and improve. Available for job, placement, and internship opportunities.</p>
-          </div>
-          <div class="contact-actions"><a class="button button-primary" href="mailto:eklakh.inplace@gmail.com">Email me ↗</a><a class="button button-secondary" href="https://github.com/eklakhdewan" target="_blank" rel="noreferrer">GitHub ↗</a><a class="button button-secondary" href="https://www.linkedin.com/in/eklakhdewan/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
-        </div>
-        <div class="contact-layout">
-          <form action="https://formspree.io/f/mrbldebq" method="POST" class="contact-form">
-            <div class="form-head"><span>MESSAGE / 001</span><span>DIRECT CHANNEL</span></div>
-            <label>Name<input type="text" name="name" autocomplete="name" required /></label>
-            <label>Email<input type="email" name="email" autocomplete="email" required /></label>
-            <label>Phone <small>(optional)</small><input type="tel" name="number" autocomplete="tel" /></label>
-            <label>Message<textarea name="message" rows="5" required></textarea></label>
-            <button class="button button-primary" type="submit">Transmit message <span aria-hidden="true">→</span></button>
-            <p class="form-note">Powered by Formspree.</p>
-          </form>
-          <aside class="resume-card"><p class="eyebrow">Recruiter pack</p><h3>Need the one-page version?</h3><p>Download the current résumé or browse the full profile and project evidence.</p><div class="resume-actions"><a class="button button-primary" href="Resume.pdf" download>Download résumé ↓</a><a class="text-link" href="Resume.pdf" target="_blank" rel="noreferrer">View résumé ↗</a></div></aside>
-        </div>
-        <div class="contact-links"><a href="mailto:eklakh.inplace@gmail.com">eklakh.inplace@gmail.com</a><a href="https://eklakhdewan.com.np/" target="_blank" rel="noreferrer">eklakhdewan.com.np ↗</a><a href="https://leetcode.com/u/eklakh-dewan/" target="_blank" rel="noreferrer">LeetCode ↗</a></div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner"><span>© 2026 Eklakh Dewan</span><span>Built for clarity, evidence, and responsible AI.</span></div>
-    </footer>
-    <script type="module" src="src/main.js"></script>
-  </body>
+  <footer class="site-footer">
+    <div class="container footer-inner"><span>© 2026 Eklakh Dewan</span><span>Built for clarity, evidence, and responsible AI.</span></div>
+  </footer>
+  
+  <script type="module" src="src/main.js"></script>
+</body>
 </html>
