@@ -303,12 +303,12 @@ export function renderLandingView() {
       </aside>
     </section>
 
-    <section class="section section-tint">
+    <section id="portfolio-map" class="section section-tint">
       <div class="container">
         <div class="section-heading in-view">
           <p class="eyebrow">Portfolio map</p>
           <h2>A role-specific view of the same engineering body of work.</h2>
-          <p>Select a hiring context to reorder the evidence around that role.</p>
+          <p>Select a role to see the engineering evidence prioritized for that position.</p>
         </div>
         <div class="role-directory">
           ${Object.values(ROLES).map((r, i) => `
@@ -321,7 +321,44 @@ export function renderLandingView() {
         </div>
       </div>
     </section>
-  `;
+
+    <section id="contact" class="section contact-section container">
+      <div class="contact-card contact-intro in-view" style="border: 1px solid var(--line);">
+        <div>
+          <p class="eyebrow">Recruiter channel</p>
+          <h2>Interested in the system?<br /><em>Let’s talk.</em></h2>
+          <p>Reach me directly by email, or send a message through the form below.</p>
+          <div class="contact-links">
+            <a href="mailto:eklakh.inplace@gmail.com">eklakh.inplace@gmail.com ↗</a>
+            <a href="https://github.com/eklakhdewan" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:eklakh.inplace@gmail.com">Email me ↗</a>
+          <button class="button button-secondary" onclick="document.getElementById('bot-toggle').click();">Ask Haya</button>
+        </div>
+      </div>
+      <div class="contact-layout in-view">
+        <form action="https://formspree.io/f/mrbldebq" method="POST" class="contact-form">
+          <div class="form-head"><span>MESSAGE / 001</span><span>DIRECT CHANNEL</span></div>
+          <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+          <label>Phone <small>(optional)</small><input type="tel" name="number" autocomplete="tel" /></label>
+          <label>Message<textarea name="message" rows="5" required></textarea></label>
+          <button class="button button-primary" type="submit">Transmit message <span aria-hidden="true">→</span></button>
+          <p class="form-note">Powered by Formspree.</p>
+        </form>
+        <aside class="resume-card">
+          <p class="eyebrow">Recruiter contact</p>
+          <h3>Prefer a direct channel?</h3>
+          <p>Email me directly or use Haya for a role-specific portfolio walkthrough.</p>
+          <div class="resume-actions">
+            <a class="button button-primary" href="mailto:eklakh.inplace@gmail.com">Email me ↗</a>
+            <button class="button button-secondary" onclick="document.getElementById('bot-toggle').click();">Ask Haya</button>
+          </div>
+        </aside>
+      </div>
+    </section>  `;
 }
 
 export function render404View() {
