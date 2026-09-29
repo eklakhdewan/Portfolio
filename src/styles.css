@@ -17,3 +17,48 @@ html[data-theme="dark"]{--ink:#e8f0f7;--ink-soft:#adc0d1;--paper:#0b1726;--tint:
 
 /* Phase 2 — structured project evidence */
 .project-category{margin:0 0 10px;color:var(--blue);font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.project-evidence{display:grid;gap:9px;margin-bottom:14px}.project-proof{margin:0!important}.project-metrics{display:flex;flex-wrap:wrap;gap:6px}.project-metrics span{padding:5px 8px;border:1px solid var(--line);border-radius:999px;background:var(--tint);color:var(--ink);font-size:.66rem;font-weight:800}.project-stack{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.project-stack>span{margin-right:4px;color:var(--blue);font-size:.64rem;font-weight:800;letter-spacing:.1em}.project-stack b{padding:5px 7px;border-radius:6px;background:var(--tint);color:var(--ink-soft);font-size:.66rem}.case-study-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.case-panel{min-height:150px}.project-card h3{margin-bottom:10px}.project-card>p:not(.project-category){margin-bottom:14px}@media(max-width:850px){.case-study-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.case-study-grid{grid-template-columns:1fr}}
+
+
+/* Phase 3 — visual polish */
+.section-heading{max-width:850px}.section-heading h2{max-width:900px}.role-hero .hero-copy{max-width:760px}.role-hero .hero-summary{max-width:720px}.hero-visual{align-self:start}.proof-card{min-height:78px;align-content:center}.proof-card strong{font-variant-numeric:tabular-nums}.project-grid{align-items:stretch}.project-card{display:flex;flex-direction:column;height:100%;padding:26px}.project-card .project-meta{margin-bottom:14px}.project-card>p:not(.project-category){color:var(--ink-soft);line-height:1.6}.project-evidence{flex:0 0 auto}.project-card .tag-list{margin-top:4px}.project-card .card-links{padding-top:20px}.project-featured{grid-column:span 2}.project-featured .project-evidence{max-width:850px}.case-study-grid{align-items:stretch}.case-panel{display:flex;flex-direction:column;justify-content:flex-start}.case-panel p{line-height:1.65}.signal-cloud{max-width:1000px}.signal-chip{transition:transform .2s ease,border-color .2s ease,background .2s ease}.signal-chip:hover{transform:translateY(-2px);border-color:var(--blue)}.capability-card{min-height:0}.capability-card:hover,.info-card:hover,.resume-card:hover{border-color:var(--blue);transition:border-color .2s ease}.capability-list span{line-height:1.2}.info-grid{align-items:stretch}.info-card{height:100%}.contact-card{padding:36px}.contact-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px}.contact-links a{font-weight:800;color:var(--ink);text-decoration:none}.contact-links a:hover{text-decoration:underline;text-underline-offset:4px}.resume-card{height:100%;box-sizing:border-box}.role-directory-item{transition:padding-left .2s ease,background .2s ease}.role-directory-item:hover{padding-left:10px;background:var(--tint)}.role-directory-item>span:last-child{transition:transform .2s ease}.role-directory-item:hover>span:last-child{transform:translateX(4px)}.section-dark .section-heading>p:last-child{max-width:720px;color:var(--ink-soft)}.section-tint .section-heading>p:last-child{max-width:720px;color:var(--ink-soft)}
+
+@media(max-width:1050px){
+  .project-featured{grid-column:span 1}
+  .project-card{padding:22px}
+  .role-portrait{height:400px}
+}
+@media(max-width:850px){
+  .hero{gap:36px}
+  .hero-copy{width:100%}
+  .hero-visual{width:100%}
+  .role-portrait{height:420px}
+  .project-grid{grid-template-columns:1fr}
+  .project-card.project-featured{min-height:0}
+  .case-study-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-card{padding:28px}
+}
+@media(max-width:560px){
+  .section{padding-block:58px}
+  .hero{padding-top:42px;padding-bottom:54px}
+  .hero-actions{display:grid;grid-template-columns:1fr;gap:10px}
+  .hero-actions .button{justify-content:center}
+  .proof-grid{gap:8px}
+  .proof-card{min-height:68px;padding:11px 9px}
+  .proof-card strong{font-size:.95rem}
+  .proof-card span{font-size:.6rem;letter-spacing:.07em}
+  .project-card{padding:20px;border-radius:13px}
+  .project-meta{font-size:.68rem}
+  .project-card h3{font-size:1.3rem}
+  .project-proof{font-size:.75rem}
+  .project-metrics span,.project-stack b{font-size:.6rem}
+  .case-study-grid{grid-template-columns:1fr}
+  .case-panel{min-height:0;padding:18px}
+  .signal-chip{font-size:.7rem;padding:8px 10px}
+  .capability-card{padding:18px}
+  .info-card{padding:20px}
+  .contact-card{padding:22px}
+  .contact-intro h2{font-size:2.6rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .signal-chip,.role-directory-item,.role-directory-item>span:last-child{transition:none}
+}
