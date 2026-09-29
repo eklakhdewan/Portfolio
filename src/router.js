@@ -3,6 +3,24 @@ import { ROLES } from './data.js';
 
 export function initRouter(bot) {
   const appRoot = document.getElementById('app-root');
+  let pendingSection = null;
+
+  function closeMobileNav() {
+    const nav = document.getElementById('nav-links');
+    const toggle = document.getElementById('nav-toggle');
+    if (nav) nav.classList.remove('is-open');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Menu';
+    }
+  }
+
+  function scrollToSection(id) {
+    requestAnimationFrame(() => {
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
   function handleHashChange() {
     const hash = window.location.hash.replace('#', '') || 'landing';
@@ -10,16 +28,25 @@ export function initRouter(bot) {
     if (hash === 'landing') {
       appRoot.innerHTML = renderLandingView();
       bot.updateContext('landing');
+      if (pendingSection) {
+        const section = pendingSection;
+        pendingSection = null;
+        scrollToSection(section);
+      } else {
+        window.scrollTo(0, 0);
+      }
     } else if (ROLES[hash]) {
       appRoot.innerHTML = renderRoleView(hash);
       bot.updateContext(hash);
       attachFormSubmitHandler();
+      window.scrollTo(0, 0);
     } else {
       appRoot.innerHTML = render404View();
       bot.updateContext('landing');
+      window.scrollTo(0, 0);
     }
 
-    window.scrollTo(0, 0);
+    closeMobileNav();
   }
 
   function attachFormSubmitHandler() {
@@ -37,9 +64,7 @@ export function initRouter(bot) {
         const response = await fetch(form.action, {
           method: form.method,
           body: new FormData(form),
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         });
         
         if (response.ok) {
@@ -60,6 +85,64 @@ export function initRouter(bot) {
     });
   }
 
+  function attachNavigation() {
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('nav-links');
+
+    toggle?.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? 'Close' : 'Menu';
+    });
+
+    document.querySelectorAll('[data-nav]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const action = link.dataset.nav;
+        closeMobileNav();
+
+        if (action === 'haya') {
+          e.preventDefault();
+          document.getElementById('bot-toggle')?.click();
+          return;
+        }
+
+        if (action === 'home') {
+          e.preventDefault();
+          if (window.location.hash === '#landing') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            pendingSection = null;
+            window.location.hash = 'landing';
+          }
+          return;
+        }
+
+        if (action === 'roles') {
+          e.preventDefault();
+          if (window.location.hash === '#landing') {
+            scrollToSection('portfolio-map');
+          } else {
+            pendingSection = 'portfolio-map';
+            window.location.hash = 'landing';
+          }
+          return;
+        }
+
+        if (action === 'contact') {
+          e.preventDefault();
+          const target = document.getElementById('contact');
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            pendingSection = 'contact';
+            window.location.hash = 'landing';
+          }
+        }
+      });
+    });
+  }
+
   window.addEventListener('hashchange', handleHashChange);
-  handleHashChange(); // Initial load
+  handleHashChange();
+  attachNavigation();
 }
