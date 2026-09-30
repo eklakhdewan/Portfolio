@@ -3,7 +3,6 @@
  *
  * Source: Eklakh Dewan — HR Interview Answer Bank.
  * This is a prioritized core, not a verbatim copy of the full bank.
- * HCAD-RAG is intentionally excluded from all interview questions.
  */
 
 const common = [
