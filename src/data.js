@@ -58,7 +58,7 @@ export const ROLES = {
     id: "ml-engineer",
     resumeFile: "Eklakh_Dewan_ML_Engineer.pdf",
     title: "ML Engineer",
-    pitch: "I design explainable ML models, retrieval architectures, and scalable end-to-end automation systems with a focus on metrics and reproducibility.",
+    pitch: "I work on recommendation systems, retrieval evaluation, and applied ML workflows with a focus on metrics and reproducibility.",
     accent: "#526174",
     projects: [
       {
@@ -100,7 +100,7 @@ export const ROLES = {
     id: "ai-systems",
     resumeFile: "Eklakh_Dewan_AI_Systems.pdf",
     title: "AI Systems Engineer",
-    pitch: "I build reliable, observable backend systems that orchestrate complex AI workflows, retrieve data at scale, and execute safely.",
+    pitch: "I build backend systems for AI workflows, with an emphasis on retrieval, persistence, validation, and observable execution.",
     accent: "#101a2b",
     projects: [
       {
@@ -148,7 +148,7 @@ export const ROLES = {
     id: "data-science",
     resumeFile: "Eklakh_Dewan_Data_Scientist.pdf",
     title: "Data Scientist",
-    pitch: "I turn unstructured data into explainable insights and robust predictive models, backing every decision with statistical evidence.",
+    pitch: "I work with unstructured data, NLP, similarity-based recommendation, and data analysis with an emphasis on explainable results.",
     accent: "#b08d57",
     projects: [
       {
@@ -190,7 +190,7 @@ export const ROLES = {
     id: "data-analyst",
     resumeFile: "Eklakh_Dewan_Data_Analyst.pdf",
     title: "Data Analyst",
-    pitch: "I transform complex datasets into clear, actionable dashboards and automated reports to drive business intelligence.",
+    pitch: "I build data-focused dashboards, SQL workflows, and reporting views that make analysis easier to inspect and use.",
     accent: "#557a68",
     projects: [
       {
@@ -232,7 +232,7 @@ export const ROLES = {
     id: "web-developer",
     resumeFile: "Eklakh_Dewan_Web_Developer.pdf",
     title: "Web Developer",
-    pitch: "I build responsive, full-stack web applications with robust backend APIs, multi-tenant architectures, and real-time capabilities.",
+    pitch: "I build responsive web interfaces and backend APIs, with experience integrating AI services and data-driven workflows.",
     accent: "#314b60",
     projects: [
       {
@@ -500,6 +500,44 @@ const TAXTRACE_PROJECT = {
   const role = ROLES[roleId];
   if (role && !role.projects.some(p => p.name === "TaxTrace")) {
     role.projects.unshift({ ...TAXTRACE_PROJECT });
+  }
+});
+
+
+// Evidence policy: role pages only surface projects with a project-specific repository or verified portfolio implementation.
+const ROLE_PROJECT_ALLOWLIST = {
+  "ai-engineer": [
+    "TaxTrace",
+    "AI-Powered Job Recommendations Dashboard",
+    "Enterprise RAG / AI Search Platform",
+    "APX — Accounts Payable Exception Agent"
+  ],
+  "ml-engineer": [
+    "AI-Powered Job Recommendations Dashboard",
+    "Enterprise RAG Evaluation Pipeline"
+  ],
+  "ai-systems": [
+    "TaxTrace",
+    "APX — Exception Resolution Architecture",
+    "Enterprise RAG / AI Search Platform"
+  ],
+  "data-science": [
+    "AI-Powered Job Recommendations (Data Modeling)",
+    "Enterprise RAG Evaluation Pipeline"
+  ],
+  "data-analyst": [
+    "TaxTrace",
+    "AI-Powered Job Recommendations Dashboard"
+  ],
+  "web-developer": [
+    "TaxTrace",
+    "Enterprise RAG / AI Search Platform",
+    "Portfolio Site Architecture"
+  ]
+};
+Object.entries(ROLE_PROJECT_ALLOWLIST).forEach(([roleId, allowedNames]) => {
+  if (ROLES[roleId]) {
+    ROLES[roleId].projects = ROLES[roleId].projects.filter(project => allowedNames.includes(project.name));
   }
 });
 
