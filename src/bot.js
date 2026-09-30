@@ -316,10 +316,10 @@ export function initBot() {
     const progress = getQuestionProgress(currentRoleContext, 0);
 
     addMessage(
-      \`Mock interview started for \${ROLES[currentRoleContext].title}. I’ll ask one question at a time, use your documented background as grounding, and give brief feedback before moving on. Core interview: \${progress.total} questions.\`,
+      `Mock interview started for \${ROLES[currentRoleContext].title}. I’ll ask one question at a time, use your documented background as grounding, and give brief feedback before moving on. Core interview: \${progress.total} questions.`,
       'bot'
     );
-    addMessage(\`\${progress.current}/\${progress.total} — \${questions[0].question}\`, 'bot');
+    addMessage(`\${progress.current}/\${progress.total} — \${questions[0].question}`, 'bot');
     chatInputArea.style.display = 'flex';
     chatInput.focus();
   }
@@ -334,7 +334,7 @@ export function initBot() {
     const knowledge = getHayaKnowledge(interviewSession.roleId);
     const role = ROLES[interviewSession.roleId];
 
-    return \`You are Haya conducting a structured mock HR interview for Eklakh Dewan.
+    return `You are Haya conducting a structured mock HR interview for Eklakh Dewan.
 Evaluate only the candidate's answer to the current question.
 
 Question:
@@ -379,7 +379,7 @@ Rules:
 - Treat unsupported metrics, users, deployments, employers, clients, or achievements as unsupported.
 - If the answer conflicts with canonical evidence, flag it in contradiction and feedback.
 - Ask at most one useful follow-up.
-- Do not generate the next core question.\`;
+- Do not generate the next core question.`;
   }
 
 
@@ -424,14 +424,14 @@ Rules:
         signal: controller.signal
       });
 
-      if (!response.ok) throw new Error(\`Worker returned \${response.status}\`);
+      if (!response.ok) throw new Error(`Worker returned \${response.status}`);
       const data = await response.json();
       const raw = data?.choices?.[0]?.message?.content?.trim();
       if (!raw) throw new Error('Empty interview response');
 
       let result;
       try {
-        const cleaned = raw.replace(/^\`\`\`json\s*/i, '').replace(/\s*\`\`\`$/, '');
+        const cleaned = raw.replace(/^```json\s*/i, '').replace(/\s*```$/, '');
         result = JSON.parse(cleaned);
       } catch {
         result = {
@@ -460,12 +460,12 @@ Rules:
         session.answeredIds.push(question.id);
       }
 
-      if (result.feedback) addMessage(\`Feedback: \${result.feedback}\`, 'bot');
-      if (result.contradiction) addMessage(\`Evidence check: \${result.contradiction}\`, 'bot');
+      if (result.feedback) addMessage(`Feedback: \${result.feedback}`, 'bot');
+      if (result.contradiction) addMessage(`Evidence check: \${result.contradiction}`, 'bot');
 
       if (result.followUp && session.followUps < 1) {
         session.followUps += 1;
-        addMessage(\`Follow-up: \${result.followUp}\`, 'bot');
+        addMessage(`Follow-up: \${result.followUp}`, 'bot');
         return;
       }
 
@@ -486,7 +486,7 @@ Rules:
 
       const progress = getQuestionProgress(session.roleId, session.questionIndex);
       addMessage(
-        \`\${progress.current}/\${progress.total} — \${nextQuestion.question}\`,
+        `\${progress.current}/\${progress.total} — \${nextQuestion.question}`,
         'bot'
       );
     } finally {
@@ -500,15 +500,15 @@ Rules:
     session.active = false;
 
     const dimensions = summarizeInterview(session.evaluations);
-    const strongest = dimensions.slice(0, 2).map((item) => \`\${item.dimension} \${item.average}/5\`);
-    const weakest = dimensions.slice(-2).reverse().map((item) => \`\${item.dimension} \${item.average}/5\`);
+    const strongest = dimensions.slice(0, 2).map((item) => `\${item.dimension} \${item.average}/5`);
+    const weakest = dimensions.slice(-2).reverse().map((item) => `\${item.dimension} \${item.average}/5`);
 
     const unsupported = session.history.filter((item) => item.evaluation?.contradiction).length;
     const summary = [
-      \`Interview complete across \${session.answered} questions.\`,
-      strongest.length ? \`Strongest dimensions: \${strongest.join(', ')}.\` : '',
-      weakest.length ? \`Dimensions to improve: \${weakest.join(', ')}.\` : '',
-      unsupported ? \`\${unsupported} answer(s) triggered an evidence check.\` : 'No evidence conflicts were flagged.',
+      `Interview complete across \${session.answered} questions.`,
+      strongest.length ? `Strongest dimensions: \${strongest.join(', ')}.` : '',
+      weakest.length ? `Dimensions to improve: \${weakest.join(', ')}.` : '',
+      unsupported ? `\${unsupported} answer(s) triggered an evidence check.` : 'No evidence conflicts were flagged.',
       'Use the feedback above to revise specific answers rather than memorizing scripts.'
     ].filter(Boolean).join(' ');
 
