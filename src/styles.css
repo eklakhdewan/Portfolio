@@ -118,9 +118,11 @@ html[data-theme="dark"] #bot-panel{box-shadow:0 24px 70px rgba(0,0,0,.45)}
 html[data-theme="dark"] .message-bot{background:#e2e8f0;color:#0b1220}
 html[data-theme="dark"] .message-user{background:#0b1220;color:#ffffff;border-color:#64748b}
 @media(max-width:560px){
-  #bot-widget{right:16px;bottom:16px}
-  #bot-panel{right:-2px;bottom:62px;width:min(320px,calc(100vw - 32px));height:min(680px,72dvh);max-height:72dvh}
-  #bot-toggle{width:48px;height:48px}
+  #bot-widget{right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom))}
+  #bot-panel{right:-2px;bottom:58px;width:min(320px,calc(100vw - 32px));height:min(680px,72dvh);max-height:72dvh}
+  #bot-toggle{width:auto;min-width:0;height:46px;padding:0 15px;border-radius:999px;gap:0;font-size:.82rem;letter-spacing:.01em;white-space:nowrap}
+  #bot-toggle > span:first-child{display:none}
+  .haya-toggle-label{font-size:.76rem;font-weight:800;line-height:1;white-space:nowrap}
 }
 @media(prefers-reduced-motion:reduce){
   #bot-toggle,#bot-panel,.haya-starter,.haya-role{transition:none}
