@@ -1,3 +1,50 @@
+export const CASE_STUDIES = [
+  {
+    name: "HCAD-RAG — Hierarchical Context-Aware Medical RAG",
+    evidenceStatus: "Patent filing in progress · Final year project · KPRIET 2027",
+    problem: "Medical LLMs can produce unsupported answers when clinical context is not preserved through retrieval.",
+    myRole: "TODO — provide your exact individual contribution for the case study.",
+    stack: "Python · FastAPI · FAISS · SentenceTransformers · LLM APIs · PostgreSQL · Hugging Face",
+    result: "TODO — provide one measured result if you want to publish an achieved metric. Current evaluation dimensions are targets, not achieved results.",
+    repo: null,
+    demo: null,
+    screenshot: null
+  },
+  {
+    name: "Enterprise RAG / AI Search Platform",
+    evidenceStatus: "Retrieval Evaluation",
+    problem: "Enterprise document search needs to reconcile lexical and semantic retrieval while keeping generated answers tied to evidence.",
+    myRole: "TODO — provide your exact individual contribution for the case study.",
+    stack: "Python · FastAPI · FAISS · BM25 · SentenceTransformers · React",
+    result: "TODO — provide one measured result from the project evaluation.",
+    repo: "https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG",
+    demo: null,
+    screenshot: null
+  },
+  {
+    name: "APX — Accounts Payable Exception Resolution Agent",
+    evidenceStatus: "Engineering Evidence",
+    problem: "Accounts-payable exceptions require evidence gathering and controlled resolution rather than unconstrained LLM decisions.",
+    myRole: "TODO — provide your exact individual contribution for the case study.",
+    stack: "Python · BM25 · Dense Retrieval · Reranking · LLMs · SQLite",
+    result: "TODO — provide one measured result from the project evaluation or test suite.",
+    repo: "https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent",
+    demo: null,
+    screenshot: null
+  },
+  {
+    name: "TaxTrace",
+    evidenceStatus: "Stage 6 backend validation",
+    problem: "Tax reconciliation workflows can require manual comparison, exception investigation, and fragmented notice-response handling.",
+    myRole: "TODO — provide your exact individual contribution for the case study.",
+    stack: "FastAPI · Next.js · TypeScript · SQLAlchemy · PostgreSQL · React Query · Tailwind CSS · Alembic",
+    result: "91 backend tests passing at the Stage 6 checkpoint.",
+    repo: "https://github.com/Eklakh-AI-Engineer/TaxTrace",
+    demo: null,
+    screenshot: null
+  }
+];
+
 export const ROLES = {
   "ai-engineer": {
     id: "ai-engineer",
