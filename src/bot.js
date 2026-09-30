@@ -237,6 +237,147 @@ export function initBot() {
     }
   });
 
+  async function handleSendMessage() {
+    if (busy) return;
+
+    const question = chatInput.value.trim();
+    if (!question) return;
+
+    if (question.length > MAX_MESSAGE_LENGTH) {
+      addMessage(`Please keep the question under ${MAX_MESSAGE_LENGTH} characters.`, 'bot');
+      return;
+    }
+
+    if (interviewSession?.active) {
+      chatInput.value = '';
+      busy = true;
+      chatSubmit.disabled = true;
+      chatInput.disabled = true;
+      try {
+        addMessage(question, 'user');
+        await handleInterviewAnswer(question);
+      } catch (error) {
+        console.error('Haya interview error:', error);
+        addMessage('I could not evaluate that answer right now. Please try again.', 'bot');
+      } finally {
+        busy = false;
+        chatSubmit.disabled = false;
+        chatInput.disabled = false;
+        chatInput.focus();
+      }
+      return;
+    }
+
+    chatInput.value = '';
+    addMessage(question, 'user');
+    busy = true;
+    chatSubmit.disabled = true;
+    chatInput.disabled = true;
+
+    let thinkingMessage = null;
+
+    try {
+      const modelTier = selectModelTier(question);
+      const deterministic = deterministicAnswer(question, currentRoleContext);
+
+      if (deterministic) {
+        writeClientCache(currentRoleContext, question, deterministic, modelTier);
+        addMessage(deterministic, 'bot');
+        messageHistory.push(
+          { role: 'user', content: question },
+          { role: 'assistant', content: deterministic }
+        );
+        messageHistory = messageHistory.slice(-MAX_HISTORY_MESSAGES);
+        return;
+      }
+
+      const cached = readClientCache(currentRoleContext, question, modelTier);
+      if (cached) {
+        addMessage(cached, 'bot');
+        messageHistory.push(
+          { role: 'user', content: question },
+          { role: 'assistant', content: cached }
+        );
+        messageHistory = messageHistory.slice(-MAX_HISTORY_MESSAGES);
+        return;
+      }
+
+      thinkingMessage = addMessage('Thinking…', 'bot');
+
+      const knowledge = getHayaKnowledge(
+        currentRoleContext === 'landing' ? null : currentRoleContext
+      );
+
+      const systemPrompt = [
+        'You are Haya, Eklakh Dewan’s portfolio evidence assistant.',
+        'Answer conversationally and concisely using only the supplied candidate knowledge.',
+        'Do not invent employers, clients, users, metrics, production scale, publications, or achievements.',
+        'If the knowledge does not document an answer, say that the available portfolio data does not document it.',
+        currentRoleContext !== 'landing'
+          ? `The visitor is currently viewing the ${ROLES[currentRoleContext]?.title || 'selected'} role.`
+          : 'The visitor is on the portfolio landing page.',
+        `Candidate knowledge: ${JSON.stringify(knowledge)}`
+      ].join('\\n');
+
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: modelTier === STRONG_MODEL_TIER
+            ? 'meta-llama/llama-3.3-70b-instruct'
+            : 'meta-llama/llama-3.1-8b-instruct',
+          tier: modelTier,
+          cache: true,
+          profile: knowledge,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            ...messageHistory.slice(-MAX_HISTORY_MESSAGES),
+            { role: 'user', content: question }
+          ]
+        })
+      });
+
+      if (!response.ok) throw new Error(`Worker returned ${response.status}`);
+
+      const data = await response.json();
+      const answer = data?.choices?.[0]?.message?.content?.trim()
+        || data?.answer?.trim()
+        || data?.response?.trim();
+
+      if (!answer) throw new Error('Haya returned an empty response');
+
+      writeClientCache(currentRoleContext, question, answer, modelTier);
+      messageHistory.push(
+        { role: 'user', content: question },
+        { role: 'assistant', content: answer }
+      );
+      messageHistory = messageHistory.slice(-MAX_HISTORY_MESSAGES);
+
+      if (thinkingMessage) {
+        thinkingMessage.textContent = answer;
+      } else {
+        addMessage(answer, 'bot');
+      }
+    } catch (error) {
+      console.error('Haya error:', error);
+
+      if (thinkingMessage) {
+        thinkingMessage.textContent =
+          'I could not reach the Haya service right now. Please try again in a moment.';
+      } else {
+        addMessage(
+          'I could not reach the Haya service right now. Please try again in a moment.',
+          'bot'
+        );
+      }
+    } finally {
+      busy = false;
+      chatSubmit.disabled = false;
+      chatInput.disabled = false;
+      chatInput.focus();
+    }
+  }
+
   function addMessage(text, sender) {
     const msgDiv = document.createElement('div');
     msgDiv.className = `message message-${sender}`;
@@ -343,6 +484,11 @@ export function initBot() {
     chatMessages.innerHTML = '';
     const questions = getInterviewQuestions(currentRoleContext);
     const firstQuestion = chooseAdaptiveQuestion(questions, [], []);
+    if (!firstQuestion) {
+      interviewSession.active = false;
+      addMessage('I could not initialize the interview question bank for this role.', 'bot');
+      return;
+    }
     interviewSession.currentQuestion = firstQuestion;
     const progress = getQuestionProgress(currentRoleContext, 0);
 
@@ -491,11 +637,6 @@ Rules:
         question: question.question,
         score: result.score || null
       });
-      session.answered += 1;
-
-      if (!session.answeredIds.includes(question.id)) {
-        session.answeredIds.push(question.id);
-      }
 
       if (result.feedback) addMessage(`Feedback: ${result.feedback}`, 'bot');
       if (result.coaching) addMessage(`Coaching: ${result.coaching}`, 'bot');
