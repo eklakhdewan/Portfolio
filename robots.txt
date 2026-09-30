@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eklakhdewan.com.np/sitemap.xml
+Sitemap: https://eklakhdewan.github.io/trial-portfolio/sitemap.xml
