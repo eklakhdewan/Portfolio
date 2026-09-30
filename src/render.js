@@ -321,7 +321,7 @@ export function renderLandingView() {
           <p>Selected systems spanning retrieval, agents, applied AI, and backend engineering.</p>
         </div>
         <div class="project-grid">
-          <article class="project-card in-view project-featured"><div class="project-meta"><span>01</span><span>AI / RAG</span></div><h3>HCAD-RAG — Hierarchical Context-Aware Medical RAG</h3><p>Medical-domain retrieval research focused on hierarchical context preservation, evidence-grounded retrieval, reranking, and citation validation.</p></article>
+          <article class="project-card in-view project-featured"><div class="project-meta"><span>01</span><span>ML / RECOMMENDATION</span></div><h3>AI-Powered Job Recommendations Dashboard</h3><p>Recommendation engine combining TF-IDF and dense semantic embeddings to rank relevant jobs through an interactive Streamlit dashboard.</p></article>
           <article class="project-card in-view project-featured"><div class="project-meta"><span>02</span><span>AI SEARCH</span></div><h3>Enterprise RAG / AI Search Platform</h3><p>Dense retrieval, BM25, hybrid fusion, cross-encoder reranking, citation validation, and evidence-constrained generation.</p></article>
           <article class="project-card in-view"><div class="project-meta"><span>03</span><span>AI SYSTEMS</span></div><h3>APX — Accounts Payable Exception Resolution Agent</h3><p>Evidence retrieval and controlled decision workflow for accounts-payable exceptions.</p></article>
           <article class="project-card in-view"><div class="project-meta"><span>04</span><span>FULL STACK</span></div><h3>TaxTrace</h3><p>AI-assisted tax reconciliation and compliance platform with an exception review workspace.</p></article>
@@ -334,7 +334,7 @@ export function renderLandingView() {
         <div class="section-heading in-view">
           <p class="eyebrow">Evidence status</p>
           <h2>Four case studies, with claims separated from proof.</h2>
-          <p>Measured results are shown only where currently documented. Missing contribution, demo, screenshot, or metric details are explicitly marked for later verification.</p>
+          <p>Measured results are shown only where currently documented. Missing metrics are explicitly marked for later verification.</p>
         </div>
         <div class="case-study-grid">
           ${CASE_STUDIES.map((study) => `
@@ -347,8 +347,6 @@ export function renderLandingView() {
               <p><strong>Measured result</strong><br />${study.result}</p>
               <div class="card-links">
                 ${study.repo ? `<a class="text-link" href="${study.repo}" target="_blank" rel="noopener noreferrer">Repository ↗</a>` : '<span class="project-private">Repository: TODO — provide public link</span>'}
-                ${study.demo ? `<a class="text-link" href="${study.demo}" target="_blank" rel="noopener noreferrer">Demo ↗</a>` : '<span class="project-private">Demo: TODO — provide URL</span>'}
-                ${study.screenshot ? `<a class="text-link" href="${study.screenshot}" target="_blank" rel="noopener noreferrer">Screenshot ↗</a>` : '<span class="project-private">Screenshot: TODO — provide URL</span>'}
               </div>
             </article>
           `).join('')}
