@@ -30,6 +30,7 @@ export function initRouter(bot) {
       appRoot.innerHTML = renderLandingView();
       bot.updateContext('landing');
       attachFormSubmitHandler();
+      initMotion();
       if (pendingSection) {
         const section = pendingSection;
         pendingSection = null;
@@ -41,14 +42,45 @@ export function initRouter(bot) {
       appRoot.innerHTML = renderRoleView(hash);
       bot.updateContext(hash);
       attachFormSubmitHandler();
+      initMotion();
       window.scrollTo(0, 0);
     } else {
       appRoot.innerHTML = render404View();
       bot.updateContext('landing');
+      initMotion();
       window.scrollTo(0, 0);
     }
 
     closeMobileNav();
+  }
+
+  function initMotion() {
+    const root = document.documentElement;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+    root.classList.add('motion-enabled');
+
+    const targets = document.querySelectorAll(
+      '.section-heading, .project-card, .case-study, .timeline-item, ' +
+      '.skill-group, .credentials-grid article, .contact-form, .resume-card, .mini-card'
+    );
+
+    const observer = new IntersectionObserver((entries, instance) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in-view');
+        instance.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    targets.forEach((target) => {
+      if (!target.classList.contains('in-view')) observer.observe(target);
+    });
   }
 
   function attachFormSubmitHandler() {
