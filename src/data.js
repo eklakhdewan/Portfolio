@@ -63,7 +63,7 @@ export const ROLES = {
       },
       {
         name: "Insurance End-to-End Claims Automation",
-        description: "Developed a full-lifecycle machine learning pipeline to automate insurance claims processing. Handled raw data ingestion, feature engineering, and trained gradient boosting models to classify claim validity and detect fraudulent anomalies.",
+        description: "Built a machine-learning workflow for insurance claims data covering ingestion, feature engineering, classification, and anomaly detection.",
         tags: ["Python", "XGBoost", "Data Pipelines", "Classification"],
         link: "https://github.com/eklakhdewan"
       },
@@ -117,7 +117,7 @@ export const ROLES = {
       },
       {
         name: "Inventory & Order Management System",
-        description: "Developed a robust transaction-heavy backend using Java and JDBC. Designed a normalized PostgreSQL schema that handles high-concurrency order placement while maintaining strict ACID compliance.",
+        description: "Built a Java/JDBC backend with a normalized PostgreSQL schema and transaction-oriented database operations.",
         tags: ["Java", "JDBC", "PostgreSQL", "ACID Compliance"],
         link: "https://github.com/eklakhdewan"
       }
@@ -134,7 +134,7 @@ export const ROLES = {
         role: "Artificial Intelligence Intern",
         company: "Flowrage Technology",
         duration: "4 weeks (Virtual)",
-        description: "Integrated third-party LLM APIs into stable backend architectures. Focused on error handling, rate limiting, and ensuring high availability for AI-driven endpoints."
+        description: "Integrated third-party LLM APIs into backend workflows, with attention to error handling and rate limits."
       }
     ]
   },
@@ -195,7 +195,7 @@ export const ROLES = {
       },
       {
         name: "Inventory & Order Management System (Analytics)",
-        description: "Created comprehensive sales analytics pipelines. Wrote complex SQL joins and window functions to generate daily and monthly revenue reports, and implemented automated CSV export functionality for stakeholders.",
+        description: "Created sales analytics queries using SQL joins and window functions and added CSV reporting workflows.",
         tags: ["SQL", "Window Functions", "Reporting", "CSV Automation"],
         link: "https://github.com/eklakhdewan"
       },
