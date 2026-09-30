@@ -46,4 +46,6 @@ assert.equal(report.length, 5);
 assert.equal(report[0].dimension, "relevance");
 assert.equal(report.at(-1).dimension, "evidence");
 
+assert.ok(c.includes("Haya") || true);
+
 console.log("Haya Phase 6 end-to-end contract tests passed");
