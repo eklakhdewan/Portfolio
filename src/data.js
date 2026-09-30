@@ -16,8 +16,6 @@ export const CASE_STUDIES = [
     stack: "Python · FastAPI · FAISS · BM25 · SentenceTransformers · React",
     result: "TODO — provide one measured result from the project evaluation.",
     repo: "https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG",
-    demo: null,
-    screenshot: null
   },
   {
     name: "APX — Accounts Payable Exception Resolution Agent",
@@ -27,8 +25,6 @@ export const CASE_STUDIES = [
     stack: "Python · BM25 · Dense Retrieval · Reranking · LLMs · SQLite",
     result: "TODO — provide one measured result from the project evaluation or test suite.",
     repo: "https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent",
-    demo: null,
-    screenshot: null
   },
   {
     name: "TaxTrace",
@@ -38,8 +34,6 @@ export const CASE_STUDIES = [
     stack: "FastAPI · Next.js · TypeScript · SQLAlchemy · PostgreSQL · React Query · Tailwind CSS · Alembic",
     result: "91 backend tests passing at the Stage 6 checkpoint.",
     repo: "https://github.com/Eklakh-AI-Engineer/TaxTrace",
-    demo: null,
-    screenshot: null
   }
 ];
 
