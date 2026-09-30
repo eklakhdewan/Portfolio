@@ -2,11 +2,60 @@ import { ROLES } from './data.js';
 
 const WORKER_URL = 'https://portfolio-bot-proxy.eklakhdewan78.workers.dev';
 const MAX_MESSAGE_LENGTH = 500;
-const MAX_HISTORY_MESSAGES = 10;
+const MAX_HISTORY_MESSAGES = 6;
+const CACHE_VERSION = 'v1';
+const CLIENT_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+const CLIENT_CACHE_MAX_ENTRIES = 50;
+const CLIENT_CACHE_PREFIX = `haya-cache:${CACHE_VERSION}:`;
 
 let currentRoleContext = 'landing';
 let messageHistory = [];
 let busy = false;
+
+function normalizeCacheQuestion(text) {
+  return text.trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function getClientCacheKey(roleId, question) {
+  return `${CLIENT_CACHE_PREFIX}${roleId}:${normalizeCacheQuestion(question)}`;
+}
+
+function readClientCache(roleId, question) {
+  try {
+    const raw = localStorage.getItem(getClientCacheKey(roleId, question));
+    if (!raw) return null;
+    const entry = JSON.parse(raw);
+    if (!entry?.answer || Date.now() - entry.createdAt > CLIENT_CACHE_TTL_MS) {
+      localStorage.removeItem(getClientCacheKey(roleId, question));
+      return null;
+    }
+    return entry.answer;
+  } catch {
+    return null;
+  }
+}
+
+function writeClientCache(roleId, question, answer) {
+  try {
+    const key = getClientCacheKey(roleId, question);
+    localStorage.setItem(key, JSON.stringify({ answer, createdAt: Date.now() }));
+    const keys = [];
+    for (let i = 0; i < localStorage.length; i += 1) {
+      const itemKey = localStorage.key(i);
+      if (itemKey?.startsWith(CLIENT_CACHE_PREFIX)) keys.push(itemKey);
+    }
+    if (keys.length > CLIENT_CACHE_MAX_ENTRIES) {
+      keys.sort((a, b) => {
+        try { return JSON.parse(localStorage.getItem(a)).createdAt - JSON.parse(localStorage.getItem(b)).createdAt; }
+        catch { return 0; }
+      });
+      keys.slice(0, keys.length - CLIENT_CACHE_MAX_ENTRIES).forEach((itemKey) => localStorage.removeItem(itemKey));
+    }
+  } catch {
+    // Cache is an optimization; never block the assistant if storage is unavailable.
+  }
+}
+
 
 const STARTER_QUESTIONS = [
   "Show me Eklakh's strongest AI project.",
@@ -181,6 +230,16 @@ export function initBot() {
   }
 
   async function queryWorker(userText) {
+    const cacheEligible = messageHistory.length === 0;
+    if (cacheEligible) {
+      const cachedAnswer = readClientCache(currentRoleContext, userText);
+      if (cachedAnswer) {
+        messageHistory.push({ role: 'user', content: userText });
+        messageHistory.push({ role: 'assistant', content: cachedAnswer });
+        return cachedAnswer;
+      }
+    }
+
     messageHistory.push({ role: 'user', content: userText });
     messageHistory = messageHistory.slice(-MAX_HISTORY_MESSAGES);
 
@@ -219,6 +278,12 @@ RULES
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'meta-llama/llama-3.3-70b-instruct',
+          cache: cacheEligible,
+          cacheKey: cacheEligible ? {
+            version: CACHE_VERSION,
+            role: currentRoleContext,
+            question: normalizeCacheQuestion(userText)
+          } : null,
           messages: [
             { role: 'system', content: systemPrompt },
             ...messageHistory
@@ -237,6 +302,7 @@ RULES
       if (!reply) throw new Error('Empty assistant response');
 
       messageHistory.push({ role: 'assistant', content: reply });
+      if (cacheEligible) writeClientCache(currentRoleContext, userText, reply);
       return reply;
     } finally {
       window.clearTimeout(timeout);
