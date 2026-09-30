@@ -237,23 +237,20 @@ export function renderRoleView(roleId) {
     </section>
 
     <section id="contact" class="section contact-section container">
-      <div class="contact-card contact-intro in-view" style="border: 1px solid var(--line);">
+      <div class="contact-card contact-intro in-view">
         <div>
-          <p class="eyebrow" style="color: ${role.accent};">Recruiter channel</p>
-          <h2>Interested in the system?<br /><em>Let’s talk.</em></h2>
-          <p>Available for internships, placements, and engineering opportunities.</p>
-          <div class="contact-links">
-            <a href="mailto:eklakh.inplace@gmail.com">eklakh.inplace@gmail.com ↗</a>
-            <a href="https://github.com/eklakhdewan" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
+          <p class="eyebrow" style="color: ${role.accent};">06 / Contact</p>
+          <h2>If the system is interesting,<br /><em>let’s talk about it.</em></h2>
+          <p>I’m interested in AI/ML engineering, backend systems, and software roles where there is something real to measure, debug, and improve. Available for job, placement, and internship opportunities.</p>
         </div>
         <div class="contact-actions">
           <a class="button button-primary" style="background-color: ${role.accent};" href="mailto:eklakh.inplace@gmail.com">Email me ↗</a>
-          <button class="button button-secondary" onclick="document.getElementById('bot-toggle').click();">Ask Haya</button>
+          <a class="button button-secondary" href="https://github.com/eklakhdewan" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/eklakhdewan/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         </div>
       </div>
       <div class="contact-layout in-view">
-        <form action="https://formspree.io/f/mrbldebq" method="POST" class="contact-form">
+        <form action="https://formspree.io/f/mrbldebq" method="POST" class="contact-form" aria-label="Contact Eklakh Dewan">
           <div class="form-head" style="color: ${role.accent};"><span>MESSAGE / 001</span><span>DIRECT CHANNEL</span></div>
           <label>Name<input type="text" name="name" autocomplete="name" required /></label>
           <label>Email<input type="email" name="email" autocomplete="email" required /></label>
@@ -271,6 +268,11 @@ export function renderRoleView(roleId) {
             <a class="text-link" style="color: ${role.accent};" href="${import.meta.env.BASE_URL}${role.resumeFile}" target="_blank" rel="noreferrer">View résumé ↗</a>
           </div>
         </aside>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:eklakh.inplace@gmail.com">eklakh.inplace@gmail.com</a>
+        <a href="https://eklakhdewan.com.np/" target="_blank" rel="noreferrer">eklakhdewan.com.np ↗</a>
+        <a href="https://leetcode.com/u/eklakh-dewan/" target="_blank" rel="noreferrer">LeetCode ↗</a>
       </div>
     </section>
   `;
@@ -333,23 +335,20 @@ export function renderLandingView() {
     </section>
 
     <section id="contact" class="section contact-section container">
-      <div class="contact-card contact-intro in-view" style="border: 1px solid var(--line);">
+      <div class="contact-card contact-intro in-view">
         <div>
-          <p class="eyebrow">Recruiter channel</p>
-          <h2>Interested in the system?<br /><em>Let’s talk.</em></h2>
-          <p>Reach me directly by email, or send a message through the form below.</p>
-          <div class="contact-links">
-            <a href="mailto:eklakh.inplace@gmail.com">eklakh.inplace@gmail.com ↗</a>
-            <a href="https://github.com/eklakhdewan" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
+          <p class="eyebrow">06 / Contact</p>
+          <h2>If the system is interesting,<br /><em>let’s talk about it.</em></h2>
+          <p>I’m interested in AI/ML engineering, backend systems, and software roles where there is something real to measure, debug, and improve. Available for job, placement, and internship opportunities.</p>
         </div>
         <div class="contact-actions">
           <a class="button button-primary" href="mailto:eklakh.inplace@gmail.com">Email me ↗</a>
-          <button class="button button-secondary" onclick="document.getElementById('bot-toggle').click();">Ask Haya</button>
+          <a class="button button-secondary" href="https://github.com/eklakhdewan" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/eklakhdewan/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         </div>
       </div>
       <div class="contact-layout in-view">
-        <form action="https://formspree.io/f/mrbldebq" method="POST" class="contact-form">
+        <form action="https://formspree.io/f/mrbldebq" method="POST" class="contact-form" aria-label="Contact Eklakh Dewan">
           <div class="form-head"><span>MESSAGE / 001</span><span>DIRECT CHANNEL</span></div>
           <label>Name<input type="text" name="name" autocomplete="name" required /></label>
           <label>Email<input type="email" name="email" autocomplete="email" required /></label>
@@ -359,14 +358,19 @@ export function renderLandingView() {
           <p class="form-note">Powered by Formspree.</p>
         </form>
         <aside class="resume-card">
-          <p class="eyebrow">Recruiter contact</p>
-          <h3>Prefer a direct channel?</h3>
-          <p>Email me directly or use Haya for a role-specific portfolio walkthrough.</p>
+          <p class="eyebrow">Recruiter pack</p>
+          <h3>Need the one-page version?</h3>
+          <p>Download the current résumé or browse the full profile and project evidence.</p>
           <div class="resume-actions">
-            <a class="button button-primary" href="mailto:eklakh.inplace@gmail.com">Email me ↗</a>
-            <button class="button button-secondary" onclick="document.getElementById('bot-toggle').click();">Ask Haya</button>
+            <a class="button button-primary" href="${import.meta.env.BASE_URL}Eklakh_Dewan_AI_Systems.pdf" download>Download résumé ↓</a>
+            <a class="text-link" href="${import.meta.env.BASE_URL}Eklakh_Dewan_AI_Systems.pdf" target="_blank" rel="noreferrer">View résumé ↗</a>
           </div>
         </aside>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:eklakh.inplace@gmail.com">eklakh.inplace@gmail.com</a>
+        <a href="https://eklakhdewan.com.np/" target="_blank" rel="noreferrer">eklakhdewan.com.np ↗</a>
+        <a href="https://leetcode.com/u/eklakh-dewan/" target="_blank" rel="noreferrer">LeetCode ↗</a>
       </div>
     </section>  `;
 }
