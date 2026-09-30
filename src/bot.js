@@ -310,9 +310,8 @@ export function initBot() {
     messageHistory.push({ role: 'user', content: userText });
     messageHistory = messageHistory.slice(-MAX_HISTORY_MESSAGES);
 
-    const context = currentRoleContext === 'landing'
-      ? Object.values(ROLES).map(roleSummary).join('\n')
-      : roleSummary(ROLES[currentRoleContext]);
+    const role = ROLES[currentRoleContext];
+    const context = role ? roleSummary(role) : 'No role selected. Use the available portfolio data only.';
 
     const systemPrompt = `You are Haya, the evidence-grounded portfolio assistant for Eklakh Dewan.
 Your job is to help a visitor understand and navigate the portfolio using only the supplied portfolio data.
@@ -324,6 +323,10 @@ ROLE CONTEXT
 Current view: ${currentRoleContext}
 Relevant portfolio data:
 ${context}
+
+CONTEXT POLICY
+Use only the current role's supplied data. Do not infer details from other role views.
+If the requested information is not present in this role context, say so rather than inventing broader portfolio data.
 
 RULES
 1. Be factual, concise, and neutral. Do not advocate, rank, hype, or flatter.
