@@ -39,6 +39,7 @@ export function initBot() {
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const chatSubmit = document.getElementById('chat-submit');
+  const chatInputArea = document.querySelector('.chat-input-area');
 
   if (!botToggle || !botPanel || !botClose || !chatMessages || !chatInput || !chatSubmit) return;
 
@@ -247,12 +248,18 @@ RULES
     messageHistory = [];
     chatMessages.innerHTML = '';
 
+    if (chatInputArea) {
+      chatInputArea.style.display = roleId === 'landing' ? 'none' : 'flex';
+    }
+
     if (roleId !== 'landing' && ROLES[roleId]) {
       addMessage(`Haya can explain the portfolio evidence for the ${ROLES[roleId].title} view — projects, capabilities, experience, and the relevant resume. Ask about any specific item.`, 'bot');
       addStarterQuestions();
       chatInput.disabled = false;
       chatSubmit.disabled = false;
     } else {
+      chatInput.disabled = true;
+      chatSubmit.disabled = true;
       addMessage("Hi — I’m Haya. Choose a role to explore Eklakh’s portfolio with role-specific context, projects, skills, and evidence.", 'bot');
       addRoleSelector();
       chatInput.disabled = false;
