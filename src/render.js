@@ -1,4 +1,4 @@
-import { ROLES, CASE_STUDIES } from './data.js';
+import { ROLES } from './data.js';
 
 function projectEvidenceHtml(project) {
   const architecture = project.architecture
@@ -145,9 +145,9 @@ export function renderRoleView(roleId) {
     <section id="projects" class="section section-dark">
       <div class="container">
         <div class="section-heading in-view">
-          <p class="eyebrow" style="color: ${role.accent}">Selected engineering work</p>
+          <p class="eyebrow" style="color: ${role.accent}">Role-relevant engineering work</p>
           <h2>Systems with visible implementation detail.</h2>
-          <p>Projects are presented as engineering evidence: what was built, how it works, and which skills it demonstrates.</p>
+          <p>Projects are prioritized for this role and presented as engineering evidence: what was built, how it works, and which skills it demonstrates.</p>
         </div>
         <div class="project-grid">
           ${projectsHtml}
@@ -158,7 +158,7 @@ export function renderRoleView(roleId) {
     <section class="section case-study-section">
       <div class="container">
         <div class="section-heading in-view">
-          <p class="eyebrow" style="color: ${role.accent}">Flagship case study</p>
+          <p class="eyebrow" style="color: ${role.accent}">Role flagship</p>
           <h2>${featured.name}</h2>
           <p>${featured.description}</p>
         </div>
