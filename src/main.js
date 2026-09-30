@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js-enabled');
+
 import { initRouter } from './router.js';
 import { initBot } from './bot.js';
 
