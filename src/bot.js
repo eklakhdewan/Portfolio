@@ -130,12 +130,44 @@ function writeClientCache(roleId, question, answer, modelTier = FAST_MODEL_TIER)
 }
 
 
-const STARTER_QUESTIONS = [
-  "What roles fit you?",
-  "Show your RAG project.",
-  "What backend technologies do you use?",
-  "How can I contact you?"
-];
+const ROLE_STARTER_QUESTIONS = {
+  "ai-engineer": [
+    "How is your Enterprise RAG pipeline structured?",
+    "What retrieval techniques did you use in Enterprise RAG?",
+    "How does APX use evidence before making a decision?",
+    "Which AI and LLM skills are documented for this role?"
+  ],
+  "ml-engineer": [
+    "How does your job recommendation system rank matches?",
+    "Which ML and NLP techniques are used in your projects?",
+    "What evaluation signals do you use for retrieval models?",
+    "How do dense embeddings complement TF-IDF in your work?"
+  ],
+  "ai-systems": [
+    "How is TaxTrace architected?",
+    "What backend and infrastructure technologies do you use?",
+    "How did you approach persistence and reliability in APX?",
+    "What engineering signals are documented for this role?"
+  ],
+  "data-science": [
+    "How do you use NLP in your projects?",
+    "What data science projects are documented for this role?",
+    "How do TF-IDF and semantic similarity appear in your work?",
+    "Which Python data-science technologies do you use?"
+  ],
+  "data-analyst": [
+    "What SQL capabilities are documented for this role?",
+    "How does your job dashboard support data analysis?",
+    "What reporting and visualization work have you built?",
+    "Which data-cleaning and business-intelligence skills do you use?"
+  ],
+  "web-developer": [
+    "What full-stack applications have you built?",
+    "How is your portfolio architecture implemented?",
+    "Which frontend and backend technologies do you use?",
+    "How do you integrate AI services into web applications?"
+  ]
+};
 
 function roleSummary(role) {
   if (!role) return '';
@@ -215,7 +247,8 @@ export function initBot() {
     label.textContent = 'Try a question';
     starterWrap.appendChild(label);
 
-    STARTER_QUESTIONS.forEach((question) => {
+    const questions = ROLE_STARTER_QUESTIONS[currentRoleContext] || [];
+    questions.forEach((question) => {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'haya-starter';
