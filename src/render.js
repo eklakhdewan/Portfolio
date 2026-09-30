@@ -122,9 +122,10 @@ export function renderRoleView(roleId) {
         <p class="eyebrow" style="color: ${role.accent};">Targeted View</p>
         <h1>${role.title}</h1>
         <p class="hero-summary">${role.pitch}</p>
+        <p class="hero-status"><span class="status-pulse" aria-hidden="true"></span><span>Selected evidence · ${role.projects.length} projects · role-specific résumé</span></p>
         <div class="hero-actions">
-          <button class="button button-primary" style="background-color: ${role.accent}" onclick="document.getElementById('bot-toggle').click();">Chat with Haya <span aria-hidden="true">↗</span></button>
-          <a class="button button-secondary" href="${import.meta.env.BASE_URL}${role.resumeFile}" target="_blank" rel="noreferrer">View résumé</a>
+          <a class="button button-primary" style="background-color: ${role.accent}" href="${import.meta.env.BASE_URL}${role.resumeFile}" target="_blank" rel="noreferrer">View résumé <span aria-hidden="true">↗</span></a>
+          <button class="button button-secondary" onclick="document.getElementById('bot-toggle').click();">Ask Haya <span aria-hidden="true">↗</span></button>
         </div>
         <div class="proof-grid">
           ${proofHtml(role)}
@@ -147,7 +148,7 @@ export function renderRoleView(roleId) {
         <div class="section-heading in-view">
           <p class="eyebrow" style="color: ${role.accent}">Role-relevant engineering work</p>
           <h2>Systems with visible implementation detail.</h2>
-          <p>Projects are prioritized for this role and presented as engineering evidence: what was built, how it works, and which skills it demonstrates.</p>
+          <p>Selected projects are limited to work with project-specific evidence. Each card shows what was built, how it works, and the relevant repository.</p>
         </div>
         <div class="project-grid">
           ${projectsHtml}
@@ -229,12 +230,6 @@ export function renderRoleView(roleId) {
       </div>
     </section>
 
-    <section id="experience" class="section section-tint">
-      <div class="container split-layout">
-        <div class="section-heading in-view"><p class="eyebrow">Experience</p><h2>Artificial Intelligence Intern.</h2><p>Flowrage Technology · 4 weeks (Virtual).</p></div>
-        <div class="timeline"><article class="timeline-item in-view"><div class="timeline-date">4 weeks (Virtual)</div><h3>Artificial Intelligence Intern · Flowrage Technology</h3><div class="experience-card"><p class="experience-description">Worked on Gemini API integration, resume parsing, and job-matching workflows using TF-IDF and dense embeddings.</p></div></article></div>
-      </div>
-    </section>
 
     <section id="contact" class="section contact-section container">
       <div class="contact-card contact-intro in-view">
