@@ -21,10 +21,11 @@ Each view changes the emphasis and relevant resume without creating separate pro
 
 ## Selected work
 
-### HCAD-RAG
-Medical-domain RAG research focused on hierarchical context preservation, evidence-grounded retrieval, reranking, and citation validation.
+### AI-Powered Job Recommendations Dashboard
 
-Current status is intentionally described as **Patent filing in progress · Final year project · KPRIET 2027**. It is not presented as a granted patent.
+A solo-built recommendation system that combines TF-IDF with dense semantic embeddings to turn unstructured resumes and job descriptions into relevant job matches, exposed through a Streamlit dashboard.
+
+Repository: https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard
 
 ### Enterprise RAG / AI Search Platform
 Retrieval pipeline combining dense retrieval with FAISS, BM25, hybrid fusion, cross-encoder reranking, citation validation, and evidence-constrained generation.
