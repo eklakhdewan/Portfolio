@@ -364,6 +364,9 @@ RULES
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          model: modelTier === STRONG_MODEL_TIER
+            ? 'meta-llama/llama-3.3-70b-instruct'
+            : 'meta-llama/llama-3.1-8b-instruct',
           tier: modelTier,
           cache: cacheEligible,
           cacheKey: cacheEligible ? {
