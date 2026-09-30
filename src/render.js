@@ -1,4 +1,4 @@
-import { ROLES } from './data.js';
+import { ROLES, CASE_STUDIES } from './data.js';
 
 function projectEvidenceHtml(project) {
   const architecture = project.architecture
@@ -329,6 +329,32 @@ export function renderLandingView() {
       </div>
     </section>
 
+    <section id="case-studies" class="section case-study-section">
+      <div class="container">
+        <div class="section-heading in-view">
+          <p class="eyebrow">Evidence status</p>
+          <h2>Four case studies, with claims separated from proof.</h2>
+          <p>Measured results are shown only where currently documented. Missing contribution, demo, screenshot, or metric details are explicitly marked for later verification.</p>
+        </div>
+        <div class="case-study-grid">
+          ${CASE_STUDIES.map((study) => `
+            <article class="case-panel in-view">
+              <span class="case-label">${study.evidenceStatus}</span>
+              <h3>${study.name}</h3>
+              <p><strong>Problem</strong><br />${study.problem}</p>
+              <p><strong>My role</strong><br />${study.myRole}</p>
+              <p><strong>Stack</strong><br />${study.stack}</p>
+              <p><strong>Measured result</strong><br />${study.result}</p>
+              <div class="card-links">
+                ${study.repo ? `<a class="text-link" href="${study.repo}" target="_blank" rel="noopener noreferrer">Repository ↗</a>` : '<span class="project-private">Repository: TODO — provide public link</span>'}
+                ${study.demo ? `<a class="text-link" href="${study.demo}" target="_blank" rel="noopener noreferrer">Demo ↗</a>` : '<span class="project-private">Demo: TODO — provide URL</span>'}
+                ${study.screenshot ? `<a class="text-link" href="${study.screenshot}" target="_blank" rel="noopener noreferrer">Screenshot ↗</a>` : '<span class="project-private">Screenshot: TODO — provide URL</span>'}
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      </div>
+    </section>
     <section id="roles" class="section section-tint">
       <div class="container">
         <div class="section-heading in-view">
