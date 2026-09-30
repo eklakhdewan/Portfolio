@@ -16,7 +16,7 @@ const answerIncrements = bot.match(/session\.answered \+= 1;/g) || [];
 assert.equal(answerIncrements.length, 1, "each interview answer must be counted exactly once");
 
 assert.match(router, /renderLandingView\(\)/);
-assert.match(router, /bot\.updateContext\("landing"\)/);
+assert.match(router, /bot\.updateContext\(['"]landing['"]\)/);
 assert.match(render, /I build AI systems that retrieve, reason, recommend and execute/);
 assert.match(render, /Start Hiring Interview/);
 
