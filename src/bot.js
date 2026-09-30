@@ -1,9 +1,10 @@
 import { ROLES } from './data.js';
+import { getHayaKnowledge } from './haya-knowledge.js';
 
 const WORKER_URL = 'https://portfolio-bot-proxy.eklakhdewan78.workers.dev';
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_HISTORY_MESSAGES = 6;
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const FAST_MODEL_TIER = 'fast';
 const STRONG_MODEL_TIER = 'strong';
 const CLIENT_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
@@ -20,56 +21,56 @@ function normalizeCacheQuestion(text) {
 
 function deterministicAnswer(question, roleId) {
   const q = normalizeCacheQuestion(question);
-  const role = ROLES[roleId];
-  if (!role || roleId === 'landing') return null;
+  const knowledge = getHayaKnowledge(roleId);
+  if (!knowledge || !roleId || roleId === 'landing') return null;
 
   if (/\b(resume|cv)\b/.test(q)) {
-    return `The relevant resume is ${role.resumeFile}. It is the resume configured for the ${role.title} view.`;
+    const role = ROLES[roleId];
+    return role?.resumeFile
+      ? `The relevant resume is ${role.resumeFile}. It is the resume configured for the ${role.title} view.`
+      : 'The available portfolio data does not document a resume for this role.';
   }
 
   if (/\b(rag|retrieval)\b/.test(q)) {
-    const matches = role.projects.filter((project) => {
+    const matches = knowledge.projects.filter((project) => {
       const haystack = JSON.stringify(project).toLowerCase();
       return haystack.includes('rag') || haystack.includes('retrieval');
     });
     if (!matches.length) return 'The available portfolio data for this role does not document a RAG or retrieval project.';
-    const names = matches.slice(0, 4).map((project) => project.name).join('; ');
-    return `The ${role.title} view documents these RAG/retrieval projects: ${names}.`;
+    return `The ${ROLES[roleId]?.title || 'selected role'} view documents these RAG/retrieval projects: ${matches.map((project) => project.name).join('; ')}.`;
   }
 
   if (/\b(backend|back-end|api|server)\b/.test(q)) {
-    const backend = role.capabilities?.['Backend & Data'] || [];
-    const infrastructure = role.capabilities?.Infrastructure || [];
-    const skills = [...new Set([...backend, ...infrastructure])].slice(0, 10);
+    const skills = knowledge.capabilities.filter((skill) =>
+      /fastapi|next\.js|postgres|mysql|rest|api|node|nestjs|backend|sql/i.test(skill)
+    ).slice(0, 10);
     return skills.length
-      ? `For ${role.title}, the documented backend/infrastructure stack includes ${skills.join(', ')}.`
+      ? `The documented backend/data stack for this role includes ${skills.join(', ')}.`
       : 'The available portfolio data does not document a backend stack for this role.';
   }
 
   if (/\b(skill|skills|stack|technolog|tech)\b/.test(q)) {
-    const skills = role.skills || [];
-    return skills.length
-      ? `The ${role.title} view highlights ${skills.slice(0, 8).join(', ')}.`
+    return knowledge.capabilities.length
+      ? `The documented capabilities for this role include ${knowledge.capabilities.slice(0, 10).join(', ')}.`
       : 'The available portfolio data does not document skills for this role.';
   }
 
   if (/\b(project|projects)\b/.test(q)) {
-    const projects = role.projects.slice(0, 6).map((project) => project.name).join('; ');
-    return `The ${role.title} view includes: ${projects}.`;
+    return knowledge.projects.length
+      ? `The selected evidence for this role includes: ${knowledge.projects.map((project) => project.name).join('; ')}.`
+      : 'The available portfolio data does not document projects for this role.';
   }
 
   if (/\b(education|degree|cgpa|college|university)\b/.test(q)) {
-    const education = role.education?.[0];
-    return education
-      ? `${education.degree} at ${education.institution}, graduating ${education.year}, with ${education.result}.`
-      : 'The available portfolio data does not document education for this role.';
+    const { profile } = knowledge;
+    return `${profile.degree} at ${profile.institution}, graduating ${profile.graduationYear}, with ${profile.cgpa} CGPA.`;
   }
 
   if (/\b(experience|internship|intern)\b/.test(q)) {
-    const experience = role.experience?.[0];
+    const experience = knowledge.experience[0];
     return experience
       ? `${experience.role} at ${experience.company} — ${experience.duration}. ${experience.description}`
-      : 'The available portfolio data does not document experience for this role.';
+      : 'The available portfolio data does not document experience.';
   }
 
   return null;
@@ -169,20 +170,8 @@ const ROLE_STARTER_QUESTIONS = {
   ]
 };
 
-function roleSummary(role) {
-  if (!role) return '';
-  return JSON.stringify({
-    title: role.title,
-    pitch: role.pitch,
-    projects: role.projects,
-    skills: role.skills,
-    capabilities: role.capabilities,
-    engineeringSignals: role.engineeringSignals,
-    experience: role.experience,
-    education: role.education,
-    credentials: role.credentials,
-    resumeFile: role.resumeFile
-  });
+function roleSummary(roleId) {
+  return JSON.stringify(getHayaKnowledge(roleId));
 }
 
 export function initBot() {
@@ -363,13 +352,13 @@ export function initBot() {
     messageHistory = messageHistory.slice(-MAX_HISTORY_MESSAGES);
 
     const role = ROLES[currentRoleContext];
-    const context = role ? roleSummary(role) : 'No role selected. Use the available portfolio data only.';
+    const context = role ? roleSummary(currentRoleContext) : 'No role selected. Use the available portfolio data only.';
 
     const systemPrompt = `You are Haya, the evidence-grounded portfolio assistant for Eklakh Dewan.
 Your job is to help a visitor understand and navigate the portfolio using only the supplied portfolio data.
 
 IDENTITY
-Eklakh Dewan — B.Tech in Artificial Intelligence & Data Science at KPRIET, graduating in 2027. The portfolio lists an AI internship at Flowrage Technology and projects across AI systems, retrieval, ML, data, and web engineering.
+Eklakh Dewan — B.Tech in Artificial Intelligence & Data Science at KPRIET, graduating in 2027. The canonical Haya knowledge base contains his current profile, documented AI internship, four selected solo projects, role-specific capabilities, interview grounding, and explicit evidence limitations.
 
 ROLE CONTEXT
 Current view: ${currentRoleContext}
@@ -377,8 +366,8 @@ Relevant portfolio data:
 ${context}
 
 CONTEXT POLICY
-Use only the current role's supplied data. Do not infer details from other role views.
-If the requested information is not present in this role context, say so rather than inventing broader portfolio data.
+Use only the canonical Haya knowledge supplied for the current role. Do not infer details from other role views or from retired project definitions in the application data.
+If the requested information is not present in this canonical knowledge, say so rather than inventing broader portfolio data.
 
 RULES
 1. Be factual, concise, and neutral. Do not advocate, rank, hype, or flatter.
