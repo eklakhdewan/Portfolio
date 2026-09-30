@@ -77,15 +77,18 @@ export function renderRoleView(roleId) {
         <span>${String(index + 1).padStart(2, '0')}</span>
         <span style="color: ${role.accent}; font-weight: bold;">${p.featured ? 'FLAGSHIP' : role.title}</span>
       </div>
-      <h3>${p.name}</h3>
+      <h3>${p.title || p.name}</h3>
       <p>${p.description}</p>
       <p class="project-category">${p.category || role.title}</p>
+      ${p.status || p.badge ? `<div class="project-status"><span class="project-badge" style="border-color: ${p.badgeColor || role.accent}; color: ${p.badgeColor || role.accent};">${p.badge || "Status"}</span><span>${p.status || ""}</span></div>` : ""}
       ${projectEvidenceHtml(p)}
       <ul class="tag-list">
-        ${(p.tags || p.stack || []).map(t => `<li>${t}</li>`).join('')}
+        ${(p.tags || (Array.isArray(p.stack) ? p.stack : String(p.stack || "").split(" · ").filter(Boolean))).map(t => `<li>${t}</li>`).join("")}
       </ul>
       <div class="card-links">
-        <a class="text-link" style="color: ${role.accent}" href="${p.link}" target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">↗</span></a>
+        ${p.repo || p.link ? `<a class="text-link" style="color: ${role.accent}" href="${p.repo || p.link}" target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">↗</span></a>` : ""}
+        ${p.demo ? `<a class="text-link" style="color: ${role.accent}" href="${p.demo}" target="_blank" rel="noopener noreferrer">View Demo <span aria-hidden="true">↗</span></a>` : ""}
+        ${!p.repo && !p.link && !p.demo ? '<span class="project-private">Repository not public yet</span>' : ""}
       </div>
     </article>
   `).join('');
