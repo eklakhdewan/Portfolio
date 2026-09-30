@@ -3,31 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="description" content="Eklakh Dewan — AI Systems Engineer building retrieval, RAG, agentic workflows, and backend systems." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://eklakhdewan.github.io/trial-portfolio/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Eklakh Dewan — AI Systems Engineer" />
+    <meta property="og:description" content="AI systems, retrieval engineering, agentic workflows, and backend systems." />
+    <meta property="og:url" content="https://eklakhdewan.github.io/trial-portfolio/" />
+    <meta property="og:image" content="https://eklakhdewan.github.io/trial-portfolio/me.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eklakh Dewan — AI Systems Engineer" />
+    <meta name="twitter:description" content="AI systems, retrieval engineering, agentic workflows, and backend systems." />
+    <meta name="twitter:image" content="https://eklakhdewan.github.io/trial-portfolio/me.png" />
     <meta name="google-site-verification" content="qeSryJSsPl8k2VkrwseV6yJHseoWYbOPd9TFnW3kv6M" />
-    <meta name="description" content="Eklakh Dewan | AI Systems Engineer" />
 
-    <title>Eklakh Dewan | Portfolio</title>
+    <title>Eklakh Dewan — AI Systems Engineer</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Eklakh Dewan",
+        "jobTitle": "AI Systems Engineer",
+        "url": "https://eklakhdewan.github.io/trial-portfolio/",
+        "sameAs": [
+          "https://github.com/eklakhdewan",
+          "https://eklakhdewan.com.np"
+        ]
+      }
+    </script>
     <link rel="stylesheet" href="src/styles.css" />
-    <style>
-      #bot-widget{position:fixed;bottom:20px;right:20px;z-index:9999;font-family:inherit}
-      #bot-toggle{width:60px;height:60px;border-radius:50%;background:var(--blue);color:white;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);font-size:24px;display:flex;align-items:center;justify-content:center}
-      #bot-panel{position:absolute;bottom:70px;right:0;width:320px;height:450px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.15);display:none;flex-direction:column;overflow:hidden}
-      .bot-header{background:var(--blue);color:white;padding:12px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
-      #bot-close{background:none;border:none;color:white;font-size:20px;cursor:pointer}
-      #chat-messages{flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
-      .message{padding:8px 12px;border-radius:8px;max-width:80%;font-size:.9rem}
-      .message-bot{background:var(--tint);color:var(--ink);align-self:flex-start}
-      .message-user{background:var(--cyan);color:white;align-self:flex-end}
-      .chat-input-area{display:flex;border-top:1px solid var(--line)}
-      #chat-input{flex:1;border:none;padding:12px;background:var(--paper);color:var(--ink);font-family:inherit}
-      #chat-input:focus{outline:none}
-      #chat-submit{background:var(--blue);color:white;border:none;padding:0 15px;cursor:pointer;font-weight:bold}
-      .in-view{animation:rise-in .7s cubic-bezier(.2,.75,.25,1) forwards;opacity:0}
-      @keyframes rise-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-    </style>
   </head>
   <body>
+    <a class="skip-link" href="#app-root">Skip to content</a>
     <header class="site-header">
       <nav class="nav container" aria-label="Primary navigation">
         <a class="brand" href="#landing" aria-label="Eklakh Dewan home">ED<span aria-hidden="true">.</span></a>
@@ -41,19 +48,46 @@
       </nav>
     </header>
 
-    <main id="app-root"></main>
+    <main id="app-root">
+      <section class="hero container" aria-labelledby="intro-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Eklakh Dewan</p>
+          <h1 id="intro-title">AI Systems Engineer</h1>
+          <p class="hero-summary">I build AI systems, retrieval pipelines, agentic workflows, and backend applications with an evidence-first approach.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#landing">View Projects</a>
+            <a class="button button-secondary" href="Eklakh_Dewan_AI_Systems.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+            <a class="button button-secondary" href="#contact">Contact</a>
+          </div>
+          <div class="proof-grid landing-proof" aria-label="Professional proof points">
+            <article class="proof-card"><strong>8.55</strong><span>CGPA</span></article>
+            <article class="proof-card"><strong>2027</strong><span>Graduation</span></article>
+            <article class="proof-card"><strong>AI / ML</strong><span>Primary domain</span></article>
+            <article class="proof-card"><strong>RAG</strong><span>Current focus</span></article>
+          </div>
+        </div>
+      </section>
+      <section class="section section-tint container">
+        <div class="section-heading">
+          <p class="eyebrow">Loading portfolio</p>
+          <h2>Role-aware engineering evidence.</h2>
+          <p>JavaScript enhances this page with the full role and project experience. The essential identity, resume, and contact paths remain available in the initial document.</p>
+        </div>
+      </section>
+    </main>
 
-    <div id="bot-widget">
-      <button id="bot-toggle" aria-label="Open Haya AI concierge">💬</button>
-      <div id="bot-panel">
+    <div id="bot-widget" aria-label="Haya portfolio assistant">
+      <button id="bot-toggle" aria-label="Open Haya AI portfolio assistant" aria-controls="bot-panel" aria-expanded="false">💬</button>
+      <div id="bot-panel" role="dialog" aria-modal="false" aria-labelledby="haya-title" aria-hidden="true">
         <div class="bot-header">
-          <span>Haya — AI Concierge</span>
+          <span id="haya-title">Haya — Evidence Assistant</span>
           <button id="bot-close" aria-label="Close Haya">×</button>
         </div>
-        <div id="chat-messages"></div>
+        <div id="chat-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
         <div class="chat-input-area">
-          <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off"/>
-          <button id="chat-submit">Send</button>
+          <label class="sr-only" for="chat-input">Ask Haya about Eklakh</label>
+          <input type="text" id="chat-input" maxlength="500" placeholder="Ask about projects, skills, or resumes…" autocomplete="off" />
+          <button id="chat-submit" type="button">Send</button>
         </div>
       </div>
     </div>
@@ -61,7 +95,7 @@
     <footer class="site-footer">
       <div class="container footer-inner"><span>© 2026 Eklakh Dewan</span><span>Built for clarity, evidence, and responsible AI.</span></div>
     </footer>
-    
+
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
