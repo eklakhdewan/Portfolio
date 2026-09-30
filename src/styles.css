@@ -127,3 +127,66 @@ html[data-theme="dark"] .message-user{background:#0b1220;color:#ffffff;border-co
 @media(prefers-reduced-motion:reduce){
   #bot-toggle,#bot-panel,.haya-starter,.haya-role{transition:none}
 }
+
+/* Premium motion — hero + role selector */
+@keyframes hero-copy-in{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes hero-visual-in{
+  from{opacity:0;transform:translateY(16px) scale(.975)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes hero-badge-in{
+  from{opacity:0;transform:translateY(10px) rotate(-1deg)}
+  to{opacity:1;transform:translateY(0) rotate(-2deg)}
+}
+@keyframes hero-line-in{
+  from{opacity:0;transform:scaleX(.2);transform-origin:left center}
+  to{opacity:1;transform:scaleX(1);transform-origin:left center}
+}
+.hero.in-view .hero-copy > .eyebrow{animation:hero-copy-in .65s cubic-bezier(.2,.75,.25,1) .05s both}
+.hero.in-view .hero-copy > h1{animation:hero-copy-in .8s cubic-bezier(.2,.75,.25,1) .13s both}
+.hero.in-view .hero-copy > .hero-summary{animation:hero-copy-in .65s cubic-bezier(.2,.75,.25,1) .24s both}
+.hero.in-view .hero-copy > .hero-status{animation:hero-copy-in .6s cubic-bezier(.2,.75,.25,1) .32s both}
+.hero.in-view .hero-copy > .hero-actions{animation:hero-copy-in .6s cubic-bezier(.2,.75,.25,1) .40s both}
+.hero.in-view .hero-copy > .proof-grid{animation:hero-copy-in .7s cubic-bezier(.2,.75,.25,1) .48s both}
+.hero.in-view .hero-visual{animation:hero-visual-in .9s cubic-bezier(.2,.75,.25,1) .18s both}
+.hero.in-view .hero-visual .portrait-badge{animation:hero-badge-in .65s cubic-bezier(.2,.75,.25,1) .72s both}
+.hero.in-view .hero-visual .hero-card{animation:hero-badge-in .7s cubic-bezier(.2,.75,.25,1) .58s both, float-card 5s ease-in-out 1.28s infinite}
+.hero.in-view .proof-card:nth-child(1){animation:hero-copy-in .6s cubic-bezier(.2,.75,.25,1) .53s both}
+.hero.in-view .proof-card:nth-child(2){animation:hero-copy-in .6s cubic-bezier(.2,.75,.25,1) .60s both}
+.hero.in-view .proof-card:nth-child(3){animation:hero-copy-in .6s cubic-bezier(.2,.75,.25,1) .67s both}
+.hero.in-view .proof-card:nth-child(4){animation:hero-copy-in .6s cubic-bezier(.2,.75,.25,1) .74s both}
+
+.role-directory-item{position:relative;overflow:hidden;transition:padding-left .24s cubic-bezier(.2,.75,.25,1),background .24s ease}
+.role-directory-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--blue);transition:width .24s cubic-bezier(.2,.75,.25,1)}
+.role-directory-item::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--line);transform:scaleX(0);transform-origin:left center;transition:transform .32s cubic-bezier(.2,.75,.25,1)}
+.role-directory-item>div{transition:transform .24s cubic-bezier(.2,.75,.25,1)}
+.role-directory-item>span:first-child{transition:color .24s ease,transform .24s cubic-bezier(.2,.75,.25,1)}
+.role-directory-item>span:last-child{transition:transform .24s cubic-bezier(.2,.75,.25,1),color .24s ease}
+.role-directory-item:hover,.role-directory-item:focus-visible{padding-left:10px;background:rgba(62,95,122,.045)}
+.role-directory-item:hover::before,.role-directory-item:focus-visible::before{width:3px}
+.role-directory-item:hover::after,.role-directory-item:focus-visible::after{transform:scaleX(1)}
+.role-directory-item:hover>div,.role-directory-item:focus-visible>div{transform:translateX(4px)}
+.role-directory-item:hover>span:first-child,.role-directory-item:focus-visible>span:first-child{color:var(--blue);transform:translateX(3px)}
+.role-directory-item:hover>span:last-child,.role-directory-item:focus-visible>span:last-child{transform:translateX(6px);color:var(--blue)}
+
+@media(prefers-reduced-motion:reduce){
+  .hero.in-view .hero-copy > *,
+  .hero.in-view .hero-visual,
+  .hero.in-view .hero-visual .portrait-badge,
+  .hero.in-view .hero-visual .hero-card,
+  .hero.in-view .proof-card,
+  .role-directory-item,
+  .role-directory-item::before,
+  .role-directory-item::after,
+  .role-directory-item>div,
+  .role-directory-item>span:first-child,
+  .role-directory-item>span:last-child{animation:none!important;transition:none!important}
+  .hero.in-view .hero-copy > *,
+  .hero.in-view .hero-visual,
+  .hero.in-view .hero-visual .portrait-badge,
+  .hero.in-view .hero-visual .hero-card,
+  .hero.in-view .proof-card{opacity:1!important;transform:none!important}
+}
