@@ -53,13 +53,13 @@ function getClientIp(request) {
     || "unknown";
 }
 
-export function checkRateLimit(ip, now = Date.now()) {
+export function checkRateLimit(ip, now = Date.now(), limit = RATE_LIMIT_MAX) {
   const existing = rateBuckets.get(ip);
   if (!existing || now - existing.startedAt >= RATE_LIMIT_WINDOW_MS) {
     rateBuckets.set(ip, { startedAt: now, count: 1 });
     return true;
   }
-  if (existing.count >= RATE_LIMIT_MAX) return false;
+  if (existing.count >= limit) return false;
   existing.count += 1;
   return true;
 }
@@ -128,7 +128,15 @@ export default {
     }
 
     const ip = getClientIp(request);
-    if (!checkRateLimit(ip)) {
+    let requestData = null;
+    try {
+      const rawBody = await request.clone().text();
+      requestData = JSON.parse(rawBody);
+    } catch {
+      // Full validation below returns the appropriate error.
+    }
+    const rateLimit = requestData?.interview === true ? 20 : RATE_LIMIT_MAX;
+    if (!checkRateLimit(ip, Date.now(), rateLimit)) {
       return jsonResponse({ error: "Rate limit exceeded. Please try again shortly." }, 429, {
         "Retry-After": "60"
       });
