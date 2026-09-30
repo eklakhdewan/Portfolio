@@ -3,7 +3,9 @@ import { ROLES } from './data.js';
 const WORKER_URL = 'https://portfolio-bot-proxy.eklakhdewan78.workers.dev';
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_HISTORY_MESSAGES = 6;
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
+const FAST_MODEL_TIER = 'fast';
+const STRONG_MODEL_TIER = 'strong';
 const CLIENT_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const CLIENT_CACHE_MAX_ENTRIES = 50;
 const CLIENT_CACHE_PREFIX = `haya-cache:${CACHE_VERSION}:`;
@@ -71,6 +73,20 @@ function deterministicAnswer(question, roleId) {
   }
 
   return null;
+}
+
+function selectModelTier(question) {
+  const q = normalizeCacheQuestion(question);
+  const strongSignals = [
+    'compare', 'comparison', 'trade-off', 'tradeoff', 'why ',
+    'how does', 'how do', 'explain', 'walk me through',
+    'architecture', 'design', 'difference', ' versus ', ' vs ',
+    'evaluate', 'analyze', 'analysis', 'reasoning',
+    'implementation', 'pipeline', 'workflow'
+  ];
+  return strongSignals.some((signal) => q.includes(signal))
+    ? STRONG_MODEL_TIER
+    : FAST_MODEL_TIER;
 }
 
 function getClientCacheKey(roleId, question) {
@@ -288,6 +304,7 @@ export function initBot() {
 
   async function queryWorker(userText) {
     const cacheEligible = messageHistory.length === 0;
+    const modelTier = selectModelTier(userText);
 
     if (cacheEligible) {
       const instantAnswer = deterministicAnswer(userText, currentRoleContext);
@@ -347,10 +364,11 @@ RULES
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'meta-llama/llama-3.3-70b-instruct',
+          tier: modelTier,
           cache: cacheEligible,
           cacheKey: cacheEligible ? {
             version: CACHE_VERSION,
+            tier: modelTier,
             role: currentRoleContext,
             question: normalizeCacheQuestion(userText)
           } : null,
