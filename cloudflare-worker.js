@@ -32,6 +32,28 @@ export default {
 
     try {
       const requestData = await request.json();
+      const cacheEligible = requestData.cache === true && requestData.cacheKey;
+
+      if (cacheEligible) {
+        const key = requestData.cacheKey;
+        const version = String(key.version || "v1");
+        const role = String(key.role || "landing").slice(0, 80);
+        const question = String(key.question || "").trim().toLowerCase().replace(/\s+/g, " ").slice(0, 500);
+
+        if (question) {
+          const cacheUrl = new URL(request.url);
+          cacheUrl.pathname = "/__haya_cache/" + encodeURIComponent(version) + "/" + encodeURIComponent(role) + "/" + encodeURIComponent(question);
+          cacheUrl.search = "";
+          const cacheKey = new Request(cacheUrl.toString(), { method: "GET" });
+          const cached = await caches.default.match(cacheKey);
+          if (cached) {
+            const headers = new Headers(cached.headers);
+            headers.set("X-Haya-Cache", "HIT");
+            return new Response(cached.body, { status: cached.status, headers });
+          }
+          requestData._hayaCacheKey = cacheKey;
+        }
+      }
 
       // Call OpenRouter with the key stored safely on the server
       const openRouterResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -47,12 +69,25 @@ export default {
       });
 
       const data = await openRouterResponse.json();
+      const responseBody = JSON.stringify(data);
+
+      if (requestData._hayaCacheKey && openRouterResponse.ok && data?.choices?.[0]?.message?.content) {
+        const cacheResponse = new Response(responseBody, {
+          status: 200,
+          headers: {
+            "Content-Type": "application/json",
+            "Cache-Control": "public, max-age=0, s-maxage=604800"
+          }
+        });
+        await caches.default.put(requestData._hayaCacheKey, cacheResponse.clone());
+      }
 
       // Return the response to the frontend
-      return new Response(JSON.stringify(data), {
+      return new Response(responseBody, {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
+          "Access-Control-Allow-Origin": "*",
+          "X-Haya-Cache": requestData._hayaCacheKey && openRouterResponse.ok && data?.choices?.[0]?.message?.content ? "MISS" : "BYPASS"
         }
       });
       
