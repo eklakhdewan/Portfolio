@@ -142,7 +142,7 @@ export function renderRoleView(roleId) {
       </aside>
     </section>
 
-    <section class="section section-dark">
+    <section id="projects" class="section section-dark">
       <div class="container">
         <div class="section-heading in-view">
           <p class="eyebrow" style="color: ${role.accent}">Selected engineering work</p>
@@ -212,7 +212,7 @@ export function renderRoleView(roleId) {
       </div>
     </section>
 
-    <section class="section section-tint">
+    <section id="experience" class="section section-tint">
       <div class="container split-layout">
         <div class="section-heading in-view">
           <p class="eyebrow" style="color: ${role.accent}">Experience</p>
@@ -226,6 +226,13 @@ export function renderRoleView(roleId) {
       <div class="info-grid in-view">
         ${educationHtml(role)}
         ${credentialsHtml(role)}
+      </div>
+    </section>
+
+    <section id="experience" class="section section-tint">
+      <div class="container split-layout">
+        <div class="section-heading in-view"><p class="eyebrow">Experience</p><h2>Artificial Intelligence Intern.</h2><p>Flowrage Technology · 4 weeks (Virtual).</p></div>
+        <div class="timeline"><article class="timeline-item in-view"><div class="timeline-date">4 weeks (Virtual)</div><h3>Artificial Intelligence Intern · Flowrage Technology</h3><div class="experience-card"><p class="experience-description">Worked on Gemini API integration, resume parsing, and job-matching workflows using TF-IDF and dense embeddings.</p></div></article></div>
       </div>
     </section>
 
@@ -306,7 +313,23 @@ export function renderLandingView() {
       </aside>
     </section>
 
-    <section id="portfolio-map" class="section section-tint">
+    <section id="projects" class="section section-dark">
+      <div class="container">
+        <div class="section-heading in-view">
+          <p class="eyebrow">Selected projects</p>
+          <h2>Engineering work with visible implementation detail.</h2>
+          <p>Selected systems spanning retrieval, agents, applied AI, and backend engineering.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card in-view project-featured"><div class="project-meta"><span>01</span><span>AI / RAG</span></div><h3>HCAD-RAG — Hierarchical Context-Aware Medical RAG</h3><p>Medical-domain retrieval research focused on hierarchical context preservation, evidence-grounded retrieval, reranking, and citation validation.</p></article>
+          <article class="project-card in-view project-featured"><div class="project-meta"><span>02</span><span>AI SEARCH</span></div><h3>Enterprise RAG / AI Search Platform</h3><p>Dense retrieval, BM25, hybrid fusion, cross-encoder reranking, citation validation, and evidence-constrained generation.</p></article>
+          <article class="project-card in-view"><div class="project-meta"><span>03</span><span>AI SYSTEMS</span></div><h3>APX — Accounts Payable Exception Resolution Agent</h3><p>Evidence retrieval and controlled decision workflow for accounts-payable exceptions.</p></article>
+          <article class="project-card in-view"><div class="project-meta"><span>04</span><span>FULL STACK</span></div><h3>TaxTrace</h3><p>AI-assisted tax reconciliation and compliance platform with an exception review workspace.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles" class="section section-tint">
       <div class="container">
         <div class="section-heading in-view">
           <p class="eyebrow">Portfolio map</p>
