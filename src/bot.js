@@ -108,7 +108,12 @@ export function initBot() {
   function addRoleSelector() {
     const selectorDiv = document.createElement('div');
     selectorDiv.className = 'role-selector';
-    selectorDiv.setAttribute('aria-label', 'Portfolio roles');
+    selectorDiv.setAttribute('aria-label', 'Choose a portfolio role');
+
+    const label = document.createElement('p');
+    label.className = 'haya-starters-label';
+    label.textContent = 'Choose a role';
+    selectorDiv.appendChild(label);
 
     Object.values(ROLES).forEach((role) => {
       const button = document.createElement('button');
@@ -248,8 +253,7 @@ RULES
       chatInput.disabled = false;
       chatSubmit.disabled = false;
     } else {
-      addMessage("Hi — I’m Haya. I can explain Eklakh’s projects, skills, experience, and resumes using the portfolio data.", 'bot');
-      addStarterQuestions();
+      addMessage("Hi — I’m Haya. Choose a role to explore Eklakh’s portfolio with role-specific context, projects, skills, and evidence.", 'bot');
       addRoleSelector();
       chatInput.disabled = false;
       chatSubmit.disabled = false;
