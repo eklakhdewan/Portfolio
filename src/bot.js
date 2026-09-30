@@ -351,6 +351,7 @@ export function initBot() {
       'bot'
     );
     addMessage(`${progress.current}/${progress.total} — ${firstQuestion.question}`, 'bot');
+    addInterviewControl();
     chatInputArea.style.display = 'flex';
     chatInput.focus();
   }
@@ -549,6 +550,7 @@ Rules:
     ].filter(Boolean).join(' ');
 
     addMessage(summary, 'bot');
+    addInterviewControl();
   }
 
 
