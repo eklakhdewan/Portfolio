@@ -66,14 +66,12 @@ This document contains internal QA notes and validation tasks. It is intentional
 
 - [x] Four case studies are explicitly represented.
 - [x] Problem field added.
-- [x] My-role field added without inventing contribution.
+- [x] My-role field reflects verified solo-development ownership where applicable.
 - [x] Stack field added.
 - [x] Measured-result field added.
 - [x] TODOs used where evidence is missing.
 - [x] Repository links included where verified.
-- [x] Demo/screenshot TODOs remain where no URLs were provided.
 - [x] Existing evidence-status framing preserved.
-- [ ] Replace individual-contribution TODOs with verified contribution statements.
 - [ ] Replace result TODOs with measured results where available.
 
 ## Performance
