@@ -131,11 +131,10 @@ function writeClientCache(roleId, question, answer) {
 
 
 const STARTER_QUESTIONS = [
-  "Show me Eklakh's strongest AI project.",
-  "What RAG systems has he built?",
-  "What backend technologies does he use?",
-  "Which project is relevant to an AI Engineer role?",
-  "Show me the relevant resume."
+  "What roles fit you?",
+  "Show your RAG project.",
+  "What backend technologies do you use?",
+  "How can I contact you?"
 ];
 
 function roleSummary(role) {
@@ -176,7 +175,10 @@ export function initBot() {
     setOpen(botPanel.style.display !== 'flex');
   });
 
-  botClose.addEventListener('click', () => setOpen(false));
+  botClose.addEventListener('click', () => {
+    setOpen(false);
+    botToggle.focus();
+  });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && botPanel.style.display === 'flex') {
