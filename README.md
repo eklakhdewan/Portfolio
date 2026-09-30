@@ -1,164 +1,473 @@
-# Eklakh Dewan portfolio
+# Eklakh Dewan — AI Systems Engineer Portfolio
 
-An accessible, performance-first portfolio for Eklakh Dewan, an AI Systems Engineer focused on reliable retrieval, grounded generation, and applied AI backends.
+A role-aware personal portfolio focused on **AI systems, retrieval engineering, agentic workflows, backend engineering, and evidence-driven project presentation**.
 
-## Purpose and scope
+Live site: https://eklakhdewan.github.io/trial-portfolio/
 
-### Target audience and use cases
+This repository contains the **Trial Portfolio**, an independent portfolio implementation. It is intentionally maintained separately from Eklakh Dewan's main portfolio.
 
-- Hiring managers and recruiters skimming for role fit, evidence, and contact information.
-- AI/ML engineering teams evaluating retrieval, NLP, backend, and evaluation experience.
-- Technical interviewers wanting a concise view of architecture and engineering trade-offs.
-- Mentors, collaborators, and engineering reviewers exploring applied AI systems.
+---
 
-### Included deliverables
+## Overview
 
-- One-page portfolio site with About, Experience, Projects/Case Studies, Skills, Education, Certifications, and Contact.
-- Print-friendly structure for saving the page as a resume/one-pager PDF.
-- Four evidence-aware case studies: Enterprise RAG, AI Job Agent, AI Job Recommendation, and APX.
-- Hiring-oriented contact CTA with the verified email and professional profile links from the source document.
-- Profile portrait and source-document project screenshots in `public/me.png` and `public/evidence/`.
-- Direct Formspree contact form, résumé view/download actions, light/dark theme toggle, and a broader project directory.
+The portfolio is built around one professional identity:
 
-## Tech stack and architecture
+> **AI Systems Engineer / AI Engineer**
 
-- **Frontend:** Vite-powered semantic HTML, CSS, and a small JavaScript module. The deliberately low-dependency approach keeps the first paint fast and makes the site easy to host anywhere.
-- **Hosting:** GitHub Pages is the default deployment target; Netlify, Cloudflare Pages, or any static host can serve `dist/`.
-- **CI/CD:** `.github/workflows/deploy.yml` installs from the lockfile, builds on pushes to `main`, uploads the artifact, and deploys GitHub Pages.
-- **Accessibility:** semantic landmarks, one `h1`, skip link, visible focus styles, keyboard-friendly navigation, responsive layout, reduced visual complexity, and no color-only information.
-- **Performance target:** Lighthouse Performance, Accessibility, Best Practices, and SEO all at 90+ on the production URL. Keep the page mostly text/CSS, use compressed WebP/AVIF if evidence images are later added, and avoid third-party scripts.
+The site presents six role-specific perspectives without creating six unrelated professional identities:
 
-## Content map
+- AI Engineer
+- ML Engineer
+- AI Systems Engineer
+- Data Scientist
+- Data Analyst
+- Web Developer
 
-| Source document area | Portfolio destination |
-| --- | --- |
-| Professional summary and differentiator | Hero and About |
-| Flowrage Technology internship | Experience |
-| Enterprise RAG inventory | Featured project and case study |
-| AI Job Agent and APX project records | Featured case studies with current status and repository links |
-| Job recommendation systems | Project case study |
-| Other project inventory | “Also explored” index |
-| Skills inventory | Focused Capabilities groups |
-| Education and certifications | Education & credentials |
-| Achievements | Hero proof point and project evidence |
-| Contact/profiles | Contact form, verified links, and résumé actions |
+The role system changes the **emphasis, project ordering, capabilities, and resume** while keeping the underlying professional history consistent.
 
-## Section and content guidance
+### Primary technical focus
 
-- **Hero:** lead with the differentiator, role, current focus, and three proof points. The first viewport is intentionally scannable in about three seconds.
-- **Selected work:** show four strongest projects, with a problem-oriented title, technical tags, and a path to more detail.
-- **Case studies:** use Challenge → Approach → Measure. Metrics are framed as evaluation dimensions unless the source explicitly verifies achieved results.
-- **Experience:** describe the Flowrage internship through responsibilities and evidenced topics, not inflated outcomes.
-- **Skills:** show a curated subset rather than the entire master inventory.
-- **Education & credentials:** list the degree and certification names; add issuer dates, badge URLs, and credential IDs only after verification.
-- **Contact:** keep one high-contrast CTA above the fold on mobile and desktop.
-- **Theme:** the portfolio uses a single premium light corporate theme for a consistent recruiter experience.
+- Retrieval-Augmented Generation (RAG)
+- Dense and sparse retrieval
+- Hybrid retrieval and reranking
+- Evidence-grounded generation
+- Agentic workflows
+- LLM application engineering
+- Python/FastAPI backend systems
+- Full-stack application development
 
-### Visual direction
+---
 
-- Deep navy (`#10243e`) communicates technical confidence; electric blue (`#2563eb`) provides action contrast; cyan (`#67e8f9`) highlights active/research signals.
-- Inter/system sans-serif typography keeps the page readable and modern.
-- Use whitespace, short paragraphs, restrained borders, and system diagrams/screenshots only when they explain architecture.
-- Responsive rules collapse grids at 850px and stack content at 560px. No horizontal scrolling is required.
+## Key Features
 
-## Project skeleton
+### Role-aware portfolio architecture
+
+Portfolio content is driven from a centralized role/data model rather than duplicated across separate pages.
+
+Each role can define:
+
+- professional positioning
+- relevant projects
+- technical skills
+- capabilities
+- experience
+- education
+- credentials
+- role-specific resume
+
+### Haya — evidence-grounded portfolio assistant
+
+**Haya** helps visitors navigate documented portfolio evidence, including projects, retrieval techniques, backend technologies, role relevance, experience, resumes, and repository links.
+
+Haya is intentionally instructed to avoid fabricated metrics, unsupported experience, production claims, or promotional assertions.
+
+Architecture:
 
 ```text
-.
+Visitor
+   │
+   ▼
+Trial Portfolio
+   │
+   ▼
+Cloudflare Worker
+   │
+   ▼
+OpenRouter
+```
+
+The OpenRouter API key is kept server-side in the Cloudflare Worker rather than exposed in frontend JavaScript.
+
+### Recruiter-oriented navigation
+
+The interface prioritizes identity, specialization, technical evidence, relevant resume, GitHub repositories, and contact.
+
+### Progressive enhancement
+
+The initial HTML contains meaningful identity, positioning, resume, and contact content so the page is not completely dependent on client-side rendering.
+
+### Contact
+
+The portfolio uses Formspree for direct contact-form submission.
+
+---
+
+## Selected Engineering Evidence
+
+### Enterprise RAG / AI Search Platform
+
+Retrieval and generation pipeline combining dense retrieval, FAISS, BM25, hybrid retrieval, rank fusion, cross-encoder reranking, and citation validation.
+
+Repository: https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG
+
+### APX — Autonomous Accounts Payable Exception Resolution Agent
+
+Accounts-payable exception resolution system developed through deterministic foundation, retrieval, agent, decision-pipeline, and persistence stages.
+
+Repository: https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent
+
+### TaxTrace
+
+Backend/full-stack engineering project using FastAPI, Next.js, TypeScript, SQLAlchemy, PostgreSQL, React Query, Tailwind CSS, and Alembic.
+
+Repository: https://github.com/Eklakh-AI-Engineer/TaxTrace
+
+### AI-Powered Job Recommendations
+
+Applied ML/recommendation project using TF-IDF, semantic embeddings, relevance scoring, and Streamlit.
+
+Repository: https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard
+
+### HCAD-RAG
+
+Medical-domain retrieval research project exploring context-distraction mitigation using anisotropic matrix decoupling, biomedical embeddings, relation extraction, and MedQA evaluation.
+
+Research claims are kept separate from verified implementation evidence.
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- HTML
+- CSS
+- JavaScript
+- Vite
+- responsive design
+- semantic HTML
+
+### AI / Retrieval
+
+- RAG
+- embeddings
+- dense retrieval
+- BM25
+- hybrid retrieval
+- reranking
+- LLM APIs
+- agentic workflows
+
+### Backend / Data
+
+- Python
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
+- REST APIs
+
+### Infrastructure
+
+- GitHub Pages
+- GitHub Actions
+- Cloudflare Workers
+- OpenRouter
+- Formspree
+
+The portfolio intentionally avoids introducing a heavyweight frontend framework when the existing static architecture is sufficient.
+
+---
+
+## Architecture
+
+```text
+                         ┌──────────────────────┐
+                         │      Visitor         │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │    Vite Static App   │
+                         │                      │
+                         │  index.html          │
+                         │  src/main.js         │
+                         │  src/router.js       │
+                         │  src/render.js       │
+                         │  src/data.js         │
+                         │  src/styles.css      │
+                         └───────┬──────────────┘
+                                 │
+              ┌──────────────────┼──────────────────┐
+              │                  │                  │
+              ▼                  ▼                  ▼
+        Role routing        Project data       Contact form
+              │                  │                  │
+              │                  │                  ▼
+              │                  │              Formspree
+              │                  │
+              ▼                  ▼
+             Haya AI assistant
+                    │
+                    ▼
+             Cloudflare Worker
+                    │
+                    ▼
+                OpenRouter
+```
+
+
+---
+
+## Repository Structure
+
+```text
+trial-portfolio/
 ├── index.html
 ├── package.json
+├── package-lock.json
 ├── README.md
+├── robots.txt
+├── sitemap.xml
+├── cloudflare-worker.js
 ├── public/
-│   ├── me.png
-│   ├── Resume.pdf
-│   ├── covers/
-│   └── evidence/
 ├── src/
 │   ├── main.js
-│   ├── main.css
+│   ├── router.js
+│   ├── render.js
+│   ├── data.js
+│   ├── bot.js
 │   └── styles.css
 └── .github/
     └── workflows/
         └── deploy.yml
 ```
 
-The current MVP is intentionally a single-page site. If the project grows, extract `Home`, `Projects`, `CaseStudy`, and `Contact` into Astro or React routes while keeping the content model below.
+The asset inventory may evolve as resumes and portfolio media are updated.
 
-### Data model / CMS approach
+---
 
-Use a JSON or headless CMS record shaped like:
+## Role Data Model
+
+Role-specific content is centralized in `src/data.js`.
+
+A simplified role structure is:
 
 ```json
 {
-  "slug": "enterprise-rag",
-  "title": "Enterprise RAG / AI Search Platform",
-  "category": "AI search · RAG",
-  "summary": "Retrieval and generation with measurable grounding.",
-  "status": "evidence-backed",
-  "stack": ["Python", "FastAPI", "React"],
-  "sections": {
-    "challenge": "...",
-    "approach": "...",
-    "measure": "..."
-  },
-  "links": {
-    "repo": null,
-    "demo": null
-  }
+  "id": "ai-engineer",
+  "title": "AI Engineer",
+  "resumeFile": "Eklakh_Dewan_AI_Engineer.pdf",
+  "pitch": "...",
+  "projects": [],
+  "skills": [],
+  "experience": []
 }
 ```
 
-`status` should distinguish `evidence-backed`, `research-proposed`, and `needs-verification` so the publishing workflow cannot accidentally turn a proposal into an achieved result.
+---
 
-## Development and deployment
+## Haya Security Model
 
-### Local development
+The browser does **not** contain the OpenRouter API key.
+
+```text
+Browser
+   │
+   │ POST
+   ▼
+Cloudflare Worker
+   │
+   ▼
+OpenRouter
+```
+
+The Worker applies defensive controls including allowed-origin validation, POST-only API access, request-size limits, message-count limits, message-length limits, model allowlisting, and sanitized error responses.
+
+For additional production hardening, platform-level rate limiting should also be enabled in Cloudflare.
+
+---
+
+## SEO
+
+The Trial Portfolio is intentionally indexed as its own site.
+
+Configured metadata includes:
+
+- page title
+- meta description
+- canonical URL
+- Open Graph metadata
+- Twitter/X card metadata
+- JSON-LD Person schema
+- `robots.txt`
+- `sitemap.xml`
+
+Canonical URL: https://eklakhdewan.github.io/trial-portfolio/
+
+The Trial Portfolio and Main Portfolio remain separate sites.
+
+---
+
+## Accessibility
+
+The implementation includes accessibility-oriented foundations such as:
+
+- semantic landmarks
+- skip navigation
+- logical heading structure
+- keyboard-accessible controls
+- visible focus states
+- `aria-expanded` navigation state
+- Haya dialog state
+- live message updates
+- reduced-motion support
+- descriptive form labels
+- responsive layout
+
+Accessibility should be validated against the deployed site after significant visual or interaction changes.
+
+---
+
+## Performance Philosophy
+
+The portfolio is intentionally lightweight.
+
+Principles:
+
+- minimal dependencies
+- static hosting
+- small JavaScript surface
+- no unnecessary frontend framework
+- restrained animation
+- optimized assets
+- progressive enhancement
+
+No performance score is claimed unless it has been measured against the current deployed build.
+
+---
+
+## Local Development
+
+### Requirements
+
+- Node.js
+- npm
+
+### Install
 
 ```bash
 npm install
+```
+
+### Start development server
+
+```bash
 npm run dev
 ```
 
-Open the local URL printed by Vite. Update `index.html` for content and `src/styles.css` for visual changes.
-
-### Build for production
+### Production build
 
 ```bash
 npm run build
+```
+
+### Preview production build
+
+```bash
 npm run preview
 ```
 
-The deployable static output is in `dist/`.
+---
 
-### Publish with GitHub Pages
+## Deployment
 
-1. Confirm the published email, GitHub, LinkedIn, portfolio, and LeetCode links.
-2. Add any approved testimonial details and public project/demo links.
-3. Push the repository to GitHub with the default branch named `main`.
-4. In **Settings → Pages**, select **GitHub Actions** as the source.
-5. Push to `main`; the workflow builds and deploys `dist/`.
-6. For a custom domain, add the domain in Pages settings, create the provider-recommended DNS `A`/`CNAME` records, then verify HTTPS.
+The portfolio is deployed through GitHub Pages.
 
-## QA checklist
+The GitHub Actions workflow builds the Vite application and deploys the generated static artifact.
 
-- [x] Semantic `header`, `nav`, `main`, `section`, `article`, and `footer` landmarks.
-- [x] Skip link and a logical heading hierarchy.
-- [x] All navigation and controls work with keyboard input.
-- [x] Visible `:focus-visible` treatment with a high-contrast outline.
-- [x] Mobile navigation exposes state through `aria-expanded` and `aria-controls`.
-- [x] Link text is meaningful without relying on icons.
-- [x] Color is not the only way information is conveyed.
-- [ ] Run axe or Lighthouse against the production URL.
-- [ ] Check contrast after any palette change (WCAG AA: 4.5:1 normal text, 3:1 large text).
-- [ ] Test at 200% zoom, 320px width, keyboard-only navigation, and reduced-motion preference.
-- [ ] Add descriptive `alt` text if project evidence images are added.
-- [x] Add verified email, profile links, portrait, and project evidence images from the source document.
-- [ ] Add a résumé PDF and credential URLs if you want recruiters to download or verify them directly.
+```text
+git push
+   │
+   ▼
+GitHub Actions
+   │
+   ▼
+npm install
+   │
+   ▼
+npm run build
+   │
+   ▼
+GitHub Pages
+```
 
-## Pre-launch content QA
+Published site: https://eklakhdewan.github.io/trial-portfolio/
 
-- Confirm current degree year, CGPA, coding-problem count, and internship dates.
-- Confirm which projects are independent versus overlapping variants.
-- Verify every certification issuer, date, credential ID, and URL.
-- Add only achieved metrics; label research targets and expected outcomes as proposed.
-- Confirm email, social profiles, résumé link, and any testimonial consent before launch.
+---
+
+## Content and Evidence Policy
+
+The portfolio follows an evidence-first content policy.
+
+Do not add claims such as production-grade, enterprise-grade, highly scalable, industry-leading, significantly improved accuracy, high-concurrency, large user base, production deployment, patent status, or client results unless supported by verifiable evidence.
+
+For metrics, distinguish between measured result, evaluation metric, experiment, target, and design goal.
+
+This is particularly important for AI/RAG projects where architecture alone does not prove production performance.
+
+---
+
+## QA Checklist
+
+### Repository-verified
+
+- [x] Home and role-aware routing are implemented.
+- [x] Six role profiles are defined.
+- [x] Haya assistant integration is present.
+- [x] Contact form integration is present.
+- [x] Role-specific resume files are referenced.
+- [x] Verified project repository links are used where available.
+- [x] Trial-specific canonical, robots, and sitemap configuration is present.
+- [x] Haya worker validation and model allowlisting are implemented.
+
+### Browser-level validation still required
+
+- [ ] Lighthouse audit
+- [ ] axe accessibility audit
+- [ ] 320px / 375px / 390px / 430px layouts
+- [ ] tablet and desktop visual validation
+- [ ] 200% zoom
+- [ ] keyboard-only end-to-end test
+- [ ] reduced-motion end-to-end test
+- [ ] live Formspree submission
+- [ ] live Haya conversation
+- [ ] production visual regression check
+
+This distinction is intentional: repository inspection is not presented as browser-level testing.
+
+---
+
+## Design Principles
+
+The Trial Portfolio aims for:
+
+**Technical · Modern · Restrained · Evidence-driven**
+
+Motion, role-specific styling, and technical visual elements should support navigation and evidence rather than compete with them.
+
+The intended experience is an engineer's technical interface—not a generic template with an AI chatbot attached.
+
+---
+
+## Repository Goals
+
+This repository demonstrates both the portfolio and the engineering decisions behind it:
+
+- role-aware content architecture
+- modular JavaScript
+- progressive enhancement
+- AI assistant integration
+- server-side API-key isolation
+- static deployment
+- accessibility-conscious interaction design
+- evidence-driven technical presentation
+
+The implementation favors **small architectural improvements over unnecessary rewrites**.
+
+---
+
+## License
+
+This repository is a personal portfolio project.
+
+Unless otherwise stated, portfolio content, personal information, resumes, project descriptions, and visual assets are not licensed for reuse.
