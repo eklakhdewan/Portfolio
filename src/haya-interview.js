@@ -177,3 +177,56 @@ export function getQuestionProgress(roleId, index) {
     total: questions.length
   };
 }
+
+
+export function chooseAdaptiveQuestion(questions, answeredIds, evaluations = []) {
+  const remaining = questions.filter((question) => !answeredIds.includes(question.id));
+  if (!remaining.length) return null;
+
+  const scored = evaluations.flatMap((item) => {
+    if (!item?.score) return [];
+    const values = Object.values(item.score).filter((value) => Number.isFinite(value));
+    return values.length ? [values.reduce((sum, value) => sum + value, 0) / values.length] : [];
+  });
+  const average = scored.length
+    ? scored.reduce((sum, value) => sum + value, 0) / scored.length
+    : 3;
+
+  let preferred;
+  if (average >= 4.2) {
+    preferred = ["hard", "medium", "easy"];
+  } else if (average <= 2.5) {
+    preferred = ["easy", "medium", "hard"];
+  } else {
+    preferred = ["medium", "easy", "hard"];
+  }
+
+  const next = preferred
+    .map((difficulty) => remaining.find((question) => question.difficulty === difficulty))
+    .find(Boolean);
+
+  return next || remaining[0];
+}
+
+export function summarizeInterview(evaluations = []) {
+  const dimensions = ["clarity", "relevance", "specificity", "ownership", "evidence"];
+  const totals = Object.fromEntries(dimensions.map((dimension) => [dimension, []]));
+
+  evaluations.forEach((item) => {
+    dimensions.forEach((dimension) => {
+      const value = item?.score?.[dimension];
+      if (Number.isFinite(value)) totals[dimension].push(value);
+    });
+  });
+
+  return dimensions
+    .map((dimension) => {
+      const values = totals[dimension];
+      const average = values.length
+        ? values.reduce((sum, value) => sum + value, 0) / values.length
+        : null;
+      return { dimension, average: average ? Number(average.toFixed(1)) : null };
+    })
+    .filter((item) => item.average !== null)
+    .sort((a, b) => b.average - a.average);
+}
