@@ -1,4 +1,4 @@
-const ALLOWED_ORIGIN = "https://eklakhdewan.github.io";
+const ALLOWED_ORIGIN = "https://eklakhdewan.com.np";
 const MAX_BODY_BYTES = 24000;
 const MAX_INPUT_LENGTH = 500;
 const MAX_MESSAGES = 6;
@@ -207,7 +207,7 @@ export default {
         headers: {
           "Authorization": `Bearer ${env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "https://eklakhdewan.github.io/trial-portfolio/",
+          "HTTP-Referer": "https://eklakhdewan.com.np/",
           "X-Title": "Eklakh Dewan — Trial Portfolio"
         },
         body: JSON.stringify({
