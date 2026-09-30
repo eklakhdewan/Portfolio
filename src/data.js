@@ -242,12 +242,6 @@ export const ROLES = {
         link: "https://github.com/eklakhdewan"
       },
       {
-        name: "Real-Time Collaborative Project Management",
-        description: "Developed a collaborative workspace application with real-time synchronization using WebSockets and optimistic UI patterns.",
-        tags: ["WebSockets", "Optimistic UI", "JavaScript", "Real-time"],
-        link: "https://github.com/eklakhdewan"
-      },
-      {
         name: "Intelligent Recruitment Platform (ATS)",
         description: "Built a full-stack Applicant Tracking System. Connected a responsive React frontend to a high-performance FastAPI backend, allowing HR teams to seamlessly upload, parse, and manage candidate resumes.",
         tags: ["FastAPI", "React", "Full-Stack Development"],
@@ -481,6 +475,22 @@ Object.values(ROLES).forEach(role => {
   });
 });
 
+const TACKBOARD_PROJECT = {
+  name: "Tackboard",
+  description: "Production-oriented real-time collaborative Kanban board with authenticated users, persistent boards, shareable collaboration, live presence, and realtime card synchronization.",
+  link: "https://github.com/Eklakh-Web-Development/Tackboard",
+  demo: "https://tackboard-qpxfbxvx7-23ad070-3509s-projects.vercel.app/",
+  tags: ["JavaScript", "Supabase", "PostgreSQL", "Realtime", "Vercel"],
+  featured: true,
+  category: "Real-Time Collaborative Web Application",
+  problem: "Teams need a lightweight shared workspace where board state persists and changes remain synchronized across users.",
+  architecture: "Vanilla JavaScript frontend → Supabase Auth → PostgreSQL with RLS → Supabase Realtime → Vercel deployment.",
+  engineering: ["Authentication", "Row-level security", "Realtime synchronization", "Drag-and-drop state", "Persistent board storage", "Shareable boards", "Production deployment"],
+  evidence: "Implemented and deployed with Supabase Auth, PostgreSQL persistence, RLS policies, Supabase Realtime, Vercel hosting, and production security/performance hardening.",
+  metrics: ["Production deployment", "Realtime collaboration", "Persistent Kanban state"],
+  stack: ["Vanilla JavaScript", "Supabase", "PostgreSQL", "Supabase Realtime", "Vercel"]
+};
+
 const TAXTRACE_PROJECT = {
   name: "TaxTrace",
   description: "AI-assisted tax reconciliation and compliance platform focused on turning GST discrepancies into explainable, reviewable, and actionable workflows.",
@@ -503,6 +513,13 @@ const TAXTRACE_PROJECT = {
   }
 });
 
+["ai-systems", "web-developer"].forEach(roleId => {
+  const role = ROLES[roleId];
+  if (role && !role.projects.some(p => p.name === "Tackboard")) {
+    role.projects.unshift({ ...TACKBOARD_PROJECT });
+  }
+});
+
 
 // Evidence policy: role pages only surface projects with a project-specific repository or verified portfolio implementation.
 const ROLE_PROJECT_ALLOWLIST = {
@@ -517,6 +534,7 @@ const ROLE_PROJECT_ALLOWLIST = {
     "Enterprise RAG Evaluation Pipeline"
   ],
   "ai-systems": [
+    "Tackboard",
     "TaxTrace",
     "APX — Exception Resolution Architecture",
     "Enterprise RAG / AI Search Platform"
@@ -530,6 +548,7 @@ const ROLE_PROJECT_ALLOWLIST = {
     "AI-Powered Job Recommendations Dashboard"
   ],
   "web-developer": [
+    "Tackboard",
     "TaxTrace",
     "Enterprise RAG / AI Search Platform",
     "Portfolio Site Architecture"
