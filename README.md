@@ -2,7 +2,7 @@
 
 An accessible, performance-first portfolio for Eklakh Dewan, an AI Systems Engineer focused on reliable retrieval, grounded generation, and applied AI backends.
 
-## Requirements and scope
+## Purpose and scope
 
 ### Target audience and use cases
 
@@ -28,7 +28,7 @@ An accessible, performance-first portfolio for Eklakh Dewan, an AI Systems Engin
 - **Accessibility:** semantic landmarks, one `h1`, skip link, visible focus styles, keyboard-friendly navigation, responsive layout, reduced visual complexity, and no color-only information.
 - **Performance target:** Lighthouse Performance, Accessibility, Best Practices, and SEO all at 90+ on the production URL. Keep the page mostly text/CSS, use compressed WebP/AVIF if evidence images are later added, and avoid third-party scripts.
 
-## MVP content map
+## Content map
 
 | Source document area | Portfolio destination |
 | --- | --- |
@@ -110,9 +110,9 @@ Use a JSON or headless CMS record shaped like:
 
 `status` should distinguish `evidence-backed`, `research-proposed`, and `needs-verification` so the publishing workflow cannot accidentally turn a proposal into an achieved result.
 
-## Implementation and deployment runbook
+## Development and deployment
 
-### Run locally
+### Local development
 
 ```bash
 npm install
@@ -139,7 +139,7 @@ The deployable static output is in `dist/`.
 5. Push to `main`; the workflow builds and deploys `dist/`.
 6. For a custom domain, add the domain in Pages settings, create the provider-recommended DNS `A`/`CNAME` records, then verify HTTPS.
 
-## Accessibility and quality checklist
+## QA checklist
 
 - [x] Semantic `header`, `nav`, `main`, `section`, `article`, and `footer` landmarks.
 - [x] Skip link and a logical heading hierarchy.
