@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import { getInterviewQuestions, getQuestionProgress, chooseAdaptiveQuestion, summarizeInterview } from "../src/haya-interview.js";
 import { getHayaKnowledge } from "../src/haya-knowledge.js";
 
@@ -46,6 +47,8 @@ assert.equal(report.length, 5);
 assert.equal(report[0].dimension, "relevance");
 assert.equal(report.at(-1).dimension, "evidence");
 
-assert.ok(c.includes("Haya") || true);
+const botSource = fs.readFileSync(new URL("../src/bot.js", import.meta.url), "utf8");
+assert.match(botSource, /async function handleSendMessage/);
+assert.match(botSource, /WORKER_URL/);
 
 console.log("Haya Phase 6 end-to-end contract tests passed");
