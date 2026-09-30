@@ -1,20 +1,18 @@
 export const CASE_STUDIES = [
   {
-    name: "HCAD-RAG — Hierarchical Context-Aware Medical RAG",
-    evidenceStatus: "Patent filing in progress · Final year project · KPRIET 2027",
-    problem: "Medical LLMs can produce unsupported answers when clinical context is not preserved through retrieval.",
-    myRole: "TODO — provide your exact individual contribution for the case study.",
-    stack: "Python · FastAPI · FAISS · SentenceTransformers · LLM APIs · PostgreSQL · Hugging Face",
-    result: "TODO — provide one measured result if you want to publish an achieved metric. Current evaluation dimensions are targets, not achieved results.",
-    repo: null,
-    demo: null,
-    screenshot: null
+    name: "AI-Powered Job Recommendations Dashboard",
+    evidenceStatus: "Engineering Evidence",
+    problem: "Job discovery requires turning unstructured resumes and job descriptions into relevant, explainable matches.",
+    myRole: "Built independently as the sole developer.",
+    stack: "Python · scikit-learn · SentenceTransformers · Streamlit · Semantic Search",
+    result: "TODO — provide one measured result from the project evaluation.",
+    repo: "https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard"
   },
   {
     name: "Enterprise RAG / AI Search Platform",
     evidenceStatus: "Retrieval Evaluation",
     problem: "Enterprise document search needs to reconcile lexical and semantic retrieval while keeping generated answers tied to evidence.",
-    myRole: "TODO — provide your exact individual contribution for the case study.",
+    myRole: "Built independently as the sole developer.",
     stack: "Python · FastAPI · FAISS · BM25 · SentenceTransformers · React",
     result: "TODO — provide one measured result from the project evaluation.",
     repo: "https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG",
@@ -54,23 +52,10 @@ export const ROLES = {
     accent: "#3e5f7a",
     projects: [
       {
-        slug: "hcad-rag",
-        title: "HCAD-RAG — Hierarchical Context-Aware Medical RAG",
-        name: "HCAD-RAG — Hierarchical Context-Aware Medical RAG",
-        category: "Medical AI · RAG · NLP",
-        status: "Patent filing in progress · Final year project · KPRIET 2027",
-        badge: "Patent Pending",
-        badgeColor: "#67e8f9",
-        challenge: "Medical LLMs hallucinate when answering clinical questions because they lack grounding in structured clinical documents. Standard RAG fails on long-form medical records with hierarchical structure (patient history, lab results, diagnosis notes).",
-        approach: "A hierarchical chunking strategy that respects document structure (section → paragraph → sentence), combined with context-aware retrieval that preserves parent sections during retrieval. Reranking with domain-adapted cross-encoders. Citation validation before generation. Evidence-constrained answer synthesis.",
-        measure: "Evaluation dimensions: faithfulness score, citation accuracy, recall@5, ROUGE-L, MRR on medical QA benchmarks. These are evaluation targets, not achieved production results.",
-        stack: "Python · FastAPI · FAISS · SentenceTransformers · LLM APIs · PostgreSQL · Hugging Face",
-        team: "Eklakh Dewan · Ajesh Bashnet · Niraj Kumar Das — supervised by Rahul Kumar",
-        repo: null,
-        demo: null,
-        description: "Final year medical RAG research project focused on hierarchical context preservation, evidence-grounded retrieval, reranking, and citation validation.",
-        tags: ["Python", "FastAPI", "FAISS", "SentenceTransformers", "Medical RAG"],
-        featured: true
+        name: "AI-Powered Job Recommendations Dashboard",
+        description: "Engineered a recommendation engine that converts unstructured resumes into actionable job matches using TF-IDF and dense semantic embeddings, exposed through an interactive Streamlit dashboard.",
+        tags: ["Python", "scikit-learn", "Streamlit", "Semantic Search", "Embeddings"],
+        link: "https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard"
       },
       {
         name: "Enterprise RAG / AI Search Platform",
