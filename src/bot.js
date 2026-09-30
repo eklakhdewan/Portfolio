@@ -302,6 +302,7 @@ export function initBot() {
       roleId: currentRoleContext,
       questionIndex: 0,
       answered: 0,
+      attempts: 0,
       followUps: 0,
       evaluations: [],
       answeredIds: [],
@@ -470,6 +471,11 @@ Rules:
       }
 
       session.followUps = 0;
+      session.answered += 1;
+
+      if (!session.answeredIds.includes(question.id)) {
+        session.answeredIds.push(question.id);
+      }
 
       if (session.answered >= questions.length) {
         finishInterview();
