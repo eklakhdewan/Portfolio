@@ -127,9 +127,21 @@ export function initRouter(bot) {
         if (action === 'roles') {
           event.preventDefault();
           if (window.location.hash === '#landing' || window.location.hash === '') {
-            scrollToSection('portfolio-map');
+            scrollToSection('roles');
           } else {
-            pendingSection = 'portfolio-map';
+            pendingSection = 'roles';
+            window.location.hash = 'landing';
+          }
+          return;
+        }
+
+        if (action === 'projects' || action === 'experience' || action === 'roles' || action === 'contact') {
+          event.preventDefault();
+          const target = document.getElementById(action === 'roles' ? 'roles' : action);
+          if (target) {
+            scrollToSection(action === 'roles' ? 'roles' : action);
+          } else {
+            pendingSection = action === 'roles' ? 'roles' : action;
             window.location.hash = 'landing';
           }
           return;
