@@ -377,6 +377,7 @@ RULES
             role: currentRoleContext,
             question: normalizeCacheQuestion(userText)
           } : null,
+          profile: role ? JSON.parse(roleSummary(role)) : null,
           messages: [
             { role: 'system', content: systemPrompt },
             ...messageHistory
