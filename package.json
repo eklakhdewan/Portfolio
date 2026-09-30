@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test:haya": "node tests/haya-worker-policy.test.mjs"
+    "test:haya": "node tests/haya-worker-policy.test.mjs",
+    "test:haya-interview": "node tests/haya-interview.test.mjs"
   },
   "devDependencies": {
     "vite": "^7.1.5"
