@@ -391,6 +391,7 @@ ${JSON.stringify(interviewSession.history.slice(-4))}
 Return ONLY valid JSON:
 {
   "feedback": "1-2 concise sentences. Be specific and conversational.",
+  "coaching": "One short, actionable improvement for the candidate. Do not write a memorized answer.",
   "followUp": "One targeted follow-up if the answer is vague, shallow, unsupported, contradictory, or worth probing; otherwise empty string.",
   "contradiction": "A concise description of any conflict with documented evidence; otherwise empty string.",
   "score": {
@@ -411,6 +412,9 @@ Rules:
 - Treat unsupported metrics, users, deployments, employers, clients, or achievements as unsupported.
 - If the answer conflicts with canonical evidence, flag it in contradiction and feedback.
 - Ask at most one useful follow-up.
+- Keep feedback conversational; do not sound like a resume or rubric.
+- Coaching should tell the candidate what evidence, structure, or specificity to add.
+- Never rewrite the candidate's answer into a memorized script.
 - Do not generate the next core question.`;
   }
 
@@ -468,6 +472,7 @@ Rules:
       } catch {
         result = {
           feedback: raw,
+          coaching: '',
           followUp: '',
           contradiction: '',
           score: null
@@ -493,6 +498,7 @@ Rules:
       }
 
       if (result.feedback) addMessage(`Feedback: ${result.feedback}`, 'bot');
+      if (result.coaching) addMessage(`Coaching: ${result.coaching}`, 'bot');
       if (result.contradiction) addMessage(`Evidence check: ${result.contradiction}`, 'bot');
 
       if (result.followUp && session.followUps < 1) {
