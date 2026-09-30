@@ -306,9 +306,18 @@ export function initBot() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'haya-starter';
-    button.textContent = 'Start mock interview';
+    button.textContent = interviewSession?.active ? 'Restart mock interview' : 'Start mock interview';
     button.addEventListener('click', startInterview);
     wrap.appendChild(button);
+
+    if (interviewSession?.active) {
+      const stop = document.createElement('button');
+      stop.type = 'button';
+      stop.className = 'haya-starter';
+      stop.textContent = 'End interview';
+      stop.addEventListener('click', stopInterview);
+      wrap.appendChild(stop);
+    }
 
     chatMessages.appendChild(wrap);
   }
