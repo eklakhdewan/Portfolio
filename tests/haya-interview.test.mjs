@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { getInterviewQuestions, getQuestionProgress } from "../src/haya-interview.js";
+import { getInterviewQuestions, getQuestionProgress, chooseAdaptiveQuestion, summarizeInterview } from "../src/haya-interview.js";
 import { getHayaKnowledge } from "../src/haya-knowledge.js";
 
 const roles = [
@@ -33,3 +33,29 @@ for (const roleId of roles) {
 }
 
 console.log("Haya interview grounding tests passed: 6/6 roles");
+
+
+const aiQuestions = getInterviewQuestions("ai-engineer");
+const easyNext = chooseAdaptiveQuestion(
+  aiQuestions,
+  ["ai-why"],
+  [{ questionId: "ai-why", score: { clarity: 2, relevance: 2, specificity: 2, ownership: 2, evidence: 2 } }]
+);
+assert.ok(easyNext);
+assert.equal(easyNext.difficulty, "easy");
+
+const hardNext = chooseAdaptiveQuestion(
+  aiQuestions,
+  ["ai-why"],
+  [{ questionId: "ai-why", score: { clarity: 5, relevance: 5, specificity: 5, ownership: 5, evidence: 5 } }]
+);
+assert.ok(hardNext);
+assert.equal(hardNext.difficulty, "hard");
+
+const summary = summarizeInterview([
+  { score: { clarity: 5, relevance: 4, specificity: 3, ownership: 4, evidence: 2 } }
+]);
+assert.equal(summary[0].dimension, "clarity");
+assert.equal(summary.at(-1).dimension, "evidence");
+
+console.log("Adaptive interview tests passed");
