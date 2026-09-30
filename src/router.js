@@ -11,6 +11,7 @@ export function initRouter(bot) {
     if (nav) nav.classList.remove('is-open');
     if (toggle) {
       toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
       toggle.textContent = 'Menu';
     }
   }
@@ -23,8 +24,8 @@ export function initRouter(bot) {
   }
 
   function handleHashChange() {
-    const hash = window.location.hash.replace('#', '') || 'landing';
-    
+    const hash = window.location.hash.replace(/^#/, '') || 'landing';
+
     if (hash === 'landing') {
       appRoot.innerHTML = renderLandingView();
       bot.updateContext('landing');
@@ -53,36 +54,40 @@ export function initRouter(bot) {
   function attachFormSubmitHandler() {
     const form = document.querySelector('.contact-form');
     if (!form) return;
-    
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      btn.innerHTML = 'Sending...';
-      btn.disabled = true;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (!submitButton) return;
+
+      const originalText = submitButton.textContent;
+      submitButton.textContent = 'Sending…';
+      submitButton.disabled = true;
+      form.setAttribute('aria-busy', 'true');
 
       try {
         const response = await fetch(form.action, {
-          method: form.method,
+          method: form.method || 'POST',
           body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+          headers: { Accept: 'application/json' }
         });
-        
-        if (response.ok) {
-          form.reset();
-          btn.innerHTML = 'Message Sent! ✓';
-          btn.style.backgroundColor = 'var(--blue)';
-        } else {
-          throw new Error('Failed');
-        }
-      } catch (err) {
-        btn.innerHTML = 'Error. Try Again.';
-      }
 
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-      }, 3000);
+        if (!response.ok) throw new Error(`Formspree returned ${response.status}`);
+
+        form.reset();
+        submitButton.textContent = 'Message sent ✓';
+        submitButton.focus();
+      } catch (error) {
+        console.error(error);
+        submitButton.textContent = 'Send failed — retry';
+      } finally {
+        form.setAttribute('aria-busy', 'false');
+        window.setTimeout(() => {
+          submitButton.textContent = originalText;
+          submitButton.disabled = false;
+        }, 3000);
+      }
     });
   }
 
@@ -93,23 +98,24 @@ export function initRouter(bot) {
     toggle?.addEventListener('click', () => {
       const open = nav.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
       toggle.textContent = open ? 'Close' : 'Menu';
     });
 
-    document.querySelectorAll('[data-nav]').forEach(link => {
-      link.addEventListener('click', (e) => {
+    document.querySelectorAll('[data-nav]').forEach((link) => {
+      link.addEventListener('click', (event) => {
         const action = link.dataset.nav;
         closeMobileNav();
 
         if (action === 'haya') {
-          e.preventDefault();
+          event.preventDefault();
           document.getElementById('bot-toggle')?.click();
           return;
         }
 
         if (action === 'home') {
-          e.preventDefault();
-          if (window.location.hash === '#landing') {
+          event.preventDefault();
+          if (window.location.hash === '#landing' || window.location.hash === '') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           } else {
             pendingSection = null;
@@ -119,8 +125,8 @@ export function initRouter(bot) {
         }
 
         if (action === 'roles') {
-          e.preventDefault();
-          if (window.location.hash === '#landing') {
+          event.preventDefault();
+          if (window.location.hash === '#landing' || window.location.hash === '') {
             scrollToSection('portfolio-map');
           } else {
             pendingSection = 'portfolio-map';
@@ -130,7 +136,7 @@ export function initRouter(bot) {
         }
 
         if (action === 'contact') {
-          e.preventDefault();
+          event.preventDefault();
           const target = document.getElementById('contact');
           if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
