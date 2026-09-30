@@ -54,24 +54,40 @@
     </header>
 
     <main id="app-root">
-      <section class="hero container" aria-labelledby="intro-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Eklakh Dewan</p>
-          <h1 id="intro-title">AI Systems Engineer</h1>
-          <p class="hero-summary">I build AI systems, retrieval pipelines, agentic workflows, and backend applications with an evidence-first approach.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#landing">View Projects</a>
-            <a class="button button-secondary" href="Eklakh_Dewan_AI_Systems.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
-            <a class="button button-secondary" href="#contact">Contact</a>
-          </div>
-          <div class="proof-grid landing-proof" aria-label="Professional proof points">
-            <article class="proof-card"><strong>8.55</strong><span>CGPA</span></article>
-            <article class="proof-card"><strong>2027</strong><span>Graduation</span></article>
-            <article class="proof-card"><strong>AI / ML</strong><span>Primary domain</span></article>
-            <article class="proof-card"><strong>RAG</strong><span>Current focus</span></article>
+      <section class="hero container in-view">
+      <div class="hero-copy">
+        <p class="eyebrow">Eklakh Dewan</p>
+        <h1>I build AI systems that retrieve, reason, recommend and execute.</h1>
+        <p class="hero-summary">AI systems engineer focused on RAG, backend systems, agentic automation, and measurable AI workflows.</p>
+        <p class="hero-status">
+          <span class="status-pulse" aria-hidden="true"></span>
+          <span>Currently exploring: <strong class="status-link">Agentic Systems &amp; Hybrid Retrieval</strong></span>
+        </p>
+        <div class="hero-actions">
+          <button class="button button-primary" type="button" onclick="document.getElementById('bot-toggle')?.click();">Start Hiring Interview <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="proof-grid landing-proof" aria-label="Professional proof points">
+          <article class="proof-card"><strong>8.55</strong><span>CGPA</span></article>
+          <article class="proof-card"><strong>2027</strong><span>Graduation</span></article>
+          <article class="proof-card"><strong>AI / ML</strong><span>Primary domain</span></article>
+          <article class="proof-card"><strong>RAG</strong><span>Current focus</span></article>
+        </div>
+      </div>
+      <aside class="hero-visual" aria-label="Profile and current focus">
+        <div class="portrait-wrap">
+          <img src="me.png" alt="Eklakh Dewan in a navy suit" class="portrait" />
+          <span class="portrait-badge">AI systems<br /><strong>with proof</strong></span>
+        </div>
+        <div class="hero-card">
+          <div class="status-dot" aria-hidden="true"></div>
+          <p class="card-label">Current focus</p>
+          <h2>Reliable RAG &amp; applied AI</h2>
+          <div class="signal-list">
+            <span>Hybrid retrieval</span><span>Evidence grounding</span><span>Agentic workflows</span>
           </div>
         </div>
-      </section>
+      </aside>
+    </section>
       <section id="roles" class="section container static-seo-content" aria-labelledby="roles-title">
         <div class="section-heading">
           <p class="eyebrow">Role summary</p>
