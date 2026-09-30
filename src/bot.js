@@ -89,17 +89,17 @@ function selectModelTier(question) {
     : FAST_MODEL_TIER;
 }
 
-function getClientCacheKey(roleId, question) {
-  return `${CLIENT_CACHE_PREFIX}${roleId}:${normalizeCacheQuestion(question)}`;
+function getClientCacheKey(roleId, question, modelTier = FAST_MODEL_TIER) {
+  return `${CLIENT_CACHE_PREFIX}${modelTier}:${roleId}:${normalizeCacheQuestion(question)}`;
 }
 
-function readClientCache(roleId, question) {
+function readClientCache(roleId, question, modelTier = FAST_MODEL_TIER) {
   try {
-    const raw = localStorage.getItem(getClientCacheKey(roleId, question));
+    const raw = localStorage.getItem(getClientCacheKey(roleId, question, modelTier));
     if (!raw) return null;
     const entry = JSON.parse(raw);
     if (!entry?.answer || Date.now() - entry.createdAt > CLIENT_CACHE_TTL_MS) {
-      localStorage.removeItem(getClientCacheKey(roleId, question));
+      localStorage.removeItem(getClientCacheKey(roleId, question, modelTier));
       return null;
     }
     return entry.answer;
@@ -108,9 +108,9 @@ function readClientCache(roleId, question) {
   }
 }
 
-function writeClientCache(roleId, question, answer) {
+function writeClientCache(roleId, question, answer, modelTier = FAST_MODEL_TIER) {
   try {
-    const key = getClientCacheKey(roleId, question);
+    const key = getClientCacheKey(roleId, question, modelTier);
     localStorage.setItem(key, JSON.stringify({ answer, createdAt: Date.now() }));
     const keys = [];
     for (let i = 0; i < localStorage.length; i += 1) {
@@ -313,12 +313,12 @@ export function initBot() {
       if (instantAnswer) {
         messageHistory.push({ role: 'user', content: userText });
         messageHistory.push({ role: 'assistant', content: instantAnswer });
-        writeClientCache(currentRoleContext, userText, instantAnswer);
+        writeClientCache(currentRoleContext, userText, instantAnswer, modelTier);
         return instantAnswer;
       }
     }
     if (cacheEligible) {
-      const cachedAnswer = readClientCache(currentRoleContext, userText);
+      const cachedAnswer = readClientCache(currentRoleContext, userText, modelTier);
       if (cachedAnswer) {
         messageHistory.push({ role: 'user', content: userText });
         messageHistory.push({ role: 'assistant', content: cachedAnswer });
@@ -396,7 +396,7 @@ RULES
       if (!reply) throw new Error('Empty assistant response');
 
       messageHistory.push({ role: 'assistant', content: reply });
-      if (cacheEligible) writeClientCache(currentRoleContext, userText, reply);
+      if (cacheEligible) writeClientCache(currentRoleContext, userText, reply, modelTier);
       return reply;
     } finally {
       window.clearTimeout(timeout);
