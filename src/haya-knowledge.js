@@ -305,7 +305,6 @@ export const HAYA_KNOWLEDGE = {
     "If a question asks for an experience that is not documented, say so and bridge only to the closest documented project experience.",
     "Treat project architecture as documented implementation, not proof of production scale.",
     "Treat metrics as valid only when explicitly present in the knowledge base.",
-    "Do not reintroduce HCAD-RAG; it is intentionally excluded from the current Haya knowledge base.",
     "Do not present targets, plans, or intended capabilities as achieved results.",
     "If the knowledge base does not document an answer, say: 'The available portfolio data does not document that.'"
   ]
