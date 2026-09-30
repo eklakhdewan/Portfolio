@@ -177,6 +177,44 @@ function roleSummary(roleId) {
   return JSON.stringify(getHayaKnowledge(roleId));
 }
 
+// Lightweight evidence retrieval: keep the LLM context focused on the parts of the
+// portfolio most likely to answer the visitor's question. The canonical source remains
+// haya-knowledge.js; this function only selects a smaller evidence slice at request time.
+function retrieveRelevantKnowledge(question, knowledge) {
+  if (!knowledge || !question) return knowledge;
+
+  const terms = normalizeCacheQuestion(question)
+    .replace(/[^a-z0-9+#.\s-]/g, ' ')
+    .split(/\s+/)
+    .filter((term) => term.length >= 3);
+
+  const score = (value) => {
+    const text = JSON.stringify(value).toLowerCase();
+    return terms.reduce((total, term) => total + (text.includes(term) ? 1 : 0), 0);
+  };
+
+  const rankedProjects = [...(knowledge.projects || [])]
+    .map((project, index) => ({ project, index, score: score(project) }))
+    .sort((a, b) => b.score - a.score || a.index - b.index);
+  const relevantProjects = rankedProjects.filter((item) => item.score > 0).slice(0, 4).map((item) => item.project);
+  const projects = relevantProjects.length ? relevantProjects : (knowledge.projects || []).slice(0, 3);
+
+  const rankedCapabilities = [...(knowledge.capabilities || [])]
+    .map((capability, index) => ({ capability, index, score: score(capability) }))
+    .sort((a, b) => b.score - a.score || a.index - b.index);
+  const relevantCapabilities = rankedCapabilities.filter((item) => item.score > 0).slice(0, 12).map((item) => item.capability);
+  const capabilities = relevantCapabilities.length ? relevantCapabilities : (knowledge.capabilities || []).slice(0, 12);
+
+  return {
+    profile: knowledge.profile,
+    experience: knowledge.experience,
+    projects,
+    capabilities,
+    roleRelevance: knowledge.roleRelevance,
+    honestyRules: knowledge.honestyRules
+  };
+}
+
 function getInterviewContext(roleId, question) {
   const knowledge = getHayaKnowledge(roleId);
   const evidenceText = (question?.evidence || []).join(' ').toLowerCase();
@@ -304,9 +342,10 @@ export function initBot() {
 
       thinkingMessage = addMessage('Thinking…', 'bot');
 
-      const knowledge = getHayaKnowledge(
+      const fullKnowledge = getHayaKnowledge(
         currentRoleContext === 'landing' ? null : currentRoleContext
       );
+      const knowledge = retrieveRelevantKnowledge(question, fullKnowledge);
 
       const systemPrompt = [
         'You are Haya, Eklakh Dewan’s portfolio evidence assistant.',
@@ -328,6 +367,11 @@ export function initBot() {
             : 'meta-llama/llama-3.1-8b-instruct',
           tier: modelTier,
           cache: true,
+          cacheKey: {
+            version: CACHE_VERSION,
+            role: currentRoleContext,
+            question
+          },
           profile: knowledge,
           messages: [
             { role: 'system', content: systemPrompt },
