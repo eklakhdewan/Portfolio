@@ -7,6 +7,25 @@ export const ROLES = {
     accent: "#3e5f7a",
     projects: [
       {
+        slug: "hcad-rag",
+        title: "HCAD-RAG — Hierarchical Context-Aware Medical RAG",
+        name: "HCAD-RAG — Hierarchical Context-Aware Medical RAG",
+        category: "Medical AI · RAG · NLP",
+        status: "Patent filing in progress · Final year project · KPRIET 2027",
+        badge: "Patent Pending",
+        badgeColor: "#67e8f9",
+        challenge: "Medical LLMs hallucinate when answering clinical questions because they lack grounding in structured clinical documents. Standard RAG fails on long-form medical records with hierarchical structure (patient history, lab results, diagnosis notes).",
+        approach: "A hierarchical chunking strategy that respects document structure (section → paragraph → sentence), combined with context-aware retrieval that preserves parent sections during retrieval. Reranking with domain-adapted cross-encoders. Citation validation before generation. Evidence-constrained answer synthesis.",
+        measure: "Evaluation dimensions: faithfulness score, citation accuracy, recall@5, ROUGE-L, MRR on medical QA benchmarks. These are evaluation targets, not achieved production results.",
+        stack: "Python · FastAPI · FAISS · SentenceTransformers · LLM APIs · PostgreSQL · Hugging Face",
+        team: "Eklakh Dewan · Ajesh Bashnet · Niraj Kumar Das — supervised by Rahul Kumar",
+        repo: null,
+        demo: null,
+        description: "Final year medical RAG research project focused on hierarchical context preservation, evidence-grounded retrieval, reranking, and citation validation.",
+        tags: ["Python", "FastAPI", "FAISS", "SentenceTransformers", "Medical RAG"],
+        featured: true
+      },
+      {
         name: "Enterprise RAG / AI Search Platform",
         description: "Built a retrieval and generation pipeline combining dense retrieval with FAISS, sparse retrieval with BM25, hybrid fusion, cross-encoder reranking, and citation validation.",
         tags: ["FastAPI", "React", "FAISS", "SentenceTransformers", "Reranking"],
