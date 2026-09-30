@@ -16,6 +16,63 @@ function normalizeCacheQuestion(text) {
   return text.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
+function deterministicAnswer(question, roleId) {
+  const q = normalizeCacheQuestion(question);
+  const role = ROLES[roleId];
+  if (!role || roleId === 'landing') return null;
+
+  if (/\b(resume|cv)\b/.test(q)) {
+    return `The relevant resume is ${role.resumeFile}. It is the resume configured for the ${role.title} view.`;
+  }
+
+  if (/\b(rag|retrieval)\b/.test(q)) {
+    const matches = role.projects.filter((project) => {
+      const haystack = JSON.stringify(project).toLowerCase();
+      return haystack.includes('rag') || haystack.includes('retrieval');
+    });
+    if (!matches.length) return 'The available portfolio data for this role does not document a RAG or retrieval project.';
+    const names = matches.slice(0, 4).map((project) => project.name).join('; ');
+    return `The ${role.title} view documents these RAG/retrieval projects: ${names}.`;
+  }
+
+  if (/\b(backend|back-end|api|server)\b/.test(q)) {
+    const backend = role.capabilities?.['Backend & Data'] || [];
+    const infrastructure = role.capabilities?.Infrastructure || [];
+    const skills = [...new Set([...backend, ...infrastructure])].slice(0, 10);
+    return skills.length
+      ? `For ${role.title}, the documented backend/infrastructure stack includes ${skills.join(', ')}.`
+      : 'The available portfolio data does not document a backend stack for this role.';
+  }
+
+  if (/\b(skill|skills|stack|technolog|tech)\b/.test(q)) {
+    const skills = role.skills || [];
+    return skills.length
+      ? `The ${role.title} view highlights ${skills.slice(0, 8).join(', ')}.`
+      : 'The available portfolio data does not document skills for this role.';
+  }
+
+  if (/\b(project|projects)\b/.test(q)) {
+    const projects = role.projects.slice(0, 6).map((project) => project.name).join('; ');
+    return `The ${role.title} view includes: ${projects}.`;
+  }
+
+  if (/\b(education|degree|cgpa|college|university)\b/.test(q)) {
+    const education = role.education?.[0];
+    return education
+      ? `${education.degree} at ${education.institution}, graduating ${education.year}, with ${education.result}.`
+      : 'The available portfolio data does not document education for this role.';
+  }
+
+  if (/\b(experience|internship|intern)\b/.test(q)) {
+    const experience = role.experience?.[0];
+    return experience
+      ? `${experience.role} at ${experience.company} — ${experience.duration}. ${experience.description}`
+      : 'The available portfolio data does not document experience for this role.';
+  }
+
+  return null;
+}
+
 function getClientCacheKey(roleId, question) {
   return `${CLIENT_CACHE_PREFIX}${roleId}:${normalizeCacheQuestion(question)}`;
 }
@@ -231,6 +288,16 @@ export function initBot() {
 
   async function queryWorker(userText) {
     const cacheEligible = messageHistory.length === 0;
+
+    if (cacheEligible) {
+      const instantAnswer = deterministicAnswer(userText, currentRoleContext);
+      if (instantAnswer) {
+        messageHistory.push({ role: 'user', content: userText });
+        messageHistory.push({ role: 'assistant', content: instantAnswer });
+        writeClientCache(currentRoleContext, userText, instantAnswer);
+        return instantAnswer;
+      }
+    }
     if (cacheEligible) {
       const cachedAnswer = readClientCache(currentRoleContext, userText);
       if (cachedAnswer) {
