@@ -33,7 +33,7 @@ function jsonResponse(body, status = 200, extraHeaders = {}) {
 export function isPromptInjection(text = "") {
   const q = String(text)
     .toLowerCase()
-    .replace(/[\\u200b-\\u200d\\ufeff]/g, "")
+    .replace(/[\u200B\u200C\u200D\uFEFF]/g, "")
     .replace(/\\s+/g, " ")
     .trim();
 
