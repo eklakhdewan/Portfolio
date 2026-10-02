@@ -34,18 +34,18 @@ export function isPromptInjection(text = "") {
   const q = String(text)
     .toLowerCase()
     .replace(/[\u200B\u200C\u200D\uFEFF]/g, "")
-    .replace(/\\s+/g, " ")
+    .replace(/\s+/g, " ")
     .trim();
 
   const signals = [
-    /\\b(ignore|disregard|override|forget|bypass)\\b.{0,80}\\b(previous|prior|above|earlier|system|developer)\\b.{0,80}\\b(instruction|rule|prompt|message)s?\\b/,
-    /\\b(reveal|show|print|dump|quote|repeat)\\b.{0,80}\\b(system prompt|hidden prompt|developer message|hidden instructions|secret instructions)\\b/,
-    /\\b(what|tell me|show me).{0,50}\\b(system prompt|developer instructions|hidden instructions)\\b/,
-    /\\b(pretend|act|role[- ]?play)\\b.{0,80}\\b(unrestricted|without rules|no rules|ignore the profile)\\b/,
-    /\\b(bypass|disable|evade)\\b.{0,60}\\b(safety|guardrails|instructions|policy|filter)\\b/,
-    /\\b(reveal|show|give|print|dump|expose)\\b.{0,60}\\b(api key|secret key|environment variable|env var|token)\\b/,
-    /\\b(jailbreak|prompt injection)\\b/,
-    /\\b(ignore previous instructions|ignore all previous instructions|disregard previous instructions|bypass your instructions|forget your rules)\\b/
+    /\b(ignore|disregard|override|forget|bypass)\b.{0,80}\b(previous|prior|above|earlier|system|developer)\b.{0,80}\b(instruction|rule|prompt|message)s?\b/,
+    /\b(reveal|show|print|dump|quote|repeat)\b.{0,80}\b(system prompt|hidden prompt|developer message|hidden instructions|secret instructions)\b/,
+    /\b(what|tell me|show me).{0,50}\b(system prompt|developer instructions|hidden instructions)\b/,
+    /\b(pretend|act|role[- ]?play)\b.{0,80}\b(unrestricted|without rules|no rules|ignore the profile)\b/,
+    /\b(bypass|disable|evade)\b.{0,60}\b(safety|guardrails|instructions|policy|filter)\b/,
+    /\b(reveal|show|give|print|dump|expose)\b.{0,60}\b(api key|secret key|environment variable|env var|token)\b/,
+    /\b(jailbreak|prompt injection)\b/,
+    /\b(ignore previous instructions|ignore all previous instructions|disregard previous instructions|bypass your instructions|forget your rules)\b/
   ];
 
   return signals.some((pattern) => pattern.test(q));
