@@ -403,6 +403,20 @@ const PROJECT_ENRICHMENTS = {
     engineering: ["Dense + sparse retrieval", "Hybrid fusion", "Cross-encoder reranking", "Citation mapping", "Faithfulness verification", "Pipeline observability"],
     evidence: "Built around explicit retrieval and grounding stages so relevance and answer provenance can be inspected independently.",
     metrics: ["Recall@K", "MRR", "nDCG"],
+    gallery: [
+      {
+        src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/04_enterprise_rag_homepage.png",
+        alt: "Enterprise RAG application interface"
+      },
+      {
+        src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/05_grounded_query_response.png",
+        alt: "Enterprise RAG grounded response with citations"
+      },
+      {
+        src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/06_pipeline_observability_retrieved_evidence.png",
+        alt: "Enterprise RAG retrieval observability and evidence"
+      }
+    ],
     stack: ["Python", "FastAPI", "FAISS", "BM25", "SentenceTransformers", "React"]
   },
   "APX — Accounts Payable Exception Agent": {
