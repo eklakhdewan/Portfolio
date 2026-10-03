@@ -79,6 +79,7 @@ export function renderRoleView(roleId) {
       </div>
       <h3>${p.title || p.name}</h3>
       <p>${p.description}</p>
+      ${p.gallery?.length ? `<div class="project-gallery" aria-label="${p.name} screenshots">${p.gallery.map((image, imageIndex) => `<a href="${image.src}" target="_blank" rel="noopener noreferrer" class="project-gallery-item" aria-label="Open ${p.name} screenshot ${imageIndex + 1}"><img src="${image.src}" alt="${image.alt}" loading="lazy" decoding="async" /></a>`).join('')}</div>` : ''}
       <p class="project-category">${p.category || role.title}</p>
       ${p.status || p.badge ? `<div class="project-status"><span class="project-badge" style="border-color: ${p.badgeColor || role.accent}; color: ${p.badgeColor || role.accent};">${p.badge || "Status"}</span><span>${p.status || ""}</span></div>` : ""}
       ${projectEvidenceHtml(p)}
