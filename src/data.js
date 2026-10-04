@@ -17,6 +17,7 @@ export const ROLES = {
         description: "Built a retrieval and generation pipeline combining dense retrieval with FAISS, sparse retrieval with BM25, hybrid fusion, cross-encoder reranking, and citation validation.",
         featured: true,
         gallery: [
+          { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/02_public_landing_flow.png", alt: "Enterprise RAG public landing and product flow" },
           { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/04_enterprise_rag_homepage.png", alt: "Enterprise RAG workspace homepage" },
           { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/05_grounded_query_response.png", alt: "Enterprise RAG grounded query response with citations" },
           { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/06_pipeline_observability_retrieved_evidence.png", alt: "Enterprise RAG pipeline observability and retrieved evidence" }
