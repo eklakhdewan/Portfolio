@@ -5,7 +5,7 @@ import { getInterviewQuestions, getQuestionProgress, chooseAdaptiveQuestion, sum
 const WORKER_URL = 'https://portfolio-bot-proxy.eklakhdewan78.workers.dev';
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_HISTORY_MESSAGES = 6;
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const FAST_MODEL_TIER = 'fast';
 const STRONG_MODEL_TIER = 'strong';
 const CLIENT_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
