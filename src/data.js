@@ -5,45 +5,7 @@ export const ROLES = {
     title: "AI Engineer",
     pitch: "I build RAG systems, agentic workflows, and applied AI pipelines with an emphasis on grounding and evidence.",
     accent: "#3e5f7a",
-    projects: [
-      {
-        name: "AI-Powered Job Recommendations Dashboard",
-        description: "Engineered a recommendation engine that converts unstructured resumes into actionable job matches using TF-IDF and dense semantic embeddings, exposed through an interactive Streamlit dashboard.",
-        tags: ["Python", "scikit-learn", "Streamlit", "Semantic Search", "Embeddings"],
-        link: "https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard"
-      },
-      {
-        name: "Enterprise RAG / AI Search Platform",
-        description: "Built and evaluated an evidence-grounded retrieval system combining dense retrieval, BM25, Hybrid/RRF, cross-encoder reranking, citation validation, and a frozen human-verified benchmark. The current benchmark contains 50 queries and 780 human relevance judgments; Hybrid retrieval shows statistically supported gains over Dense at Recall@10 (+9.9%) and nDCG@10 (+7.0%).",
-        featured: true,
-        gallery: [
-          { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/02_public_landing_flow.png", alt: "Enterprise RAG public landing and product flow" },
-          { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/04_enterprise_rag_homepage.png", alt: "Enterprise RAG workspace homepage" },
-          { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/05_grounded_query_response.png", alt: "Enterprise RAG grounded query response with citations" },
-          { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/06_pipeline_observability_retrieved_evidence.png", alt: "Enterprise RAG pipeline observability and retrieved evidence" }
-        ],
-        tags: ["FastAPI", "React", "FAISS", "SentenceTransformers", "Reranking"],
-        link: "https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG"
-      },
-      {
-        name: "AI Job Agent",
-        description: "Built a staged autonomous job-discovery pipeline with source abstraction, normalization, deduplication, SQLite persistence, and tested workflow components.",
-        tags: ["Python", "Automation", "SQLite", "Agentic Workflows"],
-        link: "https://github.com/Eklakh-AI-Engineer/AI-Job-Agent"
-      },
-      {
-        name: "APX — Accounts Payable Exception Agent",
-        description: "Built an autonomous financial agent for resolving accounts-payable anomalies. Designed a deterministic risk engine that retrieves vendor evidence, cross-references temporal data, and applies strict guardrails before suggesting resolution actions.",
-        tags: ["Python", "Guardrails", "Financial Automation", "LLMs"],
-        link: "https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent"
-      },
-      {
-        name: "Intelligent Recruitment Platform",
-        description: "Designed an AI pipeline for an Applicant Tracking System (ATS). Built custom NLP models to parse resume data, match semantic intent against job descriptions, and extract structured candidate profiles using zero-shot classification.",
-        tags: ["NLP", "Zero-Shot Classification", "Transformers", "FastAPI"],
-        link: "https://github.com/eklakhdewan"
-      }
-    ],
+    
     skills: [
       "Retrieval-Augmented Generation (RAG)", 
       "Agentic LLM Workflows (LangChain/LangGraph)", 
@@ -67,26 +29,7 @@ export const ROLES = {
     title: "ML Engineer",
     pitch: "I work on recommendation systems, retrieval evaluation, and applied ML workflows with a focus on metrics and reproducibility.",
     accent: "#526174",
-    projects: [
-      {
-        name: "AI-Powered Job Recommendations Dashboard",
-        description: "Engineered a recommendation engine that converts unstructured resumes into actionable job matches. Utilized TF-IDF vectors alongside dense semantic embeddings (SentenceTransformers) to calculate relevance scores, exposed through an interactive Streamlit dashboard.",
-        tags: ["scikit-learn", "Streamlit", "Semantic Search", "Embeddings"],
-        link: "https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard"
-      },
-      {
-        name: "Insurance End-to-End Claims Automation",
-        description: "Built a machine-learning workflow for insurance claims data covering ingestion, feature engineering, classification, and anomaly detection.",
-        tags: ["Python", "XGBoost", "Data Pipelines", "Classification"],
-        link: "https://github.com/Eklakh-AI-Engineer/Insurance-End-to-End-Claims-Automation"
-      },
-      {
-        name: "Enterprise RAG Evaluation Pipeline",
-        description: "Built the evaluation framework for an AI search platform. Implemented automated testing for Recall@5, Mean Reciprocal Rank (MRR), and nDCG to statistically prove retrieval improvements over baseline models.",
-        tags: ["Evaluation Metrics", "MRR", "nDCG", "Statistical Testing"],
-        link: "https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG"
-      }
-    ],
+    
     skills: [
       "Machine Learning & Deep Learning", 
       "Feature Engineering & Selection",
@@ -109,32 +52,7 @@ export const ROLES = {
     title: "AI Systems Engineer",
     pitch: "I build backend systems for AI workflows, with an emphasis on retrieval, persistence, validation, and observable execution.",
     accent: "#101a2b",
-    projects: [
-      {
-        name: "APX — Exception Resolution Architecture",
-        description: "Architected a financial exception resolution system prioritizing system reliability. Implemented deterministic validation, idempotency keys, retry mechanisms with exponential backoff, and dead-letter queues to ensure no transaction data is lost.",
-        tags: ["System Design", "Idempotency", "Python", "Observability"],
-        link: "https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent"
-      },
-      {
-        name: "AI-Powered Business Operations SaaS",
-        description: "Designed the backend architecture for a multi-tenant business operations platform. Utilized NestJS for scalable endpoints, integrated BullMQ and Redis for asynchronous AI task processing, and containerized the microservices using Docker.",
-        tags: ["NestJS", "BullMQ", "Redis", "Docker", "Microservices"],
-        link: "https://github.com/eklakhdewan"
-      },
-      {
-        name: "Job Radar (Automated Pipeline)",
-        description: "Built a semi-automated CI/CD pipeline using GitHub Actions to continuously scrape, parse, and evaluate job postings. Integrated Python scripts to execute cron jobs that update a centralized database dynamically.",
-        tags: ["GitHub Actions", "CI/CD", "Python Automation", "Cron Jobs"],
-        link: "https://github.com/eklakhdewan"
-      },
-      {
-        name: "Inventory & Order Management System",
-        description: "Built a Java/JDBC backend with a normalized PostgreSQL schema and transaction-oriented database operations.",
-        tags: ["Java", "JDBC", "PostgreSQL", "ACID Compliance"],
-        link: "https://github.com/eklakhdewan"
-      }
-    ],
+    
     skills: [
       "Backend System Architecture", 
       "API Design (FastAPI, NestJS, REST)",
@@ -157,26 +75,7 @@ export const ROLES = {
     title: "Data Scientist",
     pitch: "I work with unstructured data, NLP, similarity-based recommendation, and data analysis with an emphasis on explainable results.",
     accent: "#b08d57",
-    projects: [
-      {
-        name: "AI-Powered Job Recommendations (Data Modeling)",
-        description: "Conducted extensive exploratory data analysis on resumes and job descriptions. Extracted key features using TF-IDF and word embeddings. Modeled job discovery using cosine similarity to rank candidates, providing explainable skill-gap analysis.",
-        tags: ["EDA", "scikit-learn", "Cosine Similarity", "NLP"],
-        link: "https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard"
-      },
-      {
-        name: "Insurance End-to-End Claims Automation",
-        description: "Analyzed historical insurance claims data to identify fraud patterns. Performed rigorous statistical testing, handled class imbalances using SMOTE, and trained predictive models with high precision/recall trade-offs.",
-        tags: ["Statistical Testing", "SMOTE", "Predictive Modeling", "Pandas"],
-        link: "https://github.com/eklakhdewan"
-      },
-      {
-        name: "Personal Finance & Shared Budgeting Platform",
-        description: "Engineered the data layer for a personal finance app. Built complex SQL queries for aggregations, designed schemas for time-series expense tracking, and generated automated monthly analytics reports.",
-        tags: ["Time-series Analysis", "SQL", "Data Modeling"],
-        link: "https://github.com/eklakhdewan"
-      }
-    ],
+    
     skills: [
       "Natural Language Processing (NLP)", 
       "Statistical Analysis & Hypothesis Testing",
@@ -199,26 +98,7 @@ export const ROLES = {
     title: "Data Analyst",
     pitch: "I build data-focused dashboards, SQL workflows, and reporting views that make analysis easier to inspect and use.",
     accent: "#557a68",
-    projects: [
-      {
-        name: "AI-Powered Job Recommendations Dashboard",
-        description: "Designed an interactive Streamlit application that visualizes skill gaps and candidate rankings. Built intuitive data tables and charts that make the underlying machine learning logic transparent to end-users.",
-        tags: ["Streamlit", "Data Visualization", "Dashboarding"],
-        link: "https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard"
-      },
-      {
-        name: "Inventory & Order Management System (Analytics)",
-        description: "Created sales analytics queries using SQL joins and window functions and added CSV reporting workflows.",
-        tags: ["SQL", "Window Functions", "Reporting", "CSV Automation"],
-        link: "https://github.com/eklakhdewan"
-      },
-      {
-        name: "Personal Finance & Shared Budgeting Platform",
-        description: "Developed visual dashboards for expense tracking. Grouped transaction data by category and time periods to provide users with clear, actionable insights into their spending habits.",
-        tags: ["Dashboards", "Business Intelligence", "Data Aggregation"],
-        link: "https://github.com/eklakhdewan"
-      }
-    ],
+    
     skills: [
       "Advanced SQL (MySQL, PostgreSQL)", 
       "Streamlit & Interactive Dashboards",
@@ -241,26 +121,7 @@ export const ROLES = {
     title: "Web Developer",
     pitch: "I build responsive web interfaces and backend APIs, with experience integrating AI services and data-driven workflows.",
     accent: "#314b60",
-    projects: [
-      {
-        name: "AI-Powered Business Operations SaaS",
-        description: "Built a full-stack web application using React and NestJS, including authentication, role-based access control, and database operations.",
-        tags: ["React", "NestJS", "Multi-tenant SaaS", "TypeScript"],
-        link: "https://github.com/eklakhdewan"
-      },
-      {
-        name: "Intelligent Recruitment Platform (ATS)",
-        description: "Built a full-stack Applicant Tracking System. Connected a responsive React frontend to a high-performance FastAPI backend, allowing HR teams to seamlessly upload, parse, and manage candidate resumes.",
-        tags: ["FastAPI", "React", "Full-Stack Development"],
-        link: "https://github.com/eklakhdewan"
-      },
-      {
-        name: "Portfolio Site Architecture",
-        description: "Designed a single-page, dynamically routed portfolio utilizing Vite, vanilla JavaScript, and semantic HTML. Implemented a custom LLM concierge (Haya) via OpenRouter API and set up automated CI/CD for GitHub Pages deployment.",
-        tags: ["HTML/CSS/JS", "Vite", "OpenRouter API", "CI/CD"],
-        link: "https://github.com/eklakhdewan/Portfolio"
-      }
-    ],
+    
     skills: [
       "React & Vanilla JavaScript", 
       "TypeScript & Node.js",
@@ -542,51 +403,211 @@ const TAXTRACE_PROJECT = {
 });
 
 
-const ROLE_PROJECT_ALLOWLIST = {
-  "ai-engineer": [
-    "TaxTrace",
-    "AI-Powered Job Recommendations Dashboard",
-    "Enterprise RAG / AI Search Platform",
-    "APX — Accounts Payable Exception Agent"
-  ],
-  "ml-engineer": [
-    "AI-Powered Job Recommendations Dashboard",
-    "Enterprise RAG Evaluation Pipeline"
-  ],
-  "ai-systems": [
-    "Tackboard",
-    "TaxTrace",
-    "APX — Exception Resolution Architecture",
-    "Enterprise RAG / AI Search Platform"
-  ],
-  "data-science": [
-    "AI-Powered Job Recommendations (Data Modeling)",
-    "Enterprise RAG Evaluation Pipeline"
-  ],
-  "data-analyst": [
-    "TaxTrace",
-    "AI-Powered Job Recommendations Dashboard"
-  ],
-  "web-developer": [
-    "Tackboard",
-    "TaxTrace",
-    "Enterprise RAG / AI Search Platform",
-    "Portfolio Site Architecture"
-  ]
-};
-Object.entries(ROLE_PROJECT_ALLOWLIST).forEach(([roleId, allowedNames]) => {
-  if (ROLES[roleId]) {
-    ROLES[roleId].projects = ROLES[roleId].projects.filter(project => allowedNames.includes(project.name));
-  }
-});
 
+/**
+ * Canonical project registry.
+ *
+ * This is the single source of truth for project identity, evidence, metrics,
+ * links, visual evidence, status, and role-specific positioning.
+ */
+export const PROJECTS = {
+  taxtrace: {
+    id: "taxtrace",
+    name: "TaxTrace",
+    subtitle: "AI-assisted tax reconciliation & compliance",
+    category: "AI-Assisted Tax Reconciliation / Compliance",
+    status: "Pilot baseline · local development",
+    repo: "https://github.com/Eklakh-AI-Engineer/TaxTrace",
+    description: "AI-assisted tax reconciliation platform turning GST discrepancies into reviewable exceptions and controlled workflows.",
+    problem: "Tax reconciliation can require manual comparison, exception investigation, and fragmented notice-response handling.",
+    architecture: "FastAPI → SQLAlchemy/PostgreSQL → reconciliation + exception workflow → Next.js review workspace → React Query → Tailwind → Alembic.",
+    engineering: ["Exception review workspace", "Relational persistence", "Schema migrations", "Review workflows", "API-driven frontend", "Tenant isolation"],
+    evidence: "Recorded pilot evidence: 134 backend tests, 15 frontend tests, 7 reconciliation benchmark gate tests, 32 AI quality-gate tests; TypeScript clean; security audit 5/5.",
+    metrics: ["134 backend tests", "15 frontend tests", "1.000 reconciliation precision/recall", "5/5 security audit"],
+    stack: ["FastAPI", "Next.js", "TypeScript", "SQLAlchemy", "PostgreSQL", "React Query", "Tailwind CSS", "Alembic"],
+    roleFocus: {
+      "ai-engineer": "Controlled AI-assisted reconciliation and exception workflows.",
+      "ai-systems": "Backend persistence, schema evolution, review workflow, and verification.",
+      "data-analyst": "Reconciliation evidence, benchmark gates, and review-oriented data workflows.",
+      "web-developer": "FastAPI + Next.js application architecture and typed frontend integration."
+    },
+    gallery: [
+      { src: "/evidence/taxtrace-architecture.svg", alt: "TaxTrace architecture evidence diagram" }
+    ]
+  },
+  enterpriseRag: {
+    id: "enterpriseRag",
+    name: "Enterprise RAG / AI Search Platform",
+    subtitle: "Evidence-grounded retrieval engineering",
+    category: "AI Search / Retrieval Engineering",
+    status: "Evaluation complete · local",
+    repo: "https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG",
+    description: "Evidence-grounded retrieval system combining dense retrieval, BM25, hybrid fusion, cross-encoder reranking, citation validation, and a frozen human-verified benchmark.",
+    problem: "Enterprise documents are difficult to search reliably when lexical and semantic retrieval disagree and generated answers can drift beyond the evidence.",
+    architecture: "Ingestion → chunking → FAISS dense retrieval + BM25 sparse retrieval → hybrid/RRF fusion → cross-encoder reranking → evidence-constrained generation → citation validation.",
+    engineering: ["Dense + sparse retrieval", "Hybrid/RRF fusion", "Cross-encoder reranking", "Human-verified evaluation", "Evidence metadata validation", "OCR fallback validation", "Citation mapping", "Query-rewriting experiment", "Pipeline observability"],
+    evidence: "Frozen CHA benchmark: 50 queries, 780 human relevance judgments, 780 provenance checks. Query rewriting was evaluated separately and remains off by default after mixed retrieval results.",
+    metrics: ["Recall@10 +9.9% vs Dense", "nDCG@10 +7.0% vs Dense", "50-query frozen benchmark", "780 human judgments"],
+    stack: ["Python", "FastAPI", "FAISS", "BM25", "SentenceTransformers", "Cross-Encoder", "React"],
+    roleFocus: {
+      "ai-engineer": "Flagship RAG system with retrieval, grounding, evaluation, and observability.",
+      "ml-engineer": "Retrieval evaluation, ranking metrics, and controlled experiments.",
+      "ai-systems": "Layered retrieval/generation pipeline with evidence and observability boundaries.",
+      "data-science": "Human-verified relevance evaluation and retrieval experimentation.",
+      "web-developer": "React + FastAPI search workspace with evidence-rich result presentation."
+    },
+    gallery: [
+      { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/04_enterprise_rag_homepage.png", alt: "Enterprise RAG application interface" },
+      { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/05_grounded_query_response.png", alt: "Enterprise RAG grounded response with citations" },
+      { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/06_pipeline_observability_retrieved_evidence.png", alt: "Enterprise RAG retrieval observability and evidence" }
+    ]
+  },
+  apx: {
+    id: "apx",
+    name: "APX — Accounts Payable Exception Resolution Agent",
+    subtitle: "Evidence-constrained agentic workflow",
+    category: "Agentic Systems / Financial Automation",
+    status: "Phased system · development",
+    repo: "https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent",
+    description: "Evidence-driven accounts-payable exception-resolution system built around controlled retrieval, validation, decision logic, guardrails, and persistence.",
+    problem: "Accounts-payable exceptions need evidence gathering and controlled resolution rather than unconstrained LLM decisions.",
+    architecture: "Evidence corpus → BM25 + dense retrieval → hybrid/RRF fusion → cross-encoder reranking → evidence validity checks → deterministic decision pipeline → persistence.",
+    engineering: ["Deterministic foundation", "Hybrid evidence retrieval", "RRF fusion", "Cross-encoder reranking", "Evidence validity checks", "Guardrails", "Persistence"],
+    evidence: "Documented phased progression from deterministic foundation through retrieval, agent, decision pipeline, and persistence. Production scale is not claimed.",
+    metrics: ["5 documented implementation phases", "Hybrid evidence retrieval", "Evidence validity gates"],
+    stack: ["Python", "BM25", "Dense Retrieval", "Reranking", "LLMs", "SQLite"],
+    roleFocus: {
+      "ai-engineer": "Bounded agentic resolution with evidence and guardrails.",
+      "ai-systems": "Decision pipeline, failure boundaries, persistence, and controlled execution."
+    },
+    gallery: [
+      { src: "/evidence/apx-architecture.svg", alt: "APX evidence-constrained agent architecture diagram" }
+    ]
+  },
+  tackboard: {
+    id: "tackboard",
+    name: "Tackboard",
+    subtitle: "Real-time collaborative Kanban",
+    category: "Real-Time Collaborative Web Application",
+    status: "Deployed · production-oriented",
+    repo: "https://github.com/Eklakh-Web-Development/Tackboard",
+    demo: "https://tackboard-qpxfbxvx7-23s-projects.vercel.app/",
+    description: "Real-time collaborative Kanban application with authenticated users, persistent boards, row-level security, realtime synchronization, and optimistic UI.",
+    problem: "Teams need a shared workspace where board state persists and changes stay synchronized across users.",
+    architecture: "Browser → Supabase Auth + Data API/RLS + Realtime → PostgreSQL → Vercel.",
+    engineering: ["Authentication", "Row-level security", "Realtime synchronization", "Optimistic UI", "Persistent board storage", "Private presence", "Deployment hardening"],
+    evidence: "Repository documents Supabase Auth, PostgreSQL persistence, RLS on application tables, private Realtime presence, optimistic updates, Vercel deployment, and GitHub CI verification.",
+    metrics: ["Realtime collaboration", "RLS authorization boundary", "Vercel deployment"],
+    stack: ["Vanilla JavaScript", "Supabase", "PostgreSQL", "Realtime", "Vercel"],
+    roleFocus: {
+      "ai-systems": "Realtime state, authorization boundaries, persistence, and deployment.",
+      "web-developer": "Full-stack browser architecture, realtime state, auth, and production deployment."
+    },
+    gallery: [
+      { src: "/evidence/tackboard-architecture.svg", alt: "Tackboard architecture evidence diagram" }
+    ]
+  },
+  jobRecommendations: {
+    id: "jobRecommendations",
+    name: "AI-Powered Job Recommendations Dashboard",
+    subtitle: "Hybrid lexical + semantic recommendation",
+    category: "ML / Recommendation",
+    status: "Prototype · Streamlit",
+    repo: "https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard",
+    description: "Recommendation system that matches unstructured resumes and job descriptions using TF-IDF and dense semantic embeddings, exposed through a Streamlit dashboard.",
+    problem: "Job discovery requires matching unstructured resume content against job descriptions while preserving an interpretable relevance signal.",
+    architecture: "Resume/job text → normalization → TF-IDF + dense embeddings → similarity scoring → ranked recommendations → Streamlit dashboard.",
+    engineering: ["Text normalization", "TF-IDF", "Dense embeddings", "Semantic matching", "Skill-gap analysis", "Interactive reporting"],
+    evidence: "The documented prototype combines sparse lexical matching with dense semantic embeddings and exposes the result through an interactive Streamlit workflow.",
+    metrics: ["TF-IDF baseline", "Dense semantic representation", "Ranked recommendations"],
+    stack: ["Python", "scikit-learn", "SentenceTransformers", "Streamlit", "Pandas"],
+    roleFocus: {
+      "ai-engineer": "Applied semantic matching and recommendation workflow.",
+      "ml-engineer": "Feature representations, similarity scoring, and ranking workflow.",
+      "data-science": "NLP preprocessing, similarity analysis, and explainable recommendation.",
+      "data-analyst": "Interactive ranking and skill-gap reporting."
+    },
+    gallery: [
+      { src: "/evidence/job-recommendations-architecture.svg", alt: "Job recommendation pipeline evidence diagram" }
+    ]
+  },
+  aiJobAgent: {
+    id: "aiJobAgent",
+    name: "AI Job Agent",
+    subtitle: "Autonomous job-discovery pipeline",
+    category: "Agentic Automation / Data Pipeline",
+    status: "Active development",
+    repo: "https://github.com/Eklakh-AI-Engineer/AI-Job-Agent",
+    description: "Staged job-discovery pipeline with source abstraction, normalization, deduplication, SQLite persistence, and tested workflow components.",
+    problem: "Job discovery becomes noisy when source formats, duplicates, and persistence are handled ad hoc.",
+    architecture: "JobSource → normalization → deduplication → SQLite repository → downstream workflow stages.",
+    engineering: ["Source abstraction", "Normalization", "Deduplication", "SQLite persistence", "Staged workflow design"],
+    evidence: "Repository documentation separates implemented backend boundaries from future platform work; production autonomy is not claimed.",
+    metrics: ["Source abstraction", "Deterministic normalization", "Persistent job records"],
+    stack: ["Python", "SQLite", "Automation", "Agentic workflows"],
+    roleFocus: {
+      "ai-engineer": "Agent workflow foundations and structured automation."
+    },
+    gallery: [
+      { src: "/evidence/ai-job-agent-architecture.svg", alt: "AI Job Agent pipeline evidence diagram" }
+    ]
+  },
+  portfolio: {
+    id: "portfolio",
+    name: "Portfolio Site Architecture",
+    subtitle: "Role-aware frontend + Haya evidence assistant",
+    category: "Frontend / AI Integration",
+    status: "Deployed · GitHub Pages",
+    repo: "https://github.com/eklakhdewan/Portfolio",
+    description: "Role-aware portfolio architecture using Vite and vanilla JavaScript, with Haya routed through a Cloudflare Worker so provider credentials stay server-side.",
+    problem: "A recruiter-facing portfolio needs role-specific content without duplicating pages and needs an AI concierge without exposing provider credentials.",
+    architecture: "Vite SPA → role router → canonical project registry → renderer → Haya client → Cloudflare Worker → OpenRouter.",
+    engineering: ["Data-driven rendering", "Role-based views", "Canonical project registry", "Cloudflare Worker proxy", "Secret isolation", "GitHub Pages deployment"],
+    evidence: "The public frontend does not contain the OpenRouter secret; Haya requests are routed through the Cloudflare Worker.",
+    metrics: ["6 role views", "Server-side API-key isolation", "GitHub Pages deployment"],
+    stack: ["Vite", "Vanilla JavaScript", "HTML/CSS", "Cloudflare Workers", "OpenRouter", "GitHub Actions"],
+    roleFocus: {
+      "web-developer": "Role-aware frontend architecture, deployment, and secure AI integration."
+    },
+    gallery: [
+      { src: "/evidence/portfolio-architecture.svg", alt: "Portfolio architecture evidence diagram" }
+    ]
+  }
+};
+
+export const ROLE_PROJECT_IDS = {
+  "ai-engineer": ["enterpriseRag", "taxtrace", "apx", "jobRecommendations"],
+  "ml-engineer": ["jobRecommendations", "enterpriseRag"],
+  "ai-systems": ["apx", "taxtrace", "tackboard", "enterpriseRag"],
+  "data-science": ["jobRecommendations", "enterpriseRag"],
+  "data-analyst": ["taxtrace", "jobRecommendations"],
+  "web-developer": ["tackboard", "taxtrace", "portfolio"]
+};
+
+export const ROLE_FLAGSHIPS = {
+  "ai-engineer": "enterpriseRag",
+  "ml-engineer": "enterpriseRag",
+  "ai-systems": "apx",
+  "data-science": "enterpriseRag",
+  "data-analyst": "taxtrace",
+  "web-developer": "tackboard"
+};
+
+export const ROLE_PROJECTS = Object.fromEntries(
+  Object.entries(ROLE_PROJECT_IDS).map(([roleId, ids]) => [
+    roleId,
+    ids.map(id => PROJECTS[id]).filter(Boolean).map((project, index) => ({
+      ...project,
+      roleFocus: project.roleFocus?.[roleId] || project.subtitle,
+      featured: ROLE_FLAGSHIPS[roleId] === project.id,
+      roleIndex: index + 1
+    }))
+  ])
+);
 
 Object.values(ROLES).forEach(role => {
-  role.projects.forEach(project => {
-    project.category ||= role.title;
-    project.stack ||= [...(project.tags || [])];
-    project.engineering ||= [...(project.tags || [])];
-    project.metrics ||= [];
-    project.featured ||= false;
-  });
+  role.projects = ROLE_PROJECTS[role.id] || [];
 });
+
+
+
