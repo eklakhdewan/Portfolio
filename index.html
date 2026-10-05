@@ -39,6 +39,48 @@
       }
     </script>
     <link rel="stylesheet" href="src/styles.css" />
+    <style>
+      /* Landing flagship contrast fix — light/dark theme aware */
+      .landing-flagships{
+        background:var(--paper);
+        color:var(--ink);
+      }
+      .landing-project-card{
+        padding:28px;
+        border:1px solid var(--line);
+        border-radius:18px;
+        background:var(--white);
+        box-shadow:0 14px 34px rgba(16,24,32,.055);
+        transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+      }
+      .landing-project-card:hover{
+        transform:translateY(-4px);
+        border-color:var(--blue);
+        box-shadow:0 18px 42px rgba(16,24,32,.09);
+      }
+      .landing-project-card h3{
+        margin:.25rem 0 .7rem;
+        color:var(--ink);
+      }
+      .landing-project-card p:not(.eyebrow){
+        color:var(--ink-soft);
+        line-height:1.65;
+      }
+      .landing-project-card .eyebrow{
+        color:var(--cyan);
+      }
+      .landing-project-card .text-link{
+        display:inline-block;
+        margin-top:20px;
+        color:var(--blue);
+      }
+      .landing-project-card .text-link:hover{
+        color:var(--ink);
+      }
+      @media(prefers-reduced-motion:reduce){
+        .landing-project-card{transition:none}
+      }
+    </style>
   </head>
   <body>
     <a class="skip-link" href="#app-root">Skip to content</a>
