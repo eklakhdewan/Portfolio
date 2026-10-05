@@ -263,7 +263,7 @@ export function renderLandingView() {
         <h1>I build AI systems that retrieve, reason, recommend and execute.</h1>
         <p class="hero-summary">AI systems engineer focused on RAG, backend systems, agentic automation, and measurable AI workflows.</p>
         <p class="hero-status"><span class="status-pulse" aria-hidden="true"></span><span>Currently exploring: <strong class="status-link">Agentic Systems &amp; Hybrid Retrieval</strong></span></p>
-        <div class="hero-actions"><a class="button button-primary" href="#ai-engineer">Explore AI Engineer profile ↗</a><button class="button button-secondary" onclick="document.getElementById('bot-toggle').click();">Ask Haya ↗</button></div>
+        <div class="hero-actions"><button class="button button-primary" onclick="document.getElementById('bot-toggle').click();">Start Hiring Interview ↗</button><a class="button button-secondary" href="#ai-engineer">Explore AI Engineer profile ↗</a></div>
         <div class="proof-grid landing-proof" aria-label="Professional proof points">
           <article class="proof-card"><strong>50</strong><span>frozen RAG queries</span></article>
           <article class="proof-card"><strong>780</strong><span>human judgments</span></article>
