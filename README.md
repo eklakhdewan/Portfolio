@@ -44,7 +44,7 @@ Stack: FastAPI, Next.js, TypeScript, SQLAlchemy, PostgreSQL, React Query, Tailwi
 
 Repository: https://github.com/Eklakh-AI-Engineer/TaxTrace
 
-The Stage 6 checkpoint documented **91 backend tests passing**.
+Current independent audit evidence (2026-10-05): **134 backend tests passing, 15 frontend tests passing, TypeScript clean, reconciliation benchmark precision/recall of 1.000 on reported classes, and a 5/5 security audit.** The reconciliation core is the strongest verified workflow; AI explanation/notice generation remains mock-backed, and the project is currently local-run development.
 
 ## Haya
 
