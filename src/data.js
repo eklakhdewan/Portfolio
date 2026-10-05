@@ -14,7 +14,7 @@ export const ROLES = {
       },
       {
         name: "Enterprise RAG / AI Search Platform",
-        description: "Built a retrieval and generation pipeline combining dense retrieval with FAISS, sparse retrieval with BM25, hybrid fusion, cross-encoder reranking, and citation validation.",
+        description: "Built and evaluated an evidence-grounded retrieval system combining dense retrieval, BM25, Hybrid/RRF, cross-encoder reranking, citation validation, and a frozen human-verified benchmark. The current benchmark contains 50 queries and 780 human relevance judgments; Hybrid retrieval shows statistically supported gains over Dense at Recall@10 (+9.9%) and nDCG@10 (+7.0%).",
         featured: true,
         gallery: [
           { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/02_public_landing_flow.png", alt: "Enterprise RAG public landing and product flow" },
@@ -407,9 +407,9 @@ const PROJECT_ENRICHMENTS = {
     category: "AI Search / Retrieval Engineering",
     problem: "Enterprise documents are difficult to search reliably when keyword and semantic retrieval disagree and generated answers can drift beyond the evidence.",
     architecture: "Document ingestion → chunking → dense retrieval with FAISS → sparse retrieval with BM25 → hybrid fusion → cross-encoder reranking → evidence-constrained generation → citation validation.",
-    engineering: ["Dense + sparse retrieval", "Hybrid fusion", "Cross-encoder reranking", "Citation mapping", "Faithfulness verification", "Pipeline observability"],
-    evidence: "Built around explicit retrieval and grounding stages so relevance and answer provenance can be inspected independently.",
-    metrics: ["Recall@K", "MRR", "nDCG"],
+    engineering: ["Dense + sparse retrieval", "Hybrid/RRF fusion", "Cross-encoder reranking", "Human-verified evaluation", "Evidence metadata validation", "OCR fallback validation", "Citation mapping", "Query-rewriting experiment", "Pipeline observability"],
+    evidence: "Frozen CHA benchmark: 50 queries, 780 human relevance judgments, 780 provenance checks. Stable document/page/chunk/span metadata and OCR fallback are validated by automated gates. Query rewriting was independently evaluated and remains disabled by default after mixed retrieval results.",
+    metrics: ["Recall@5 / Recall@10", "MRR", "nDCG@5 / nDCG@10", "Hybrid Recall@10 +9.9%", "Hybrid nDCG@10 +7.0%", "50 queries / 780 human judgments"],
     gallery: [
       {
         src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/04_enterprise_rag_homepage.png",
@@ -424,7 +424,7 @@ const PROJECT_ENRICHMENTS = {
         alt: "Enterprise RAG retrieval observability and evidence"
       }
     ],
-    stack: ["Python", "FastAPI", "FAISS", "BM25", "SentenceTransformers", "React"]
+    stack: ["Python", "FastAPI", "FAISS", "BM25", "SentenceTransformers", "Cross-Encoder", "React"]
   },
   "APX — Accounts Payable Exception Agent": {
     featured: true,
