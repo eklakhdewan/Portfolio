@@ -25,7 +25,28 @@ function normalizeCacheQuestion(text) {
 function deterministicAnswer(question, roleId) {
   const q = normalizeCacheQuestion(question);
   const knowledge = getHayaKnowledge(roleId);
-  if (!knowledge || !roleId || roleId === 'landing') return null;
+  if (!knowledge) return null;
+
+  if (/\b(why (hire|him|you)|hire (him|eklakh)|why should (i|we) hire|what makes (him|eklakh) (different|stand out)|why eklakh|what('s| is) the case for hiring)\b/.test(q)) {
+    return "If you're evaluating Eklakh for an AI/software role, the strongest case is evidence-backed engineering breadth: Enterprise RAG documents a 50-query frozen benchmark with 780 human relevance judgments, including Recall@10 +9.9% and nDCG@10 +7.0% versus the dense baseline; TaxTrace documents 134 backend tests, 15 frontend tests, 7 reconciliation benchmark gate tests, 32 AI quality-gate tests, 1.000 reconciliation precision/recall, and a 5/5 security audit. His work also spans agentic workflows, backend systems, recommendation systems, and full-stack AI applications. The portfolio does not claim large-scale production ownership, so the value proposition is strong technical evidence plus honest scope rather than inflated claims.";
+  }
+
+  if (/\b(strengths?|best at|good at|strongest|standout skills?)\b/.test(q)) {
+    return "The strongest documented areas are retrieval engineering, evidence-grounded AI, evaluation, backend/API engineering, and connecting AI/ML components to usable software. The portfolio repeatedly emphasizes baselines, measurable evaluation, testing, explicit interfaces, and controlled experiments rather than treating a demo as proof of production quality.";
+  }
+
+  if (/\b(different|stand out|unique|special|edge|advantage)\b/.test(q)) {
+    return "The clearest differentiator is the combination of AI depth and software-engineering discipline. Enterprise RAG is not presented as just an LLM app: it includes dense + BM25 retrieval, hybrid/RRF fusion, cross-encoder reranking, evidence-constrained generation, citation validation, and a frozen evaluation set with human judgments. That evaluation-first mindset carries into the other systems.";
+  }
+
+  if (/\b(compare|comparison|other candidates?|better than|versus other)\b/.test(q)) {
+    return "The portfolio does not contain evidence about other candidates, so I cannot honestly rank Eklakh against them. What I can give you is the decision-relevant evidence: retrieval evaluation in Enterprise RAG, automated test coverage and reconciliation gates in TaxTrace, evidence-constrained decision workflows in APX, and full-stack/realtime engineering in Tackboard.";
+  }
+
+  if (/\b(about him|tell me about (him|eklakh)|who is (he|eklakh)|profile|summary|overview)\b/.test(q)) {
+    const { profile } = knowledge;
+    return profile.name + " is a " + profile.degree + " candidate at " + profile.institution + ", graduating " + profile.graduationYear + " with a " + profile.cgpa + " CGPA. His portfolio focuses on applied AI engineering, RAG, AI systems, agentic workflows, machine learning, and software engineering around AI. The strongest evidence is concentrated in Enterprise RAG, TaxTrace, APX, Tackboard, and recommendation/job-agent systems.";
+  }
 
   if (/\b(resume|cv)\b/.test(q)) {
     const role = ROLES[roleId];
@@ -60,7 +81,7 @@ function deterministicAnswer(question, roleId) {
 
   if (/\b(project|projects)\b/.test(q)) {
     return knowledge.projects.length
-      ? `The selected evidence for this role includes: ${knowledge.projects.map((project) => project.name).join('; ')}.`
+      ? `${roleId && ROLES[roleId] ? 'For the ' + ROLES[roleId].title + ' view, ' : ''}the documented projects include: ${knowledge.projects.map((project) => project.name).join('; ')}.`
       : 'The available portfolio data does not document projects for this role.';
   }
 
@@ -135,6 +156,12 @@ function writeClientCache(roleId, question, answer, modelTier = FAST_MODEL_TIER)
 
 
 const ROLE_STARTER_QUESTIONS = {
+  landing: [
+    "Why should a company hire Eklakh?",
+    "What makes Eklakh different from a typical AI portfolio?",
+    "What are his strongest engineering projects?",
+    "What evidence proves the quality of his work?"
+  ],
   "ai-engineer": [
     "How is your Enterprise RAG pipeline structured?",
     "What retrieval techniques did you use in Enterprise RAG?",
@@ -349,9 +376,13 @@ export function initBot() {
 
       const systemPrompt = [
         'You are Haya, Eklakh Dewan’s portfolio evidence assistant.',
-        'Answer conversationally and concisely using only the supplied candidate knowledge.',
+        'Answer like a sharp recruiter-facing portfolio assistant: direct, specific, evidence-led, and conversational.',
+        'Use the supplied candidate knowledge as the source of truth. Prefer concrete projects, metrics, evaluation methods, engineering decisions, and documented scope.',
+        'For questions such as “why hire him?”, “why him?”, “what makes him different?”, or “what is his edge?”, synthesize the strongest documented evidence into a hiring-oriented answer. Do not refuse merely because the portfolio lacks a comparison candidate.',
+        'For comparison questions, do not invent facts about other candidates. State that limitation, then provide the strongest decision-relevant evidence about Eklakh.',
         'Do not invent employers, clients, users, metrics, production scale, publications, or achievements.',
         'If the knowledge does not document an answer, say that the available portfolio data does not document it.',
+        'Do not repeat “the available portfolio data…” when the requested fact is actually documented elsewhere in the supplied knowledge.',
         currentRoleContext !== 'landing'
           ? `The visitor is currently viewing the ${ROLES[currentRoleContext]?.title || 'selected'} role.`
           : 'The visitor is on the portfolio landing page.',
@@ -763,12 +794,11 @@ Rules:
       chatInput.disabled = false;
       chatSubmit.disabled = false;
     } else {
-      chatInput.disabled = true;
-      chatSubmit.disabled = true;
-      addMessage("Hi — I’m Haya. Choose a role to explore Eklakh’s portfolio with role-specific context, projects, skills, and evidence.", 'bot');
-      addRoleSelector();
       chatInput.disabled = false;
       chatSubmit.disabled = false;
+      addMessage("Hi — I’m Haya. Ask me why Eklakh is a fit, what he has built, how the projects were evaluated, or choose a role for deeper context.", 'bot');
+      addStarterQuestions();
+      addRoleSelector();
     }
   }
 
