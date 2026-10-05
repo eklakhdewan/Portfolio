@@ -290,7 +290,7 @@ export const PROJECTS = {
       "web-developer": "FastAPI + Next.js application architecture and typed frontend integration."
     },
     gallery: [
-      { src: "/evidence/taxtrace-architecture.svg", alt: "TaxTrace architecture evidence diagram" }
+      { src: "/evidence/taxtrace-product-visual.svg", alt: "TaxTrace product visual" }
     ]
   },
   enterpriseRag: {
@@ -339,7 +339,7 @@ export const PROJECTS = {
       "ai-systems": "Decision pipeline, failure boundaries, persistence, and controlled execution."
     },
     gallery: [
-      { src: "/evidence/apx-architecture.svg", alt: "APX evidence-constrained agent architecture diagram" }
+      { src: "/evidence/apx-product-visual.svg", alt: "APX evidence-constrained agent architecture diagram" }
     ]
   },
   tackboard: {
@@ -362,7 +362,7 @@ export const PROJECTS = {
       "web-developer": "Full-stack browser architecture, realtime state, auth, and production deployment."
     },
     gallery: [
-      { src: "/evidence/tackboard-architecture.svg", alt: "Tackboard architecture evidence diagram" }
+      { src: "/evidence/tackboard-product-visual.svg", alt: "Tackboard product visual" }
     ]
   },
   jobRecommendations: {
@@ -386,7 +386,7 @@ export const PROJECTS = {
       "data-analyst": "Interactive ranking and skill-gap reporting."
     },
     gallery: [
-      { src: "/evidence/job-recommendations-architecture.svg", alt: "Job recommendation pipeline evidence diagram" }
+      { src: "/evidence/job-recommendations-product-visual.svg", alt: "Job recommendation product visual" }
     ]
   },
   aiJobAgent: {
@@ -407,7 +407,7 @@ export const PROJECTS = {
       "ai-engineer": "Agent workflow foundations and structured automation."
     },
     gallery: [
-      { src: "/evidence/ai-job-agent-architecture.svg", alt: "AI Job Agent pipeline evidence diagram" }
+      { src: "/evidence/ai-job-agent-product-visual.svg", alt: "AI Job Agent product visual" }
     ]
   },
   portfolio: {
@@ -428,7 +428,7 @@ export const PROJECTS = {
       "web-developer": "Role-aware frontend architecture, deployment, and secure AI integration."
     },
     gallery: [
-      { src: "/evidence/portfolio-architecture.svg", alt: "Portfolio architecture evidence diagram" }
+      { src: "/evidence/portfolio-product-visual.svg", alt: "Portfolio product visual" }
     ]
   }
 };
