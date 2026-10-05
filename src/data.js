@@ -317,7 +317,7 @@ const ROLE_ENRICHMENTS = {
     proof: [
       { value: "8.55", label: "CGPA" },
       { value: "2027", label: "Graduation" },
-      { value: "91", label: "TaxTrace backend tests" },
+      { value: "134", label: "TaxTrace backend tests" },
       { value: "AI", label: "Systems focus" }
     ],
     capabilities: {
@@ -327,7 +327,7 @@ const ROLE_ENRICHMENTS = {
       "Infrastructure": ["Docker", "Redis", "BullMQ", "GitHub Actions", "Cloudflare Workers"],
       "Frontend": ["TypeScript", "React", "Next.js", "Vite"]
     },
-    engineeringSignals: ["Idempotency", "Retries", "Persistence", "Observability", "CI/CD", "91 backend tests in TaxTrace Stage 6"]
+    engineeringSignals: ["Idempotency", "Retries", "Persistence", "Observability", "CI/CD", "134 backend tests in TaxTrace audit"]
   },
   "data-science": {
     proof: [
@@ -483,8 +483,8 @@ const PROJECT_ENRICHMENTS = {
     problem: "Tax reconciliation workflows can require manual comparison, exception investigation, and fragmented notice-response handling.",
     architecture: "FastAPI backend → SQLAlchemy/PostgreSQL → reconciliation and exception workflow → Next.js review workspace → React Query → Tailwind UI → Alembic migrations.",
     engineering: ["Exception review workspace", "Relational persistence", "Schema migrations", "Review workflows", "API-driven frontend", "Tested backend changes"],
-    evidence: "Stage 6 added task descriptions, exception and notice-case relationships, and a drafts model; the backend test suite had 91 passing tests for the stage.",
-    metrics: ["91 backend tests passed at Stage 6 checkpoint"],
+    evidence: "Independent audit evidence recorded on 2026-10-05 reports 134 backend tests and 15 frontend tests passing, TypeScript clean, reconciliation benchmark precision/recall of 1.000 on reported classes, and a 5/5 security audit. The reconciliation core is the strongest verified workflow; AI explanation/notice generation remains mock-backed and the project is currently local-run development.",
+    metrics: ["134 backend tests", "15 frontend tests", "1.000 reconciliation precision/recall", "5/5 security audit", "TypeScript clean"],
     stack: ["FastAPI", "Next.js", "TypeScript", "SQLAlchemy", "PostgreSQL", "React Query", "Tailwind CSS", "Alembic"]
   }
 };
@@ -522,8 +522,8 @@ const TAXTRACE_PROJECT = {
   problem: "Tax reconciliation workflows can require manual comparison, exception investigation, and fragmented notice-response handling.",
   architecture: "FastAPI backend → SQLAlchemy/PostgreSQL → reconciliation and exception workflow → Next.js review workspace → React Query → Tailwind UI → Alembic migrations.",
   engineering: ["Exception review workspace", "Relational persistence", "Schema migrations", "Review workflows", "API-driven frontend", "Tested backend changes"],
-  evidence: "Stage 6 added task descriptions, exception and notice-case relationships, and a drafts model; the backend test suite had 91 passing tests for the stage.",
-  metrics: ["91 backend tests passing at Stage 6"],
+  evidence: "Independent audit evidence recorded on 2026-10-05 reports 134 backend tests and 15 frontend tests passing, TypeScript clean, reconciliation benchmark precision/recall of 1.000 on reported classes, and a 5/5 security audit. The reconciliation core is the strongest verified workflow; AI explanation/notice generation remains mock-backed and the project is currently local-run development.",
+  metrics: ["134 backend tests", "15 frontend tests", "1.000 reconciliation precision/recall", "5/5 security audit", "TypeScript clean"],
   stack: ["FastAPI", "Next.js", "TypeScript", "SQLAlchemy", "PostgreSQL", "React Query", "Tailwind CSS", "Alembic"]
 };
 
@@ -542,7 +542,6 @@ const TAXTRACE_PROJECT = {
 });
 
 
-// Evidence policy: role pages only surface projects with a project-specific repository or verified portfolio implementation.
 const ROLE_PROJECT_ALLOWLIST = {
   "ai-engineer": [
     "TaxTrace",
@@ -582,7 +581,6 @@ Object.entries(ROLE_PROJECT_ALLOWLIST).forEach(([roleId, allowedNames]) => {
 });
 
 
-// Normalize every project to the same schema so the renderer and Haya can consume it consistently.
 Object.values(ROLES).forEach(role => {
   role.projects.forEach(project => {
     project.category ||= role.title;
