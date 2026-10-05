@@ -1,54 +1,80 @@
 # Eklakh Dewan — AI Systems Engineer Portfolio
 
-Live site: **https://eklakhdewan.github.io/trial-portfolio/**
+**Live site:** https://eklakhdewan.com.np/
 
-A role-aware portfolio for **AI systems, RAG/retrieval engineering, agentic workflows, backend systems, and applied AI**.
+Production portfolio for **AI systems, retrieval engineering, agentic workflows, backend systems, and applied AI**. The site uses a data-driven role router so recruiters can inspect the same engineering profile through targeted views without duplicating professional history.
 
-This is the **Trial Portfolio** and is intentionally maintained separately from Eklakh Dewan's main portfolio.
-
-## What this portfolio shows
-
-The site presents one engineering profile through six recruiter-focused views:
+## Role views
 
 - **AI Engineer** — RAG, agentic workflows, applied AI pipelines
-- **ML Engineer** — machine learning, evaluation, recommendation systems
-- **AI Systems Engineer** — backend architecture, orchestration, reliability
-- **Data Scientist** — NLP, statistical analysis, predictive modeling
-- **Data Analyst** — SQL, dashboards, reporting
-- **Web Developer** — frontend, APIs, and full-stack applications
+- **ML Engineer** — recommendation systems, retrieval evaluation, applied ML
+- **AI Systems Engineer** — backend architecture, orchestration, persistence, reliability
+- **Data Scientist** — NLP, similarity modelling, predictive workflows
+- **Data Analyst** — SQL, dashboards, reporting, data visualization
+- **Web Developer** — frontend, APIs, full-stack and AI integrations
 
-Each view changes the emphasis and relevant resume without creating separate professional histories.
-
-## Selected work
-
-### AI-Powered Job Recommendations Dashboard
-
-A solo-built recommendation system that combines TF-IDF with dense semantic embeddings to turn unstructured resumes and job descriptions into relevant job matches, exposed through a Streamlit dashboard.
-
-Repository: https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard
+## Flagship engineering work
 
 ### Enterprise RAG / AI Search Platform
-Retrieval pipeline combining dense retrieval with FAISS, BM25, hybrid fusion, cross-encoder reranking, citation validation, and evidence-constrained generation.
+
+Evidence-grounded retrieval system combining dense retrieval, BM25, hybrid/RRF fusion, cross-encoder reranking, citation validation, and human-verified evaluation.
+
+Current portfolio evidence:
+- 50-query frozen benchmark
+- 780 human relevance judgments
+- 780 provenance checks
+- Hybrid Recall@10 improvement: **+9.9%**
+- Hybrid nDCG@10 improvement: **+7.0%**
+- Query rewriting evaluated independently and kept disabled by default after mixed retrieval results
 
 Repository: https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG
 
 ### APX — Accounts Payable Exception Resolution Agent
-Evidence-driven exception-resolution architecture developed through deterministic foundation, retrieval, agent, decision-pipeline, and persistence stages.
+
+Evidence-driven exception-resolution architecture developed through deterministic foundation, retrieval, agent, decision-pipeline, and persistence phases.
 
 Repository: https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent
 
 ### TaxTrace
+
 AI-assisted tax reconciliation and compliance platform with a FastAPI backend and Next.js exception-review workspace.
 
 Stack: FastAPI, Next.js, TypeScript, SQLAlchemy, PostgreSQL, React Query, Tailwind CSS, Alembic.
 
+Recorded audit evidence (2026-10-05):
+- 134 backend tests passing
+- 15 frontend tests passing
+- TypeScript clean
+- reconciliation benchmark precision/recall: 1.000 on reported classes
+- security audit: 5/5
+- reconciliation core is the strongest verified workflow
+- AI explanation/notice generation remains mock-backed
+- currently local-run development
+
 Repository: https://github.com/Eklakh-AI-Engineer/TaxTrace
 
-Current independent audit evidence (2026-10-05): **134 backend tests passing, 15 frontend tests passing, TypeScript clean, reconciliation benchmark precision/recall of 1.000 on reported classes, and a 5/5 security audit.** The reconciliation core is the strongest verified workflow; AI explanation/notice generation remains mock-backed, and the project is currently local-run development.
+### Tackboard
 
-## Haya
+Real-time collaborative Kanban application using Supabase Auth, PostgreSQL/RLS, Supabase Realtime, and Vercel deployment.
 
-**Haya** is the portfolio's evidence-grounded assistant.
+Repository: https://github.com/Eklakh-Web-Development/Tackboard
+Demo: https://tackboard-qpxfbxvx7-23ad070-3509s-projects.vercel.app/
+
+### AI-Powered Job Recommendations Dashboard
+
+Recommendation system combining TF-IDF and dense semantic embeddings to rank job matches from unstructured resume and job-description text.
+
+Repository: https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard
+
+### Insurance End-to-End Claims Automation
+
+Applied ML workflow covering claims ingestion, feature engineering, classification, and anomaly-oriented analysis.
+
+Repository: https://github.com/Eklakh-AI-Engineer/Insurance-End-to-End-Claims-Automation
+
+## Haya — portfolio assistant
+
+Haya is the portfolio's evidence-oriented AI assistant.
 
 Architecture:
 
@@ -57,28 +83,18 @@ Visitor
   ↓
 Vite / Vanilla JS
   ↓
-Browser cache
+Browser-side validation/cache
   ↓
 Cloudflare Worker
   ↓
 OpenRouter
 ```
 
-The Worker keeps the OpenRouter API key server-side and applies:
+The Worker keeps the provider API key server-side and applies origin validation, request limits, message-count limits, rate limiting, prompt-injection checks, model allowlisting, profile grounding, response limits, and edge caching.
 
-- portfolio-origin CORS validation
-- request-size and message-length limits
-- message-count validation
-- per-IP rate limiting
-- prompt-injection rejection
-- model allowlisting
-- profile-JSON grounding
-- concise output limits
-- edge-response caching
+Simple portfolio facts can be handled locally; LLM-backed questions are routed through the Worker.
 
-Simple factual portfolio questions can be answered locally without an LLM. Normal LLM questions use the fast Llama 3.1 8B route; more complex questions can use the stronger Llama 3.3 70B route.
-
-## Technology stack
+## Technology
 
 **Frontend**
 - HTML
@@ -89,19 +105,18 @@ Simple factual portfolio questions can be answered locally without an LLM. Norma
 
 **AI / retrieval**
 - RAG
-- dense retrieval
+- Dense retrieval
 - BM25
-- hybrid retrieval
-- reranking
-- evidence-grounded generation
-- agentic workflows
+- Hybrid retrieval / RRF
+- Cross-encoder reranking
+- Evidence-grounded generation
+- Agentic workflows
 - LLM APIs
 
 **Backend / infrastructure**
 - Python
 - FastAPI
 - PostgreSQL
-- SQLAlchemy
 - Cloudflare Workers
 - OpenRouter
 - Formspree
@@ -110,21 +125,20 @@ Simple factual portfolio questions can be answered locally without an LLM. Norma
 ## Repository structure
 
 ```text
-trial-portfolio/
+Portfolio/
 ├── index.html
-├── cloudflare-worker.js
-├── public/
 ├── src/
 │   ├── main.js
 │   ├── router.js
 │   ├── render.js
 │   ├── data.js
 │   ├── bot.js
+│   ├── haya-interview.js
+│   ├── haya-knowledge.js
 │   └── styles.css
+├── public/
 ├── tests/
-│   └── haya-worker-policy.test.mjs
-├── docs/
-│   └── CHECKLIST.md
+├── cloudflare-worker.js
 ├── robots.txt
 └── sitemap.xml
 ```
@@ -143,34 +157,40 @@ npm run build
 npm run preview
 ```
 
+Haya policy/runtime checks:
+
+```bash
+npm run test:haya-all
+```
+
 ## Evidence policy
 
-This portfolio deliberately separates:
-
-- documented implementation
+The portfolio distinguishes between:
+- implemented functionality
 - measured results
-- evaluation targets
+- evaluation evidence
 - design goals
-- TODOs requiring additional evidence
+- work that is still incomplete or mock-backed
 
-No achievement, metric, certification, employer, deployment claim, patent grant, or performance result should be added without supporting evidence.
+No metric, deployment claim, certification, employer claim, or performance result should be presented as verified without supporting evidence.
 
-## GitHub metadata suggestions
+## SEO
 
-**Description**
+The site includes:
+- canonical URL
+- Open Graph metadata
+- Twitter metadata
+- JSON-LD Person schema
+- robots.txt
+- sitemap.xml
+- semantic static landing content for crawlers
 
-> Role-aware AI Systems Engineer portfolio focused on RAG, retrieval engineering, agentic workflows, backend systems, and applied AI.
+## Contact
 
-**Topics**
-
-`ai-engineering`, `rag`, `retrieval-augmented-generation`, `llm`, `agentic-ai`, `fastapi`, `vanilla-javascript`, `portfolio`
-
-**Homepage**
-
-> https://eklakhdewan.github.io/trial-portfolio/
-
-The GitHub repository name **trial-portfolio** is already clear and honest about the site's role as a separate trial implementation. A future public-facing rename could be `ai-engineer-portfolio`, but the current URL should not be changed casually because it is already indexed and deployed.
+Email: eklakh.inplace@gmail.com  
+GitHub: https://github.com/eklakhdewan  
+LinkedIn: https://www.linkedin.com/in/eklakhdewan/
 
 ## License
 
-This is a personal portfolio repository. Unless otherwise stated, portfolio content, personal information, resumes, and visual assets are not licensed for reuse.
+Personal portfolio. Unless otherwise stated, portfolio content, personal information, resumes, and visual assets are not licensed for reuse.

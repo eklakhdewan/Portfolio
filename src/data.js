@@ -26,10 +26,10 @@ export const ROLES = {
         link: "https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG"
       },
       {
-        name: "AI Agent Workflow Experiments",
-        description: "Explored agentic workflow patterns for coordinating LLM tasks and tool-driven application logic.",
-        tags: ["Agentic Workflows", "LLMs", "Workflow Design"],
-        link: "https://github.com/eklakhdewan"
+        name: "AI Job Agent",
+        description: "Built a staged autonomous job-discovery pipeline with source abstraction, normalization, deduplication, SQLite persistence, and tested workflow components.",
+        tags: ["Python", "Automation", "SQLite", "Agentic Workflows"],
+        link: "https://github.com/Eklakh-AI-Engineer/AI-Job-Agent"
       },
       {
         name: "APX — Accounts Payable Exception Agent",
@@ -78,7 +78,7 @@ export const ROLES = {
         name: "Insurance End-to-End Claims Automation",
         description: "Built a machine-learning workflow for insurance claims data covering ingestion, feature engineering, classification, and anomaly detection.",
         tags: ["Python", "XGBoost", "Data Pipelines", "Classification"],
-        link: "https://github.com/eklakhdewan"
+        link: "https://github.com/Eklakh-AI-Engineer/Insurance-End-to-End-Claims-Automation"
       },
       {
         name: "Enterprise RAG Evaluation Pipeline",
@@ -258,7 +258,7 @@ export const ROLES = {
         name: "Portfolio Site Architecture",
         description: "Designed a single-page, dynamically routed portfolio utilizing Vite, vanilla JavaScript, and semantic HTML. Implemented a custom LLM concierge (Haya) via OpenRouter API and set up automated CI/CD for GitHub Pages deployment.",
         tags: ["HTML/CSS/JS", "Vite", "OpenRouter API", "CI/CD"],
-        link: "https://github.com/eklakhdewan/trial-portfolio"
+        link: "https://github.com/eklakhdewan/Portfolio"
       }
     ],
     skills: [
