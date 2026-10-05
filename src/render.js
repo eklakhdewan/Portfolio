@@ -31,11 +31,11 @@ function projectEvidenceHtml(project) {
 function galleryHtml(project) {
   if (!project.gallery?.length) return "";
   return `
-    <div class="project-gallery" aria-label="${esc(project.name)} evidence gallery">
+    <div class="project-gallery" aria-label="${esc(project.name)} visual gallery">
       ${project.gallery.map((image, index) => `
         <button type="button" class="project-gallery-item" data-lightbox-src="${esc(image.src)}" data-lightbox-alt="${esc(image.alt)}" aria-label="Open ${esc(project.name)} evidence ${index + 1}">
           <img src="${esc(image.src)}" alt="${esc(image.alt)}" loading="lazy" decoding="async" />
-          <span class="gallery-label">Evidence ${String(index + 1).padStart(2, "0")} · expand</span>
+          <span class="gallery-label">${image.src.includes("product-visual") ? "Product visual" : "Repository screenshot"} · expand</span>
         </button>
       `).join("")}
     </div>
