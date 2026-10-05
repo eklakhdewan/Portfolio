@@ -491,7 +491,7 @@ export const PROJECTS = {
     category: "Real-Time Collaborative Web Application",
     status: "Deployed · production-oriented",
     repo: "https://github.com/Eklakh-Web-Development/Tackboard",
-    demo: "https://tackboard-qpxfbxvx7-23s-projects.vercel.app/",
+    demo: "https://tackboard-qpxfbxvx7-23ad070-3509s-projects.vercel.app/",
     description: "Real-time collaborative Kanban application with authenticated users, persistent boards, row-level security, realtime synchronization, and optimistic UI.",
     problem: "Teams need a shared workspace where board state persists and changes stay synchronized across users.",
     architecture: "Browser → Supabase Auth + Data API/RLS + Realtime → PostgreSQL → Vercel.",
