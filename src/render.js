@@ -302,34 +302,60 @@ export function renderLandingView() {
 }
 
 
+
 export function renderAboutView() {
   return `
     <section class="about-page">
       <div class="container">
         <div class="about-header">
-          <div><p class="eyebrow">About / Profile</p><h1>Eklakh Dewan</h1><p class="about-role">AI Systems Engineer</p></div>
+          <div>
+            <p class="eyebrow">About / Profile</p>
+            <h1 class="about-name">Eklakh Dewan</h1>
+            <p class="about-role">AI Systems Engineer</p>
+          </div>
           <a class="button button-secondary" href="#landing">← Back to portfolio</a>
         </div>
+
         <div class="about-intro">
-          <p class="about-label">Short bio</p>
-          <p class="about-bio">I’m an Artificial Intelligence and Data Science engineer focused on designing and building reliable AI systems. My work spans retrieval-augmented generation, information retrieval, intelligent agents, machine learning, backend systems, and evaluation-driven engineering, with an emphasis on turning research concepts into measurable, production-oriented systems where architecture, evidence, and reliability matter as much as model capability.</p>
+          <p class="about-label">Professional profile</p>
+          <p class="about-bio">I’m an Artificial Intelligence and Data Science engineer focused on building technology that is technically rigorous, commercially relevant, and designed to create measurable value. My work sits at the intersection of AI systems, retrieval-augmented generation, intelligent agents, machine learning, backend engineering, and product-oriented software. I approach complex problems with a systems mindset: define the objective, build the right architecture, validate it with evidence, and iterate toward reliability and scale. Alongside engineering, I’m developing a research-oriented direction in trustworthy AI, retrieval and reasoning, evaluation, and methods that make intelligent systems more dependable in real-world settings.</p>
         </div>
+
         <div class="about-grid">
-          <section class="about-panel"><p class="about-label">Profile</p><dl class="about-details">
-            <div><dt>Education</dt><dd>B.Tech — Artificial Intelligence &amp; Data Science</dd></div>
-            <div><dt>Institution</dt><dd>KPR Institute of Engineering and Technology</dd></div>
-            <div><dt>Focus</dt><dd>AI Systems Engineering</dd></div>
-            <div><dt>Primary areas</dt><dd>RAG · Retrieval · Agents · Machine Learning · Backend Engineering</dd></div>
-            <div><dt>Location</dt><dd>Coimbatore, India</dd></div>
-          </dl></section>
-          <section class="about-panel"><p class="about-label">Technical focus</p><div class="about-focus-list">
-            <article><strong>AI Systems</strong><span>Modular AI pipelines and production-oriented system design.</span></article>
-            <article><strong>RAG &amp; Retrieval</strong><span>Hybrid retrieval, ranking, reranking, evidence grounding, and evaluation.</span></article>
-            <article><strong>Intelligent Agents</strong><span>Tool-using systems, decision pipelines, and autonomous workflows.</span></article>
-            <article><strong>Machine Learning</strong><span>Representation learning, applied ML, recommendation, and model evaluation.</span></article>
-            <article><strong>Software Engineering</strong><span>Backend APIs, full-stack applications, testing, and system architecture.</span></article>
-          </div></section>
+          <section class="about-panel">
+            <p class="about-label">Profile</p>
+            <dl class="about-details">
+              <div><dt>Education</dt><dd>B.Tech — Artificial Intelligence &amp; Data Science</dd></div>
+              <div><dt>Institution</dt><dd>KPR Institute of Engineering and Technology</dd></div>
+              <div><dt>Focus</dt><dd>AI Systems Engineering</dd></div>
+              <div><dt>Primary areas</dt><dd>RAG · Retrieval · Agents · Machine Learning · Backend Engineering</dd></div>
+              <div><dt>Perspective</dt><dd>Technology · Product · Systems · Research</dd></div>
+            </dl>
+          </section>
+
+          <section class="about-panel">
+            <p class="about-label">Technical focus</p>
+            <div class="about-focus-list">
+              <article><strong>AI Systems</strong><span>Modular AI pipelines, orchestration, system architecture, and production-oriented design.</span></article>
+              <article><strong>RAG &amp; Retrieval</strong><span>Hybrid retrieval, ranking, reranking, evidence grounding, and retrieval evaluation.</span></article>
+              <article><strong>Intelligent Agents</strong><span>Tool-using systems, decision pipelines, autonomous workflows, and reliability.</span></article>
+              <article><strong>Machine Learning</strong><span>Representation learning, applied ML, recommendation, and model evaluation.</span></article>
+              <article><strong>Software Engineering</strong><span>Backend APIs, full-stack applications, testing, and maintainable infrastructure.</span></article>
+            </div>
+          </section>
         </div>
+
+        <section class="about-research">
+          <div class="about-research-copy">
+            <p class="eyebrow">Research direction</p>
+            <h2>Engineering systems that can be trusted, measured, and extended.</h2>
+            <p>I’m interested in research that closes the gap between capable models and dependable AI systems—especially retrieval and reasoning, context quality, evaluation methodology, agent reliability, and evidence-grounded generation. The goal is not research for novelty alone, but research that can survive implementation, benchmarking, and real-world constraints.</p>
+          </div>
+          <div class="about-research-tags" aria-label="Research interests">
+            <span>Trustworthy AI</span><span>RAG &amp; Retrieval</span><span>Evaluation</span><span>AI Agents</span><span>Reasoning Systems</span><span>Evidence Grounding</span>
+          </div>
+        </section>
+
         <section class="about-philosophy">
           <div class="section-heading"><p class="eyebrow">Engineering philosophy</p><h2>How I build.</h2><p>The portfolio is evidence-first by design. The same principle guides how I approach engineering work.</p></div>
           <div class="about-principles">
@@ -340,6 +366,7 @@ export function renderAboutView() {
             <article><span>05</span><strong>Build for failure</strong><p>Understand system boundaries, failure modes, and regression risk—not just successful demos.</p></article>
           </div>
         </section>
+
         <section class="about-links"><p class="about-label">Find the work</p><div class="contact-actions">
           <a class="button button-primary" href="#ai-engineer">Explore AI Engineer profile ↗</a>
           <a class="button button-secondary" href="https://github.com/eklakhdewan" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
