@@ -408,6 +408,7 @@ html[data-theme="dark"] .landing-project-card .text-link{color:var(--blue)}
 /* About view */
 .about-page{min-height:calc(100vh - 82px);padding:88px 0 110px;background:var(--paper);color:var(--ink)}
 .about-header{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;padding-bottom:34px;border-bottom:1px solid var(--line)}
+.about-name{font-family:"Allura","Segoe Script","Brush Script MT",cursive;font-weight:400;font-size:clamp(4.5rem,8vw,8rem);letter-spacing:-.02em;line-height:.82;margin:.2rem 0 .5rem;color:var(--ink)}
 .about-header h1{margin:.2rem 0 .35rem;font-size:clamp(3rem,7vw,6.5rem);line-height:.95;letter-spacing:-.055em}
 .about-role{margin:0;color:var(--blue);font-size:1rem;font-weight:850;letter-spacing:.04em;text-transform:uppercase}
 .about-intro{max-width:900px;padding:58px 0 64px}
@@ -436,3 +437,13 @@ html[data-theme="dark"] .landing-project-card .text-link{color:var(--blue)}
 .about-links .contact-actions{display:flex;flex-wrap:wrap;gap:10px}
 @media(max-width:900px){.about-grid{grid-template-columns:1fr}.about-principles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.about-page{padding:60px 0 80px}.about-header{display:block}.about-header .button{margin-top:24px}.about-header h1{font-size:clamp(2.8rem,15vw,4.5rem)}.about-intro{padding:44px 0 48px}.about-panel{padding:22px}.about-details div{grid-template-columns:1fr;gap:5px}.about-philosophy{padding:70px 0 55px}.about-principles{grid-template-columns:1fr}.about-principles article{min-height:0}}
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+.about-research{display:grid;grid-template-columns:1.35fr .65fr;gap:42px;margin-top:30px;padding:46px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-research-copy{max-width:760px}
+.about-research-copy h2{margin:0 0 18px;font-size:clamp(2rem,4vw,3.7rem);line-height:1.03;letter-spacing:-.045em}
+.about-research-copy p:last-child{margin:0;color:var(--ink-soft);font-size:.98rem;line-height:1.75}
+.about-research-tags{display:flex;align-content:flex-start;align-items:flex-start;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+.about-research-tags span{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:var(--white);font-size:.7rem;font-weight:800;letter-spacing:.02em}
+@media(max-width:900px){.about-research{grid-template-columns:1fr}.about-research-tags{justify-content:flex-start}}
+@media(max-width:620px){.about-name{font-size:clamp(4rem,18vw,6rem)}.about-research{margin-top:10px;padding:55px 0 48px}.about-research-copy h2{font-size:2.25rem}}
