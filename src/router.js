@@ -1,4 +1,4 @@
-import { renderLandingView, renderRoleView, render404View } from './render.js';
+import { renderLandingView, renderRoleView, renderAboutView, render404View } from './render.js';
 import { ROLES } from './data.js';
 
 export function initRouter(bot) {
@@ -38,6 +38,11 @@ export function initRouter(bot) {
       } else {
         window.scrollTo(0, 0);
       }
+    } else if (hash === 'about') {
+      appRoot.innerHTML = renderAboutView();
+      bot.updateContext('about');
+      initMotion();
+      window.scrollTo(0, 0);
     } else if (ROLES[hash]) {
       appRoot.innerHTML = renderRoleView(hash);
       bot.updateContext(hash);
@@ -142,6 +147,12 @@ export function initRouter(bot) {
         if (action === 'haya') {
           event.preventDefault();
           document.getElementById('bot-toggle')?.click();
+          return;
+        }
+
+        if (action === 'about') {
+          event.preventDefault();
+          window.location.hash = 'about';
           return;
         }
 
