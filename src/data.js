@@ -315,9 +315,11 @@ export const PROJECTS = {
       "web-developer": "React + FastAPI search workspace with evidence-rich result presentation."
     },
     gallery: [
+      { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/01_public_landing_login.png", alt: "Enterprise RAG grounded knowledge interface" },
       { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/04_enterprise_rag_homepage.png", alt: "Enterprise RAG application interface" },
       { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/05_grounded_query_response.png", alt: "Enterprise RAG grounded response with citations" },
-      { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/06_pipeline_observability_retrieved_evidence.png", alt: "Enterprise RAG retrieval observability and evidence" }
+      { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/06_pipeline_observability_retrieved_evidence.png", alt: "Enterprise RAG retrieval observability and evidence" },
+      { src: "https://raw.githubusercontent.com/Eklakh-AI-Engineer/ENTERPRISE-RAG/main/screenshots/01_pipeline_evaluation_88_percent.png", alt: "Enterprise RAG evaluation and pipeline performance" }
     ]
   },
   apx: {
