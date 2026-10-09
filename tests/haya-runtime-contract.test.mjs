@@ -11,6 +11,7 @@ assert.match(bot, /deterministicAnswer/);
 assert.match(bot, /readClientCache/);
 assert.match(bot, /writeClientCache/);
 assert.match(bot, /handleInterviewAnswer/);
+assert.doesNotMatch(bot, /addInterviewControl|Start mock interview|Restart mock interview|End interview/);
 
 const answerIncrements = bot.match(/session\.answered \+= 1;/g) || [];
 assert.equal(answerIncrements.length, 1, "each interview answer must be counted exactly once");
