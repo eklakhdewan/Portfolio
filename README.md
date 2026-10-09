@@ -13,9 +13,11 @@ Production portfolio for **AI systems, retrieval engineering, agentic workflows,
 - **Data Analyst** — SQL, dashboards, reporting, data visualization
 - **Web Developer** — frontend, APIs, full-stack and AI integrations
 
-## Flagship engineering work
+## Featured engineering work
 
-### Enterprise RAG / AI Search Platform
+Projects are ordered by engineering evidence and current relevance. Implementation status is intentionally distinguished from production readiness.
+
+### 1. Enterprise RAG / AI Search Platform
 
 Evidence-grounded retrieval system combining dense retrieval, BM25, hybrid/RRF fusion, cross-encoder reranking, citation validation, and human-verified evaluation.
 
@@ -29,48 +31,63 @@ Current portfolio evidence:
 
 Repository: https://github.com/Eklakh-AI-Engineer/ENTERPRISE-RAG
 
-### APX — Accounts Payable Exception Resolution Agent
+Status: local research/engineering system; production multi-tenant release remains gated.
+
+### 2. AI Job Agent
+
+Job discovery, normalization, deduplication, candidate–job ranking, and application-workflow preparation with a human-approval boundary.
+
+Repository: https://github.com/Eklakh-AI-Engineer/AI-Job-Agent
+
+**Release status: pre-v1.0 validation; not production-certified.** The repository records a mismatch between the frozen workbook hash and the CI input, synthetic benchmark job IDs that are not yet mapped to real persisted jobs for authoritative ranking, and incomplete alert-delivery and backup/restore verification. Do not present its current ranking baseline as production performance.
+
+### 3. APX — Accounts Payable Exception Resolution Agent
 
 Evidence-driven exception-resolution architecture developed through deterministic foundation, retrieval, agent, decision-pipeline, and persistence phases.
 
 Repository: https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent
 
-### TaxTrace
+### 4. TaxTrace
 
 AI-assisted tax reconciliation and compliance platform with a FastAPI backend and Next.js exception-review workspace.
 
 Stack: FastAPI, Next.js, TypeScript, SQLAlchemy, PostgreSQL, React Query, Tailwind CSS, Alembic.
 
-Recorded audit evidence (2026-10-05):
-- 134 backend tests passing
-- 15 frontend tests passing
-- TypeScript clean
-- reconciliation benchmark precision/recall: 1.000 on reported classes
-- security audit: 5/5
-- reconciliation core is the strongest verified workflow
-- AI explanation/notice generation remains mock-backed
-- currently local-run development
+Recorded repository evidence:
+- 134 backend tests, 15 frontend tests, 7 reconciliation benchmark gate tests, and 32 AI quality-gate tests passing in the documented run
+- TypeScript and frontend production build reported clean
+- reconciliation benchmark reports 1.000 precision/recall on its reported classes; treat this as benchmark-scoped, not a general production guarantee
+- AI explanations and notice generation use a mock provider in verification
+- production AI provider/cost controls, observability, staging/production CI/CD, and production deployment remain pending
+
+Status: controlled-pilot application; production deployment is not claimed.
 
 Repository: https://github.com/Eklakh-AI-Engineer/TaxTrace
 
-### Tackboard
+### 5. Tackboard
 
 Real-time collaborative Kanban application using Supabase Auth, PostgreSQL/RLS, Supabase Realtime, and Vercel deployment.
 
 Repository: https://github.com/Eklakh-Web-Development/Tackboard
 Demo: https://tackboard-qpxfbxvx7-23ad070-3509s-projects.vercel.app/
 
-### AI-Powered Job Recommendations Dashboard
+### 6. AI-Powered Job Recommendations Dashboard
 
 Recommendation system combining TF-IDF and dense semantic embeddings to rank job matches from unstructured resume and job-description text.
 
 Repository: https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard
 
-### Insurance End-to-End Claims Automation
+### 7. ClaimAI — Insurance Claims Automation
 
-Applied ML workflow covering claims ingestion, feature engineering, classification, and anomaly-oriented analysis.
+Applied ML prototype combining document extraction, fraud scoring, image analysis, payout estimation, and a review/settlement decision path.
 
 Repository: https://github.com/Eklakh-AI-Engineer/Insurance-End-to-End-Claims-Automation
+
+Status: prototype. Production model validation, insurance authorization, and regulatory certification are not claimed.
+
+### APX status note
+
+APX is a phased engineering system. Its latest documented milestone is Phase 6D (Observability & Security); the README records 180 passing tests in its regression accounting and a separately reported API suite of 60 passing tests with one expected skip. Production readiness, production ERP integration, and deployment-specific authorization are not claimed.
 
 ## Haya — portfolio assistant
 
