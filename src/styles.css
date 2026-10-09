@@ -447,3 +447,81 @@ html[data-theme="dark"] .landing-project-card .text-link{color:var(--blue)}
 .about-research-tags span{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:var(--white);font-size:.7rem;font-weight:800;letter-spacing:.02em}
 @media(max-width:900px){.about-research{grid-template-columns:1fr}.about-research-tags{justify-content:flex-start}}
 @media(max-width:620px){.about-header .about-name{font-size:clamp(4rem,18vw,6rem)}.about-research{margin-top:10px;padding:55px 0 48px}.about-research-copy h2{font-size:2.25rem}}
+
+/* Haya floating avatar — portfolio palette */
+#bot-toggle{
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:88px;
+  min-width:88px;
+  height:88px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:#F4F1EA;
+  box-shadow:none;
+  overflow:visible;
+}
+#bot-toggle > span:first-child{display:none}
+#bot-toggle::before{
+  content:"";
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:url("/assets/haya-avatar.webp") center/contain no-repeat;
+  filter:drop-shadow(0 5px 12px rgba(21,25,34,.24));
+  transition:transform .22s ease,filter .22s ease;
+}
+#bot-toggle::after{
+  content:"Ask Haya";
+  position:absolute;
+  right:calc(100% + 10px);
+  top:50%;
+  transform:translate(5px,-50%);
+  padding:8px 12px;
+  border:1px solid #38CFE8;
+  border-radius:10px;
+  background:#151922;
+  color:#F4F1EA;
+  font-size:.78rem;
+  font-weight:800;
+  line-height:1.2;
+  white-space:nowrap;
+  box-shadow:0 8px 24px rgba(21,25,34,.18);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease,transform .18s ease;
+}
+#bot-toggle:hover{transform:none;box-shadow:none}
+#bot-toggle:hover::before,#bot-toggle:focus-visible::before{
+  transform:translateY(-3px) scale(1.035);
+  filter:drop-shadow(0 0 9px rgba(56,207,232,.34));
+}
+#bot-toggle:hover::after,#bot-toggle:focus-visible::after{
+  opacity:1;
+  transform:translate(0,-50%);
+}
+#bot-toggle:active::before{transform:scale(.97)}
+.haya-toggle-label{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+html[data-theme="dark"] #bot-toggle{border:0;background:transparent;box-shadow:none}
+@media(max-width:560px){
+  #bot-toggle{width:76px;min-width:76px;height:76px;padding:0;border:0;border-radius:50%;background:transparent}
+  #bot-toggle::after{right:calc(100% + 8px)}
+}
+@media(prefers-reduced-motion:reduce){
+  #bot-toggle::before,#bot-toggle::after{transition:none}
+}
+
