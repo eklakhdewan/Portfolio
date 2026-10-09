@@ -589,3 +589,11 @@ html[data-theme="dark"] .about-page{background:#fff;color:#151922}
   .about-profile-links{gap:8px}
 }
 @media(prefers-reduced-motion:reduce){.about-proof-card{transition:none}.about-proof-card:hover{transform:none}}
+
+
+/* Personal About page: biography, background, education and interests */
+.about-personal-details{margin:34px 0 36px;border-top:1px solid #e7e5e0}
+.about-detail-row{display:grid;grid-template-columns:minmax(120px,.35fr) 1fr;gap:22px;padding:15px 0;border-bottom:1px solid #e7e5e0}
+.about-detail-row span{color:#65717a;font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.about-detail-row strong{color:#151922;font-size:.92rem;line-height:1.55;font-weight:650}
+@media(max-width:620px){.about-detail-row{grid-template-columns:1fr;gap:5px;padding:13px 0}}
