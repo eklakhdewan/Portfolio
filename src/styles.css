@@ -525,3 +525,14 @@ html[data-theme="dark"] #bot-toggle{border:0;background:transparent;box-shadow:n
   #bot-toggle::before,#bot-toggle::after{transition:none}
 }
 
+
+
+/* Explicit image element for reliable Haya rendering */
+#bot-widget{position:fixed!important;right:max(20px,env(safe-area-inset-right))!important;bottom:max(20px,env(safe-area-inset-bottom))!important;z-index:2147483000!important;display:block!important;visibility:visible!important;opacity:1!important}
+#bot-toggle.haya-avatar-toggle{position:relative;display:grid;place-items:center;width:88px;height:88px;min-width:88px;padding:0;overflow:visible;border:2px solid rgba(56,207,232,.8);border-radius:50%;background:#151922;box-shadow:0 8px 28px rgba(21,25,34,.22);cursor:pointer}
+#bot-toggle.haya-avatar-toggle > img{display:block;width:100%;height:100%;object-fit:contain;border-radius:50%;position:relative;z-index:1}
+#bot-toggle.haya-avatar-toggle > .haya-toggle-label{z-index:2}
+#bot-toggle.haya-avatar-toggle::before{display:none}
+#bot-toggle.haya-avatar-toggle::after{z-index:3}
+#bot-toggle.haya-avatar-fallback::before{content:"H";display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#151922;color:#38CFE8;font-size:2.6rem;font-weight:800}
+@media(max-width:560px){#bot-toggle.haya-avatar-toggle{width:76px;height:76px;min-width:76px}}
