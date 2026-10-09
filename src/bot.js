@@ -156,12 +156,6 @@ function writeClientCache(roleId, question, answer, modelTier = FAST_MODEL_TIER)
 
 
 const ROLE_STARTER_QUESTIONS = {
-  landing: [
-    "Why should a company hire Eklakh?",
-    "What makes Eklakh different from a typical AI portfolio?",
-    "What are his strongest engineering projects?",
-    "What evidence proves the quality of his work?"
-  ],
   "ai-engineer": [
     "How is your Enterprise RAG pipeline structured?",
     "What retrieval techniques did you use in Enterprise RAG?",
@@ -796,8 +790,7 @@ Rules:
     } else {
       chatInput.disabled = false;
       chatSubmit.disabled = false;
-      addMessage("Hi — I’m Haya. Ask me why Eklakh is a fit, what he has built, how the projects were evaluated, or choose a role for deeper context.", 'bot');
-      addStarterQuestions();
+      addMessage("Hi — I’m Haya. Choose a role to explore Eklakh’s relevant projects, capabilities, and engineering evidence.", 'bot');
       addRoleSelector();
     }
   }
