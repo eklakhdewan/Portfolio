@@ -508,30 +508,6 @@ export function initBot() {
     chatMessages.appendChild(selectorDiv);
   }
 
-  function addInterviewControl() {
-    const wrap = document.createElement('div');
-    wrap.className = 'haya-starters';
-    wrap.setAttribute('aria-label', 'Interview controls');
-
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'haya-starter';
-    button.textContent = interviewSession?.active ? 'Restart mock interview' : 'Start mock interview';
-    button.addEventListener('click', startInterview);
-    wrap.appendChild(button);
-
-    if (interviewSession?.active) {
-      const stop = document.createElement('button');
-      stop.type = 'button';
-      stop.className = 'haya-starter';
-      stop.textContent = 'End interview';
-      stop.addEventListener('click', stopInterview);
-      wrap.appendChild(stop);
-    }
-
-    chatMessages.appendChild(wrap);
-  }
-
   function startInterview() {
     if (!ROLES[currentRoleContext]) return;
 
@@ -566,7 +542,7 @@ export function initBot() {
       'bot'
     );
     addMessage(`${progress.current}/${progress.total} — ${firstQuestion.question}`, 'bot');
-    addInterviewControl();
+
     chatInputArea.style.display = 'flex';
     chatInput.focus();
   }
@@ -766,7 +742,7 @@ Rules:
     ].filter(Boolean).join(' ');
 
     addMessage(summary, 'bot');
-    addInterviewControl();
+
   }
 
 
@@ -784,7 +760,7 @@ Rules:
     if (roleId !== 'landing' && ROLES[roleId]) {
       addMessage(`Haya can explain the portfolio evidence for the ${ROLES[roleId].title} view — projects, capabilities, experience, and the relevant resume. Ask about any specific item.`, 'bot');
       addStarterQuestions();
-      addInterviewControl();
+
       chatInput.disabled = false;
       chatSubmit.disabled = false;
     } else {
