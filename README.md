@@ -47,6 +47,10 @@ Evidence-driven exception-resolution architecture developed through deterministi
 
 Repository: https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent
 
+#### Release boundary
+
+APX is a phased engineering system. Its latest documented milestone is Phase 6D (Observability & Security); the README records 180 passing tests in its regression accounting and a separately reported API suite of 60 passing tests with one expected skip. Production readiness, production ERP integration, and deployment-specific authorization are not claimed.
+
 ### 4. TaxTrace
 
 AI-assisted tax reconciliation and compliance platform with a FastAPI backend and Next.js exception-review workspace.
@@ -64,20 +68,7 @@ Status: controlled-pilot application; production deployment is not claimed.
 
 Repository: https://github.com/Eklakh-AI-Engineer/TaxTrace
 
-### 5. Tackboard
-
-Real-time collaborative Kanban application using Supabase Auth, PostgreSQL/RLS, Supabase Realtime, and Vercel deployment.
-
-Repository: https://github.com/Eklakh-Web-Development/Tackboard
-Demo: https://tackboard-qpxfbxvx7-23ad070-3509s-projects.vercel.app/
-
-### 6. AI-Powered Job Recommendations Dashboard
-
-Recommendation system combining TF-IDF and dense semantic embeddings to rank job matches from unstructured resume and job-description text.
-
-Repository: https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard
-
-### 7. ClaimAI — Insurance Claims Automation
+### 5. ClaimAI — Insurance Claims Automation
 
 Applied ML prototype combining document extraction, fraud scoring, image analysis, payout estimation, and a review/settlement decision path.
 
@@ -85,9 +76,18 @@ Repository: https://github.com/Eklakh-AI-Engineer/Insurance-End-to-End-Claims-Au
 
 Status: prototype. Production model validation, insurance authorization, and regulatory certification are not claimed.
 
-### APX status note
+### 6. Tackboard
 
-APX is a phased engineering system. Its latest documented milestone is Phase 6D (Observability & Security); the README records 180 passing tests in its regression accounting and a separately reported API suite of 60 passing tests with one expected skip. Production readiness, production ERP integration, and deployment-specific authorization are not claimed.
+Real-time collaborative Kanban application using Supabase Auth, PostgreSQL/RLS, Supabase Realtime, and Vercel deployment.
+
+Repository: https://github.com/Eklakh-Web-Development/Tackboard
+Demo: https://tackboard-qpxfbxvx7-23ad070-3509s-projects.vercel.app/
+
+### 7. AI-Powered Job Recommendations Dashboard
+
+Recommendation system combining TF-IDF and dense semantic embeddings to rank job matches from unstructured resume and job-description text.
+
+Repository: https://github.com/Eklakh-AI-Engineer/AI-Powered-Job-Recommendations-Dashboard
 
 ## Haya — portfolio assistant
 
