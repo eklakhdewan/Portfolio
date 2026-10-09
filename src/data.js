@@ -344,6 +344,27 @@ export const PROJECTS = {
       { src: "/evidence/apx-product-visual.svg", alt: "APX evidence-constrained agent architecture diagram" }
     ]
   },
+  claimAI: {
+    id: "claimAI",
+    name: "ClaimAI — Insurance Claims Automation",
+    subtitle: "Applied ML claims-processing prototype",
+    category: "Applied ML / Insurance Claims",
+    status: "Prototype · validation not claimed",
+    repo: "https://github.com/Eklakh-AI-Engineer/Insurance-End-to-End-Claims-Automation",
+    description: "Insurance-claims automation prototype combining document extraction, fraud scoring, image analysis, payout estimation, and a human-review path.",
+    problem: "Claims workflows need structured evidence processing and review support without presenting prototype decisions as validated insurance adjudication.",
+    architecture: "Claim submission → FastAPI → document/OCR extraction + fraud scoring + image analysis + payout estimation → prototype decision policy → human review.",
+    engineering: ["FastAPI workflow", "Fraud-scoring pipeline", "Image analysis", "Payout estimation", "Review boundary", "Docker Compose"],
+    evidence: "Repository explicitly classifies the system as a prototype; production model validation, insurance authorization, and regulatory certification are not claimed.",
+    metrics: ["Prototype workflow", "Model validation not claimed", "Human review boundary"],
+    stack: ["Python", "FastAPI", "React", "PostgreSQL", "XGBoost", "Isolation Forest", "Docker"],
+    roleFocus: {
+      "ai-engineer": "Applied ML pipeline with explicit review and validation boundaries.",
+      "ml-engineer": "Fraud scoring, image analysis, payout estimation, and model-validation considerations.",
+      "ai-systems": "API orchestration, claim evidence processing, and human review boundary."
+    },
+    gallery: []
+  },
   tackboard: {
     id: "tackboard",
     name: "Tackboard",
@@ -396,14 +417,14 @@ export const PROJECTS = {
     name: "AI Job Agent",
     subtitle: "Autonomous job-discovery pipeline",
     category: "Agentic Automation / Data Pipeline",
-    status: "Active development",
+    status: "Pre-v1.0 · release blocked",
     repo: "https://github.com/Eklakh-AI-Engineer/AI-Job-Agent",
     description: "Staged job-discovery pipeline with source abstraction, normalization, deduplication, SQLite persistence, and tested workflow components.",
     problem: "Job discovery becomes noisy when source formats, duplicates, and persistence are handled ad hoc.",
     architecture: "JobSource → normalization → deduplication → SQLite repository → downstream workflow stages.",
     engineering: ["Source abstraction", "Normalization", "Deduplication", "SQLite persistence", "Staged workflow design"],
-    evidence: "Repository documentation separates implemented backend boundaries from future platform work; production autonomy is not claimed.",
-    metrics: ["Source abstraction", "Deterministic normalization", "Persistent job records"],
+    evidence: "Release remains blocked: frozen workbook hash must be reconciled with CI input, synthetic benchmark job IDs must be mapped to real persisted jobs before authoritative ranking, and alert delivery plus restore validation remain incomplete.",
+    metrics: ["Normalization and deduplication", "Ranking baseline blocked on real-job mapping", "Regression gate fail-closed", "Production release not certified"],
     stack: ["Python", "SQLite", "Automation", "Agentic workflows"],
     roleFocus: {
       "ai-engineer": "Agent workflow foundations and structured automation."
@@ -436,10 +457,10 @@ export const PROJECTS = {
 };
 
 export const ROLE_PROJECT_IDS = {
-  "ai-engineer": ["enterpriseRag", "taxtrace", "apx", "jobRecommendations"],
-  "ml-engineer": ["jobRecommendations", "enterpriseRag"],
-  "ai-systems": ["apx", "taxtrace", "tackboard", "enterpriseRag"],
-  "data-science": ["jobRecommendations", "enterpriseRag"],
+  "ai-engineer": ["enterpriseRag", "aiJobAgent", "apx", "taxtrace", "claimAI", "jobRecommendations"],
+  "ml-engineer": ["enterpriseRag", "claimAI", "jobRecommendations"],
+  "ai-systems": ["apx", "aiJobAgent", "taxtrace", "tackboard", "enterpriseRag"],
+  "data-science": ["enterpriseRag", "claimAI", "jobRecommendations"],
   "data-analyst": ["taxtrace", "jobRecommendations"],
   "web-developer": ["tackboard", "taxtrace", "portfolio"]
 };
