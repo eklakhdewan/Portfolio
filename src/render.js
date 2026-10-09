@@ -307,25 +307,52 @@ export function renderAboutView() {
   return `
     <section class="about-page">
       <div class="container about-profile-container">
-        <div class="about-header">
+        <header class="about-header">
           <div>
             <p class="eyebrow">Professional Profile</p>
             <h1 class="about-name">Eklakh Dewan</h1>
             <p class="about-role">AI Systems Engineer</p>
           </div>
-        </div>
+        </header>
 
         <article class="about-profile">
-          <h2>I build AI systems that companies can trust in production, not just demo.</h2>
-          <p>Most AI products fail on reliability, not capability. I focus on that gap: retrieval pipelines, agentic workflows, and backend systems that are benchmarked before they’re shipped. My enterprise RAG platform is validated on a frozen 50-query benchmark with 780 human judgments, and my TaxTrace backend ships with 134 automated tests and a 5/5 security audit.</p>
-          <p>I work end to end: problem definition, architecture, evaluation, and deployment. I also say plainly what is production-ready and what isn’t, because teams that scale AI need engineers who report results as they are.</p>
-          <p>Alongside engineering, I’m building a research direction in trustworthy AI: retrieval, reasoning, and evaluation methods that make AI dependable in high-stakes settings.</p>
-          <p class="about-profile-availability"><strong>Open to AI engineering roles and founder-led teams.</strong></p>
-          <div class="about-profile-links">
-            <a class="text-link" href="${import.meta.env.BASE_URL}Resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
-            <span aria-hidden="true">·</span>
-            <a class="text-link" href="mailto:eklakh.inplace@gmail.com">Contact ↗</a>
-          </div>
+          <h2>I build AI systems companies can trust in production—not just demos.</h2>
+          <p>AI products often fall short not because the model lacks capability, but because the surrounding system is unreliable. I work on that gap: retrieval pipelines, agentic workflows, and backend services that are tested and evaluated before claims are made about their performance.</p>
+          <p>My enterprise RAG platform is evaluated on a frozen 50-query benchmark with 780 human judgments. TaxTrace’s backend has 134 automated tests and a reported 5/5 security-audit result. These are specific project signals—not a claim that every component is production-deployed.</p>
+          <p>I work end to end, from problem definition and architecture to evaluation and deployment. I value clear evidence, reproducible checks, and honest reporting about what works, what does not, and what still needs validation.</p>
+          <p>Alongside engineering, I’m developing a research direction in trustworthy AI, focused on retrieval, reasoning, and evaluation methods for dependable systems in high-stakes settings.</p>
+
+          <section class="about-proof" aria-label="Selected engineering evidence">
+            <a class="about-proof-card" href="#ai-engineer">
+              <strong>50 queries</strong>
+              <span>Frozen RAG evaluation set</span>
+              <small>Explore retrieval evidence ↗</small>
+            </a>
+            <a class="about-proof-card" href="#ai-engineer">
+              <strong>780 judgments</strong>
+              <span>Human benchmark assessments</span>
+              <small>Explore evaluation work ↗</small>
+            </a>
+            <a class="about-proof-card" href="#ai-systems">
+              <strong>134 tests</strong>
+              <span>TaxTrace backend automation</span>
+              <small>Explore systems work ↗</small>
+            </a>
+            <a class="about-proof-card" href="#ai-systems">
+              <strong>5/5 audit</strong>
+              <span>Reported security-audit result</span>
+              <small>Explore backend work ↗</small>
+            </a>
+          </section>
+
+          <footer class="about-profile-footer">
+            <p><strong>Open to AI engineering roles and founder-led teams.</strong></p>
+            <nav class="about-profile-links" aria-label="Professional links">
+              <a class="button button-primary" href="${import.meta.env.BASE_URL}Resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+              <a class="button button-secondary" href="mailto:eklakh.inplace@gmail.com">Contact ↗</a>
+              <a class="about-github-link" href="https://github.com/eklakhdewan" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </nav>
+          </footer>
         </article>
       </div>
     </section>
