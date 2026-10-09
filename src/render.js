@@ -309,48 +309,34 @@ export function renderAboutView() {
       <div class="container about-profile-container">
         <header class="about-header">
           <div>
-            <p class="eyebrow">Professional Profile</p>
+            <p class="eyebrow">About Me</p>
             <h1 class="about-name">Eklakh Dewan</h1>
             <p class="about-role">AI Systems Engineer</p>
           </div>
         </header>
 
         <article class="about-profile">
-          <h2>I build AI systems companies can trust in production—not just demos.</h2>
-          <p>AI products often fall short not because the model lacks capability, but because the surrounding system is unreliable. I work on that gap: retrieval pipelines, agentic workflows, and backend services that are tested and evaluated before claims are made about their performance.</p>
-          <p>My enterprise RAG platform is evaluated on a frozen 50-query benchmark with 780 human judgments. TaxTrace’s backend has 134 automated tests and a reported 5/5 security-audit result. These are specific project signals—not a claim that every component is production-deployed.</p>
-          <p>I work end to end, from problem definition and architecture to evaluation and deployment. I value clear evidence, reproducible checks, and honest reporting about what works, what does not, and what still needs validation.</p>
-          <p>Alongside engineering, I’m developing a research direction in trustworthy AI, focused on retrieval, reasoning, and evaluation methods for dependable systems in high-stakes settings.</p>
+          <h2>A little about me.</h2>
+          <p>I’m Eklakh Dewan, an AI Systems Engineer based in Coimbatore, Tamil Nadu, India. I’m pursuing a B.Tech in Artificial Intelligence and Data Science at KPR Institute of Engineering and Technology, with a strong interest in building practical software and intelligent systems.</p>
+          <p>My work spans AI engineering, machine learning, retrieval-augmented generation (RAG), backend development, and agentic workflows. I enjoy understanding how the pieces of a system fit together—from data and retrieval to APIs, evaluation, and the user experience—and turning that understanding into projects people can inspect and use.</p>
+          <p>I’ve gained industry exposure as an Artificial Intelligence Intern at Flowrage Technology, where I worked with Gemini API integration, resume parsing, and job-matching workflows using text processing and embeddings.</p>
+          <p>Outside individual implementations, I’m interested in trustworthy AI research: how retrieval, reasoning, and evaluation can make AI systems more reliable and useful in real-world settings. I value curiosity, hands-on experimentation, and being clear about what I’ve built, what I’ve learned, and what I’m still improving.</p>
 
-          <section class="about-proof" aria-label="Selected engineering evidence">
-            <a class="about-proof-card" href="#ai-engineer">
-              <strong>50 queries</strong>
-              <span>Frozen RAG evaluation set</span>
-              <small>Explore retrieval evidence ↗</small>
-            </a>
-            <a class="about-proof-card" href="#ai-engineer">
-              <strong>780 judgments</strong>
-              <span>Human benchmark assessments</span>
-              <small>Explore evaluation work ↗</small>
-            </a>
-            <a class="about-proof-card" href="#ai-systems">
-              <strong>134 tests</strong>
-              <span>TaxTrace backend automation</span>
-              <small>Explore systems work ↗</small>
-            </a>
-            <a class="about-proof-card" href="#ai-systems">
-              <strong>5/5 audit</strong>
-              <span>Reported security-audit result</span>
-              <small>Explore backend work ↗</small>
-            </a>
+          <section class="about-personal-details" aria-label="Personal and professional background">
+            <div class="about-detail-row"><span>Education</span><strong>B.Tech, Artificial Intelligence &amp; Data Science</strong></div>
+            <div class="about-detail-row"><span>Institution</span><strong>KPR Institute of Engineering and Technology</strong></div>
+            <div class="about-detail-row"><span>Based in</span><strong>Coimbatore, Tamil Nadu, India</strong></div>
+            <div class="about-detail-row"><span>Experience</span><strong>Artificial Intelligence Intern · Flowrage Technology</strong></div>
+            <div class="about-detail-row"><span>Interests</span><strong>AI systems, RAG, machine learning, backend engineering, trustworthy AI research</strong></div>
           </section>
 
           <footer class="about-profile-footer">
-            <p><strong>Open to AI engineering roles and founder-led teams.</strong></p>
+            <p><strong>I’m open to AI engineering opportunities, research collaborations, and working with teams building useful technology.</strong></p>
             <nav class="about-profile-links" aria-label="Professional links">
               <a class="button button-primary" href="${import.meta.env.BASE_URL}Resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
               <a class="button button-secondary" href="mailto:eklakh.inplace@gmail.com">Contact ↗</a>
               <a class="about-github-link" href="https://github.com/eklakhdewan" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a class="about-github-link" href="https://www.linkedin.com/in/eklakhdewan/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             </nav>
           </footer>
         </article>
