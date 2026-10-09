@@ -20,11 +20,10 @@ assert.match(router, /renderLandingView\(\)/);
 assert.match(router, /bot\.updateContext\(['"]landing['"]\)/);
 assert.match(render, /I build AI systems that retrieve, reason, recommend and execute/);
 assert.match(render, /Start Hiring Interview/);
-assert.match(render, /I build AI systems companies can trust in production—not just demos/);
-assert.match(render, /frozen 50-query benchmark with 780 human judgments/);
-assert.match(render, /about-proof-card/);
-assert.match(render, /href="#ai-engineer"/);
-assert.match(render, /href="#ai-systems"/);
+assert.match(render, /I’m Eklakh Dewan, an AI Systems Engineer based in Coimbatore, Tamil Nadu, India/);
+assert.match(render, /KPR Institute of Engineering and Technology/);
+assert.match(render, /Flowrage Technology/);
+assert.match(render, /about-personal-details/);
 assert.match(render, /href="\$\{import\.meta\.env\.BASE_URL\}Resume\.pdf"/);
 assert.match(render, /mailto:eklakh\.inplace@gmail\.com/);
 
