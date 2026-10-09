@@ -33,6 +33,14 @@ function initEvidenceLightbox() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initEvidenceLightbox();
+  // Keep Haya outside the router-managed main element so route renders cannot remove the launcher.
+  const botWidget = document.getElementById("bot-widget");
+  if (botWidget && botWidget.parentElement !== document.body) document.body.appendChild(botWidget);
+  const botImage = document.getElementById("haya-avatar-image");
+  if (botImage) botImage.addEventListener("error", () => {
+    const toggle = document.getElementById("bot-toggle");
+    if (toggle) toggle.classList.add("haya-avatar-fallback");
+  }, { once: true });
   const botManager = initBot();
   if (botManager) initRouter(botManager);
 });
