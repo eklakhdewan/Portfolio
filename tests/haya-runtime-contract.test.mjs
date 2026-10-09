@@ -20,5 +20,9 @@ assert.match(router, /renderLandingView\(\)/);
 assert.match(router, /bot\.updateContext\(['"]landing['"]\)/);
 assert.match(render, /I build AI systems that retrieve, reason, recommend and execute/);
 assert.match(render, /Start Hiring Interview/);
+assert.match(render, /I build AI systems that companies can trust in production, not just demo/);
+assert.match(render, /frozen 50-query benchmark with 780 human judgments/);
+assert.match(render, /href="\$\{import\.meta\.env\.BASE_URL\}Resume\.pdf"/);
+assert.match(render, /mailto:eklakh\.inplace@gmail\.com/);
 
 console.log("Haya runtime contract tests passed");
