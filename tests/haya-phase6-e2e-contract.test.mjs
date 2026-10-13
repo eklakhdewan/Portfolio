@@ -3,14 +3,7 @@ import fs from "node:fs";
 import { getInterviewQuestions, getQuestionProgress, chooseAdaptiveQuestion, summarizeInterview } from "../src/haya-interview.js";
 import { getHayaKnowledge } from "../src/haya-knowledge.js";
 
-const roles = [
-  "ai-engineer",
-  "ml-engineer",
-  "ai-systems",
-  "data-science",
-  "data-analyst",
-  "web-developer"
-];
+const roles = ["ai-systems", "data-ml-engineer", "software-engineer"];
 
 for (const roleId of roles) {
   const questions = getInterviewQuestions(roleId);
@@ -27,7 +20,7 @@ for (const roleId of roles) {
   assert.ok(!JSON.stringify(knowledge).toLowerCase().includes("hcad-rag"));
 }
 
-const questions = getInterviewQuestions("ai-engineer");
+const questions = getInterviewQuestions("ai-systems");
 const low = chooseAdaptiveQuestion(questions, [], [
   { score: { clarity: 2, relevance: 2, specificity: 2, ownership: 2, evidence: 2 } }
 ]);
