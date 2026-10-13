@@ -24,7 +24,9 @@ export function initRouter(bot) {
   }
 
   function handleHashChange() {
-    const hash = window.location.hash.replace(/^#/, '') || 'landing';
+    const requestedHash = window.location.hash.replace(/^#/, '') || 'landing';
+    const legacyRoleAliases = { 'ai-engineer': 'ai-systems', 'ml-engineer': 'data-ml-engineer', 'data-science': 'data-ml-engineer', 'data-analyst': 'software-engineer', 'web-developer': 'software-engineer' };
+    const hash = legacyRoleAliases[requestedHash] || requestedHash;
 
     if (hash === 'landing') {
       appRoot.innerHTML = renderLandingView();
