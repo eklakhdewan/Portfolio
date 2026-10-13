@@ -7,12 +7,9 @@
 import { PROJECTS, ROLE_PROJECT_IDS, ROLES } from "./data.js";
 
 const ROLE_CAPABILITIES = {
-  "ai-engineer": ["RAG", "Agentic workflows", "LLM APIs", "FAISS", "BM25", "Hybrid retrieval", "Cross-encoder reranking", "FastAPI", "PostgreSQL", "Cloudflare Workers", "JavaScript", "React"],
-  "ml-engineer": ["Python", "scikit-learn", "Pandas", "NumPy", "SentenceTransformers", "TF-IDF", "Semantic search", "Embeddings", "FastAPI", "Streamlit", "Recall@K", "MRR", "nDCG"],
-  "ai-systems": ["FastAPI", "Next.js", "TypeScript", "PostgreSQL", "REST APIs", "RAG", "Agentic workflows", "Hybrid retrieval", "Persistence", "Observability", "Supabase", "RLS", "Realtime"],
-  "data-science": ["Python", "Pandas", "NumPy", "SQL", "scikit-learn", "TF-IDF", "SentenceTransformers", "Semantic similarity", "NLP", "Streamlit"],
-  "data-analyst": ["SQL", "MySQL", "PostgreSQL", "Pandas", "Data cleaning", "Data visualization", "Streamlit", "Interactive dashboards", "Reporting"],
-  "web-developer": ["React", "Next.js", "TypeScript", "JavaScript", "FastAPI", "PostgreSQL", "REST APIs", "CSS", "Responsive UI", "Supabase", "Realtime", "AI API integration"]
+  "ai-systems": ["RAG", "Agentic workflows", "LLM APIs", "FAISS", "BM25", "Hybrid retrieval", "Cross-encoder reranking", "FastAPI", "PostgreSQL", "Cloudflare Workers", "JavaScript", "React", "Evidence validation", "Observability"],
+  "data-ml-engineer": ["Python", "scikit-learn", "Pandas", "NumPy", "SentenceTransformers", "TF-IDF", "Semantic search", "Embeddings", "FastAPI", "Streamlit", "Recall@K", "MRR", "nDCG", "SQL"],
+  "software-engineer": ["React", "Next.js", "TypeScript", "JavaScript", "Python", "FastAPI", "PostgreSQL", "REST APIs", "CSS", "Responsive UI", "Supabase", "Realtime", "Automated testing", "CI/CD"]
 };
 
 const PROFILE = {

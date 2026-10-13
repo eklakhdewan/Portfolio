@@ -5,7 +5,7 @@ import { getInterviewQuestions, getQuestionProgress, chooseAdaptiveQuestion, sum
 const WORKER_URL = 'https://portfolio-bot-proxy.eklakhdewan78.workers.dev';
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_HISTORY_MESSAGES = 6;
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const FAST_MODEL_TIER = 'fast';
 const STRONG_MODEL_TIER = 'strong';
 const CLIENT_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
@@ -156,41 +156,23 @@ function writeClientCache(roleId, question, answer, modelTier = FAST_MODEL_TIER)
 
 
 const ROLE_STARTER_QUESTIONS = {
-  "ai-engineer": [
+  "ai-systems": [
     "How is your Enterprise RAG pipeline structured?",
-    "What retrieval techniques did you use in Enterprise RAG?",
     "How does APX use evidence before making a decision?",
-    "Which AI and LLM skills are documented for this role?"
+    "What reliability controls are documented in your AI systems?",
+    "Which retrieval techniques did you evaluate?"
   ],
-  "ml-engineer": [
+  "data-ml-engineer": [
     "How does your job recommendation system rank matches?",
     "Which ML and NLP techniques are used in your projects?",
     "What evaluation signals do you use for retrieval models?",
     "How do dense embeddings complement TF-IDF in your work?"
   ],
-  "ai-systems": [
+  "software-engineer": [
+    "What backend and full-stack applications have you built?",
     "How is TaxTrace architected?",
-    "What backend and infrastructure technologies do you use?",
-    "How did you approach persistence and reliability in APX?",
-    "What engineering signals are documented for this role?"
-  ],
-  "data-science": [
-    "How do you use NLP in your projects?",
-    "What data science projects are documented for this role?",
-    "How do TF-IDF and semantic similarity appear in your work?",
-    "Which Python data-science technologies do you use?"
-  ],
-  "data-analyst": [
-    "What SQL capabilities are documented for this role?",
-    "How does your job dashboard support data analysis?",
-    "What reporting and visualization work have you built?",
-    "Which data-cleaning and business-intelligence skills do you use?"
-  ],
-  "web-developer": [
-    "What full-stack applications have you built?",
-    "How is your portfolio architecture implemented?",
-    "Which frontend and backend technologies do you use?",
-    "How do you integrate AI services into web applications?"
+    "How do you test your APIs and data workflows?",
+    "Which frontend and backend technologies do you use?"
   ]
 };
 
