@@ -182,7 +182,7 @@ export function renderRoleView(roleId) {
         <div class="proof-grid">${proofHtml(role)}</div>
       </div>
       <aside class="hero-visual" aria-label="Profile and role summary">
-        <div class="portrait-wrap"><img src="${import.meta.env.BASE_URL}me.png" alt="Eklakh Dewan" class="portrait role-portrait" /></div>
+        <div class="portrait-wrap"><img src="${import.meta.env.BASE_URL}assets/Profile%20Image.png" alt="Eklakh Dewan" class="portrait role-portrait" /></div>
         <div class="hero-card role-fit-card"><p class="card-label">Role fit</p><h2>${esc(role.title)}</h2><p>${esc(role.pitch)}</p></div>
       </aside>
     </section>
@@ -272,7 +272,7 @@ export function renderLandingView() {
         </div>
       </div>
       <aside class="hero-visual" aria-label="Profile and flagship engineering evidence">
-        <div class="portrait-wrap"><img src="${import.meta.env.BASE_URL}me.png" alt="Eklakh Dewan in a navy suit" class="portrait" /><span class="portrait-badge">AI systems<br /><strong>with proof</strong></span></div>
+        <div class="portrait-wrap"><img src="${import.meta.env.BASE_URL}assets/Profile%20Image.png" alt="Eklakh Dewan in a navy suit" class="portrait" /><span class="portrait-badge">AI systems<br /><strong>with proof</strong></span></div>
         <div class="hero-card"><div class="status-dot" aria-hidden="true"></div><p class="card-label">Flagship engineering</p><h2>${esc(flagship.name)}</h2><p>${esc(flagship.subtitle)}</p><div class="signal-list"><span>Recall@10 +9.9%</span><span>nDCG@10 +7.0%</span><span>780 human judgments</span></div></div>
       </aside>
     </section>
@@ -314,6 +314,17 @@ export function renderAboutView() {
             <p class="about-role">AI Systems Engineer</p>
           </div>
         </header>
+
+        <section class="about-portrait-gallery" aria-label="Portrait gallery">
+          <figure class="about-portrait about-portrait-primary in-view">
+            <img src="${import.meta.env.BASE_URL}Image1.jpg" alt="Eklakh Dewan in a charcoal suit" loading="lazy" />
+            <figcaption>Professional portrait</figcaption>
+          </figure>
+          <figure class="about-portrait about-portrait-secondary in-view">
+            <img src="${import.meta.env.BASE_URL}Image2.png" alt="Eklakh Dewan outdoors in a navy suit" loading="lazy" />
+            <figcaption>Outside the workspace</figcaption>
+          </figure>
+        </section>
 
         <article class="about-profile">
           <h2>A little about me.</h2>
