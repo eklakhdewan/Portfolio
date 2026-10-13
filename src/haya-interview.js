@@ -151,6 +151,16 @@ const roleQuestions = {
   ]
 };
 
+// Consolidate the interview bank into the three portfolio career views.
+roleQuestions["ai-systems"] = [...roleQuestions["ai-engineer"], ...roleQuestions["ai-systems"]];
+roleQuestions["data-ml-engineer"] = [...roleQuestions["ml-engineer"], ...roleQuestions["data-science"], ...roleQuestions["data-analyst"]];
+roleQuestions["software-engineer"] = [...roleQuestions["web-developer"]];
+delete roleQuestions["ai-engineer"];
+delete roleQuestions["ml-engineer"];
+delete roleQuestions["data-science"];
+delete roleQuestions["data-analyst"];
+delete roleQuestions["web-developer"];
+
 function normalizeRoleQuestions(roleId) {
   return (roleQuestions[roleId] || []).map(
     ([id, stage, competency, difficulty, question, evidence]) => ({
