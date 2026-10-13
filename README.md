@@ -2,13 +2,15 @@
 
 Live portfolio: **https://eklakhdewan.com.np/**
 
-A personal engineering portfolio focused on applied AI systems, retrieval engineering, machine-learning workflows, and software engineering. The site uses a shared project registry with three role-specific views so recruiters can see relevant evidence without duplicating the underlying experience.
+A personal engineering portfolio focused on applied AI systems, retrieval engineering, machine-learning workflows, and software engineering. The website currently presents **three top-level career categories**. These are role-specific views over one shared project registry—not three separate portfolios or three independent sets of experience. A project may appear in more than one category when its evidence is relevant, while the emphasis and résumé change by target role.
 
-## Career views
+## Current website categories
 
 - **AI & AI Systems Engineer** — RAG, hybrid retrieval, agentic workflows, evidence-grounded generation, and AI reliability.
 - **Data & ML Engineer** — data processing, embeddings, ranking, NLP, and evaluation.
 - **Software Engineer** — backend APIs, persistence, testing, frontend integration, and deployment.
+
+These names reflect the current website navigation and role data in `src/data.js`. The site does not currently present separate top-level categories for Data Scientist, Data Analyst, Web Developer, or a standalone ML Engineer; related skills and projects are represented within the three categories above where supported by evidence.
 
 ## Selected projects
 
