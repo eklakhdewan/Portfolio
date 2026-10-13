@@ -273,7 +273,7 @@ export const PROJECTS = {
     architecture: "Vite SPA → role router → canonical project registry → renderer → Haya client → Cloudflare Worker → OpenRouter.",
     engineering: ["Data-driven rendering", "Role-based views", "Canonical project registry", "Cloudflare Worker proxy", "Secret isolation", "GitHub Pages deployment"],
     evidence: "The public frontend does not contain the OpenRouter secret; Haya requests are routed through the Cloudflare Worker.",
-    metrics: ["6 role views", "Server-side API-key isolation", "GitHub Pages deployment"],
+    metrics: ["3 role views", "Server-side API-key isolation", "GitHub Pages deployment"],
     stack: ["Vite", "Vanilla JavaScript", "HTML/CSS", "Cloudflare Workers", "OpenRouter", "GitHub Actions"],
     roleFocus: {
       "web-developer": "Role-aware frontend architecture, deployment, and secure AI integration."
@@ -301,7 +301,7 @@ export const ROLE_PROJECTS = Object.fromEntries(
     roleId,
     ids.map(id => PROJECTS[id]).filter(Boolean).map((project, index) => ({
       ...project,
-      roleFocus: project.roleFocus?.[roleId] || project.subtitle,
+      roleFocus: project.roleFocus?.[roleId] || (roleId === "data-ml-engineer" ? (project.roleFocus?.["ml-engineer"] || project.roleFocus?.["data-science"]) : roleId === "software-engineer" ? (project.roleFocus?.["web-developer"] || project.roleFocus?.["ai-systems"]) : null) || project.subtitle,
       featured: ROLE_FLAGSHIPS[roleId] === project.id,
       roleIndex: index + 1
     }))
