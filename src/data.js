@@ -56,7 +56,7 @@ const ROLE_ENRICHMENTS = {
   "software-engineer": {
     proof: [
       { value: "8.55", label: "CGPA" }, { value: "2027", label: "Graduation" },
-      { value: "134", label: "TaxTrace backend tests" }, { value: "5/5", label: "security audit" }
+      { value: "134", label: "TaxTrace backend tests" }, { value: "15", label: "TaxTrace frontend tests" }
     ],
     capabilities: {
       "Backend": ["Python", "FastAPI", "REST APIs", "Node.js", "NestJS"],
