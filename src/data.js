@@ -74,7 +74,7 @@ Object.entries(ROLE_ENRICHMENTS).forEach(([roleId, enrichment]) => {
 
 // Education is shared across every role view.
 Object.values(ROLES).forEach(role => {
-  role.experience = [{ role: "Artificial Intelligence Intern", company: "Flowrage Technology", duration: "4 weeks (Virtual)", description: "Worked with resume and job-description datasets, Gemini API integration, text processing, and job-matching workflows." }];
+  role.experience = [{ role: "AI Intern", company: "Flowrage Technology", duration: "10 Jan – 11 Feb 2025 · Virtual", description: "Completed an applied AI internship covering Python data processing with Pandas and NumPy, API integration using Requests, pre-trained model inference, a job-recommendation mini-project, and interactive Streamlit dashboard workflows using Matplotlib and Seaborn." }];
 
   role.education = [{
     degree: "B.Tech — Artificial Intelligence & Data Science",
@@ -86,8 +86,8 @@ Object.values(ROLES).forEach(role => {
   role.credentials = [{
     name: "Artificial Intelligence Internship",
     issuer: "Flowrage Technology",
-    duration: "4 weeks (Virtual)",
-    evidence: "Certificate available"
+    duration: "10 Jan – 11 Feb 2025 · Virtual",
+    evidence: "Certificate-backed"
   }];
 });
 
