@@ -1,242 +1,70 @@
 export const ROLES = {
-  "ai-engineer": {
-    id: "ai-engineer",
-    resumeFile: "Eklakh_Dewan_AI_Engineer.pdf",
-    title: "AI Engineer",
-    pitch: "I build RAG systems, agentic workflows, and applied AI pipelines with an emphasis on grounding and evidence.",
-    accent: "#3e5f7a",
-    
-    skills: [
-      "Retrieval-Augmented Generation (RAG)", 
-      "Agentic LLM Workflows (LangChain/LangGraph)", 
-      "Hybrid Search (Dense + Sparse)", 
-      "Cross-encoder Reranking", 
-      "Prompt Engineering & Guardrails",
-      "FastAPI & Async Python"
-    ],
-    experience: [
-      {
-        role: "Artificial Intelligence Intern",
-        company: "Flowrage Technology",
-        duration: "4 weeks (Virtual)",
-        description: "Worked on Gemini API integration, resume parsing, and job-matching workflows using TF-IDF and dense embeddings."
-      }
-    ]
-  },
-  "ml-engineer": {
-    id: "ml-engineer",
-    resumeFile: "Eklakh_Dewan_ML_Engineer.pdf",
-    title: "ML Engineer",
-    pitch: "I work on recommendation systems, retrieval evaluation, and applied ML workflows with a focus on metrics and reproducibility.",
-    accent: "#526174",
-    
-    skills: [
-      "Machine Learning & Deep Learning", 
-      "Feature Engineering & Selection",
-      "Model Evaluation (Recall@K, MRR, nDCG)",
-      "scikit-learn & Python Data Stack",
-      "Explainable AI (SHAP, LIME)"
-    ],
-    experience: [
-      {
-        role: "Artificial Intelligence Intern",
-        company: "Flowrage Technology",
-        duration: "4 weeks (Virtual)",
-        description: "Practiced robust data engineering patterns. Designed data ingestion pipelines, transformed raw text inputs, and implemented ranking models to optimize the end-user experience."
-      }
-    ]
-  },
   "ai-systems": {
     id: "ai-systems",
     resumeFile: "Eklakh_Dewan_AI_Systems.pdf",
-    title: "AI Systems Engineer",
-    pitch: "I build backend systems for AI workflows, with an emphasis on retrieval, persistence, validation, and observable execution.",
+    title: "AI & AI Systems Engineer",
+    pitch: "I build AI applications and the systems around them: retrieval pipelines, bounded agentic workflows, evidence-grounded generation, and reliable backend services.",
     accent: "#101a2b",
-    
-    skills: [
-      "Backend System Architecture", 
-      "API Design (FastAPI, NestJS, REST)",
-      "Asynchronous Processing (Redis, BullMQ)", 
-      "Docker & Containerization",
-      "CI/CD (GitHub Actions)"
-    ],
-    experience: [
-      {
-        role: "Artificial Intelligence Intern",
-        company: "Flowrage Technology",
-        duration: "4 weeks (Virtual)",
-        description: "Integrated third-party LLM APIs into backend workflows, with attention to error handling and rate limits."
-      }
-    ]
+    skills: ["RAG and evidence-grounded generation", "Hybrid retrieval and reranking", "Agentic workflow design", "FastAPI and backend architecture", "Evaluation, validation, and observability", "Docker and CI/CD"]
   },
-  "data-science": {
-    id: "data-science",
-    resumeFile: "Eklakh_Dewan_Data_Scientist.pdf",
-    title: "Data Scientist",
-    pitch: "I work with unstructured data, NLP, similarity-based recommendation, and data analysis with an emphasis on explainable results.",
-    accent: "#b08d57",
-    
-    skills: [
-      "Natural Language Processing (NLP)", 
-      "Statistical Analysis & Hypothesis Testing",
-      "Predictive Modeling & Classification",
-      "SQL, Pandas, NumPy",
-      "Exploratory Data Analysis (EDA)"
-    ],
-    experience: [
-      {
-        role: "Artificial Intelligence Intern",
-        company: "Flowrage Technology",
-        duration: "4 weeks (Virtual)",
-        description: "Cleaned and transformed messy text data for NLP pipelines. Applied TF-IDF and dense embeddings to extract actionable insights from unstructured resume documents."
-      }
-    ]
+  "data-ml-engineer": {
+    id: "data-ml-engineer",
+    resumeFile: "Eklakh_Dewan_ML_Engineer.pdf",
+    title: "Data & ML Engineer",
+    pitch: "I build data-driven and machine-learning workflows, from text processing and embeddings to ranking, reproducible evaluation, and model integration.",
+    accent: "#526174",
+    skills: ["Python, Pandas, and NumPy", "Data cleaning and transformation", "Machine learning and NLP", "TF-IDF and dense embeddings", "Ranking and retrieval evaluation", "SQL and reproducible pipelines"]
   },
-  "data-analyst": {
-    id: "data-analyst",
-    resumeFile: "Eklakh_Dewan_Data_Analyst.pdf",
-    title: "Data Analyst",
-    pitch: "I build data-focused dashboards, SQL workflows, and reporting views that make analysis easier to inspect and use.",
-    accent: "#557a68",
-    
-    skills: [
-      "Advanced SQL (MySQL, PostgreSQL)", 
-      "Streamlit & Interactive Dashboards",
-      "Data Cleaning (Pandas)",
-      "Business Intelligence & Reporting",
-      "Data Visualization"
-    ],
-    experience: [
-      {
-        role: "Artificial Intelligence Intern",
-        company: "Flowrage Technology",
-        duration: "4 weeks (Virtual)",
-        description: "Analyzed resume and job description datasets. Created internal reports detailing match-rate optimizations and presented findings to improve the core matching algorithm."
-      }
-    ]
-  },
-  "web-developer": {
-    id: "web-developer",
-    resumeFile: "Eklakh_Dewan_Web_Developer.pdf",
-    title: "Web Developer",
-    pitch: "I build responsive web interfaces and backend APIs, with experience integrating AI services and data-driven workflows.",
+  "software-engineer": {
+    id: "software-engineer",
+    resumeFile: "Resume.pdf",
+    title: "Software Engineer",
+    pitch: "I build maintainable software around real workflows, with emphasis on backend APIs, persistence, testing, frontend integration, and deployment.",
     accent: "#314b60",
-    
-    skills: [
-      "React & Vanilla JavaScript", 
-      "TypeScript & Node.js",
-      "CSS3, Flexbox & CSS Grid",
-      "NestJS & FastAPI",
-      "WebSockets & Real-time State"
-    ],
-    experience: [
-      {
-        role: "Artificial Intelligence Intern",
-        company: "Flowrage Technology",
-        duration: "4 weeks (Virtual)",
-        description: "Built and documented RESTful API endpoints. Integrated third-party AI services seamlessly into web interfaces, ensuring fast load times and proper error handling on the client side."
-      }
-    ]
+    skills: ["Backend APIs and service design", "Python, JavaScript, and TypeScript", "PostgreSQL and data persistence", "Frontend and full-stack integration", "Automated testing and CI", "Docker and deployment workflows"]
   }
 };
 
-
 const ROLE_ENRICHMENTS = {
-  "ai-engineer": {
-    proof: [
-      { value: "8.55", label: "CGPA" },
-      { value: "2027", label: "Graduation" },
-      { value: "4 wk", label: "AI internship" },
-      { value: "RAG", label: "Primary focus" }
-    ],
-    capabilities: {
-      "AI & LLM": ["RAG", "Agentic workflows", "LLM APIs", "Prompt engineering", "Guardrails"],
-      "Retrieval & NLP": ["FAISS", "BM25", "Hybrid search", "RRF", "Cross-encoder reranking", "Embeddings"],
-      "Backend & Data": ["FastAPI", "Async Python", "PostgreSQL", "REST APIs"],
-      "Infrastructure": ["Docker", "GitHub Actions", "Cloudflare Workers", "CI/CD"],
-      "Frontend": ["JavaScript", "React", "Vite", "Responsive UI"]
-    },
-    engineeringSignals: ["Grounded generation", "Evidence validation", "Hybrid retrieval", "Reranking", "Observability", "Evaluation-first workflows"]
-  },
-  "ml-engineer": {
-    proof: [
-      { value: "8.55", label: "CGPA" },
-      { value: "2027", label: "Graduation" },
-      { value: "NLP", label: "Focus area" },
-      { value: "ML", label: "Applied stack" }
-    ],
-    capabilities: {
-      "AI & LLM": ["Embeddings", "LLM APIs", "Prompt engineering"],
-      "Retrieval & NLP": ["SentenceTransformers", "TF-IDF", "Semantic search", "Hybrid retrieval", "Reranking"],
-      "Backend & Data": ["Python", "scikit-learn", "Pandas", "NumPy", "FastAPI"],
-      "Infrastructure": ["Docker", "GitHub Actions", "Reproducible pipelines"],
-      "Frontend": ["Streamlit", "Interactive dashboards"]
-    },
-    engineeringSignals: ["Recall@K", "MRR", "nDCG", "Feature engineering", "Model evaluation", "Reproducibility"]
-  },
   "ai-systems": {
     proof: [
-      { value: "8.55", label: "CGPA" },
-      { value: "2027", label: "Graduation" },
-      { value: "134", label: "TaxTrace backend tests" },
-      { value: "AI", label: "Systems focus" }
+      { value: "8.55", label: "CGPA" }, { value: "2027", label: "Graduation" },
+      { value: "780", label: "human judgments" }, { value: "AI", label: "systems focus" }
     ],
     capabilities: {
-      "AI & LLM": ["RAG", "Agentic workflows", "LLM API integration", "AI task orchestration"],
-      "Retrieval & NLP": ["Hybrid retrieval", "Evidence pipelines", "Embeddings"],
-      "Backend & Data": ["FastAPI", "NestJS", "PostgreSQL", "REST APIs", "Async processing"],
-      "Infrastructure": ["Docker", "Redis", "BullMQ", "GitHub Actions", "Cloudflare Workers"],
-      "Frontend": ["TypeScript", "React", "Next.js", "Vite"]
+      "AI Engineering": ["RAG", "Agentic workflows", "LLM API integration", "Evidence-grounded generation", "Guardrails"],
+      "Retrieval & Evaluation": ["FAISS", "BM25", "Hybrid search", "RRF", "Cross-encoder reranking", "Recall@K", "MRR", "nDCG"],
+      "Backend & Data": ["FastAPI", "Python", "PostgreSQL", "REST APIs", "Persistence", "Validation"],
+      "Infrastructure": ["Docker", "GitHub Actions", "Cloudflare Workers", "CI/CD", "Observability"],
+      "Frontend": ["JavaScript", "React", "TypeScript", "Vite"]
     },
-    engineeringSignals: ["Idempotency", "Retries", "Persistence", "Observability", "CI/CD", "134 backend tests in TaxTrace audit"]
+    engineeringSignals: ["Hybrid retrieval", "Evidence validation", "Bounded agentic workflows", "Persistence", "Observability", "Evaluation-first workflows"]
   },
-  "data-science": {
+  "data-ml-engineer": {
     proof: [
-      { value: "8.55", label: "CGPA" },
-      { value: "2027", label: "Graduation" },
-      { value: "NLP", label: "Focus area" },
-      { value: "ML", label: "Applied stack" }
+      { value: "8.55", label: "CGPA" }, { value: "2027", label: "Graduation" },
+      { value: "50", label: "frozen RAG queries" }, { value: "ML", label: "focus" }
     ],
     capabilities: {
-      "AI & LLM": ["NLP", "Embeddings", "LLM-assisted workflows"],
-      "Retrieval & NLP": ["TF-IDF", "SentenceTransformers", "Semantic similarity", "Text classification"],
-      "Backend & Data": ["Python", "Pandas", "NumPy", "SQL", "scikit-learn"],
-      "Infrastructure": ["Reproducible pipelines", "GitHub Actions"],
-      "Frontend": ["Streamlit", "Data dashboards"]
+      "Data & Python": ["Python", "Pandas", "NumPy", "SQL", "Data cleaning", "Feature preparation"],
+      "ML & NLP": ["scikit-learn", "TF-IDF", "SentenceTransformers", "Embeddings", "Semantic similarity", "Classification"],
+      "Ranking & Evaluation": ["Recall@K", "MRR", "nDCG", "Ranking baselines", "Error analysis", "Reproducibility"],
+      "Systems Integration": ["FastAPI", "SQLite", "PostgreSQL", "Streamlit", "GitHub Actions"]
     },
-    engineeringSignals: ["EDA", "Hypothesis testing", "Classification", "SMOTE", "Cosine similarity", "Explainable analysis"]
+    engineeringSignals: ["Human-verified relevance judgments", "Ranking evaluation", "Controlled experiments", "Data normalization", "Reproducible pipelines"]
   },
-  "data-analyst": {
+  "software-engineer": {
     proof: [
-      { value: "8.55", label: "CGPA" },
-      { value: "2027", label: "Graduation" },
-      { value: "SQL", label: "Core strength" },
-      { value: "BI", label: "Focus" }
+      { value: "8.55", label: "CGPA" }, { value: "2027", label: "Graduation" },
+      { value: "134", label: "TaxTrace backend tests" }, { value: "5/5", label: "security audit" }
     ],
     capabilities: {
-      "AI & LLM": ["AI-assisted analytics", "NLP-driven matching"],
-      "Retrieval & NLP": ["TF-IDF", "Semantic matching", "Text analysis"],
-      "Backend & Data": ["Advanced SQL", "PostgreSQL", "MySQL", "Pandas", "Data cleaning"],
-      "Infrastructure": ["CSV automation", "Reporting workflows"],
-      "Frontend": ["Streamlit", "Interactive dashboards", "Data visualization"]
+      "Backend": ["Python", "FastAPI", "REST APIs", "Node.js", "NestJS"],
+      "Data & Persistence": ["PostgreSQL", "SQLite", "SQLAlchemy", "Schema migrations", "Supabase"],
+      "Frontend": ["JavaScript", "TypeScript", "React", "Next.js", "CSS"],
+      "Engineering Practice": ["Automated testing", "GitHub Actions", "Docker", "CI/CD", "Authorization boundaries", "Realtime state"]
     },
-    engineeringSignals: ["Window functions", "Reporting", "Data aggregation", "Dashboards", "Skill-gap analysis", "Business intelligence"]
-  },
-  "web-developer": {
-    proof: [
-      { value: "8.55", label: "CGPA" },
-      { value: "2027", label: "Graduation" },
-      { value: "Full-stack", label: "Focus" },
-      { value: "AI", label: "Integration" }
-    ],
-    capabilities: {
-      "AI & LLM": ["LLM API integration", "AI-enabled workflows", "Prompt-driven features"],
-      "Retrieval & NLP": ["Resume parsing", "Semantic matching", "Embeddings"],
-      "Backend & Data": ["NestJS", "FastAPI", "Node.js", "PostgreSQL", "REST APIs"],
-      "Infrastructure": ["Docker", "GitHub Actions", "CI/CD", "Cloudflare Workers"],
-      "Frontend": ["React", "TypeScript", "JavaScript", "CSS Grid", "Responsive UI"]
-    },
-    engineeringSignals: ["Multi-tenant architecture", "RBAC", "WebSockets", "Optimistic UI", "API integration", "Deployment automation"]
+    engineeringSignals: ["API design", "Persistence", "Automated tests", "Authorization boundaries", "Frontend/backend integration", "Deployment workflows"]
   }
 };
 
@@ -457,21 +285,15 @@ export const PROJECTS = {
 };
 
 export const ROLE_PROJECT_IDS = {
-  "ai-engineer": ["enterpriseRag", "aiJobAgent", "apx", "taxtrace", "claimAI", "jobRecommendations"],
-  "ml-engineer": ["enterpriseRag", "claimAI", "jobRecommendations"],
-  "ai-systems": ["apx", "aiJobAgent", "taxtrace", "tackboard", "enterpriseRag"],
-  "data-science": ["enterpriseRag", "claimAI", "jobRecommendations"],
-  "data-analyst": ["taxtrace", "jobRecommendations"],
-  "web-developer": ["tackboard", "taxtrace", "portfolio"]
+  "ai-systems": ["enterpriseRag", "apx", "aiJobAgent", "taxtrace", "tackboard"],
+  "data-ml-engineer": ["enterpriseRag", "jobRecommendations", "claimAI", "aiJobAgent"],
+  "software-engineer": ["taxtrace", "tackboard", "apx", "aiJobAgent", "portfolio"]
 };
 
 export const ROLE_FLAGSHIPS = {
-  "ai-engineer": "enterpriseRag",
-  "ml-engineer": "enterpriseRag",
-  "ai-systems": "apx",
-  "data-science": "enterpriseRag",
-  "data-analyst": "taxtrace",
-  "web-developer": "tackboard"
+  "ai-systems": "enterpriseRag",
+  "data-ml-engineer": "enterpriseRag",
+  "software-engineer": "taxtrace"
 };
 
 export const ROLE_PROJECTS = Object.fromEntries(
