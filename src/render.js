@@ -263,12 +263,12 @@ export function renderLandingView() {
         <h1>I build AI systems that retrieve, reason, recommend and execute.</h1>
         <p class="hero-summary">AI systems engineer focused on RAG, backend systems, agentic automation, and measurable AI workflows.</p>
         <p class="hero-status"><span class="status-pulse" aria-hidden="true"></span><span>Currently exploring: <strong class="status-link">Agentic Systems &amp; Hybrid Retrieval</strong></span></p>
-        <div class="hero-actions"><button class="button button-primary" onclick="document.getElementById('bot-toggle').click();">Start Hiring Interview ↗</button><a class="button button-secondary" href="#ai-systems">Explore AI &amp; AI Systems Engineer profile ↗</a></div>
+        <div class="hero-actions"><a class="button button-primary" href="#roles">Explore projects ↗</a><a class="button button-secondary" href="${import.meta.env.BASE_URL}Resume.pdf" target="_blank" rel="noopener noreferrer">View résumé ↗</a></div>
         <div class="proof-grid landing-proof" aria-label="Professional proof points">
           <article class="proof-card"><strong>50</strong><span>frozen RAG queries</span></article>
-          <article class="proof-card"><strong>780</strong><span>human judgments</span></article>
-          <article class="proof-card"><strong>134</strong><span>TaxTrace backend tests</span></article>
-          <article class="proof-card"><strong>5/5</strong><span>security audit</span></article>
+          <article class="proof-card"><strong>780</strong><span>human relevance judgments</span></article>
+          <article class="proof-card"><strong>+9.9%</strong><span>Recall@10 uplift vs dense</span></article>
+          <article class="proof-card"><strong>+7.0%</strong><span>nDCG@10 uplift vs dense</span></article>
         </div>
       </div>
       <aside class="hero-visual" aria-label="Profile and flagship engineering evidence">
@@ -281,8 +281,8 @@ export function renderLandingView() {
       <div class="container">
         <div class="section-heading in-view"><p class="eyebrow">Proof-first portfolio</p><h2>Two projects establish the engineering baseline.</h2><p>Start with the retrieval/evaluation flagship, then inspect the verified application engineering in TaxTrace.</p></div>
         <div class="landing-project-grid">
-          <article class="landing-project-card flagship-card"><p class="eyebrow">01 · AI / Retrieval</p><h3>${esc(flagship.name)}</h3><p>${esc(flagship.description)}</p><div class="landing-metrics">${flagship.metrics.slice(0,4).map(m=>`<span>${esc(m)}</span>`).join("")}</div><a class="text-link" href="#software-engineer">Open Software Engineering evidence ↗</a></article>
-          <article class="landing-project-card"><p class="eyebrow">02 · Systems / Product</p><h3>${esc(taxtrace.name)}</h3><p>${esc(taxtrace.description)}</p><div class="landing-metrics">${taxtrace.metrics.slice(0,4).map(m=>`<span>${esc(m)}</span>`).join("")}</div><a class="text-link" href="#ai-systems">Open AI systems evidence ↗</a></article>
+          <article class="landing-project-card flagship-card"><p class="eyebrow">01 · AI / Retrieval</p><h3>${esc(flagship.name)}</h3><p>${esc(flagship.description)}</p><div class="landing-metrics">${flagship.metrics.slice(0,4).map(m=>`<span>${esc(m)}</span>`).join("")}</div><a class="text-link" href="#ai-systems">Inspect retrieval evidence ↗</a></article>
+          <article class="landing-project-card"><p class="eyebrow">02 · Systems / Product</p><h3>${esc(taxtrace.name)}</h3><p>${esc(taxtrace.description)}</p><div class="landing-metrics">${taxtrace.metrics.slice(0,4).map(m=>`<span>${esc(m)}</span>`).join("")}</div><a class="text-link" href="#software-engineer">Inspect software engineering evidence ↗</a></article>
         </div>
       </div>
     </section>
