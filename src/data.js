@@ -74,6 +74,8 @@ Object.entries(ROLE_ENRICHMENTS).forEach(([roleId, enrichment]) => {
 
 // Education is shared across every role view.
 Object.values(ROLES).forEach(role => {
+  role.experience = [{ role: "Artificial Intelligence Intern", company: "Flowrage Technology", duration: "4 weeks (Virtual)", description: "Worked with resume and job-description datasets, Gemini API integration, text processing, and job-matching workflows." }];
+
   role.education = [{
     degree: "B.Tech — Artificial Intelligence & Data Science",
     institution: "KPRIET",
