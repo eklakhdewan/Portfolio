@@ -19,7 +19,10 @@ assert.equal(answerIncrements.length, 1, "each interview answer must be counted 
 assert.match(router, /renderLandingView\(\)/);
 assert.match(router, /bot\.updateContext\(['"]landing['"]\)/);
 assert.match(render, /I build AI systems that retrieve, reason, recommend and execute/);
-assert.match(render, /Start Hiring Interview/);
+assert.match(render, /Explore projects/);
+assert.match(render, /View résumé/);
+assert.match(render, /Recall@10 uplift vs dense/);
+assert.match(render, /nDCG@10 uplift vs dense/);
 assert.match(render, /I’m Eklakh Dewan, an AI Systems Engineer based in Coimbatore, Tamil Nadu, India/);
 assert.match(render, /KPR Institute of Engineering and Technology/);
 assert.match(render, /Flowrage Technology/);
