@@ -2,14 +2,7 @@ import assert from "node:assert/strict";
 import { getInterviewQuestions, getQuestionProgress, chooseAdaptiveQuestion, summarizeInterview } from "../src/haya-interview.js";
 import { getHayaKnowledge } from "../src/haya-knowledge.js";
 
-const roles = [
-  "ai-engineer",
-  "ml-engineer",
-  "ai-systems",
-  "data-science",
-  "data-analyst",
-  "web-developer"
-];
+const roles = ["ai-systems", "data-ml-engineer", "software-engineer"];
 
 for (const roleId of roles) {
   const questions = getInterviewQuestions(roleId);
@@ -32,10 +25,10 @@ for (const roleId of roles) {
   assert.equal(/HCAD-RAG/i.test(JSON.stringify(knowledge)), false);
 }
 
-console.log("Haya interview grounding tests passed: 6/6 roles");
+console.log("Haya interview grounding tests passed: 3/3 roles");
 
 
-const aiQuestions = getInterviewQuestions("ai-engineer");
+const aiQuestions = getInterviewQuestions("ai-systems");
 const easyNext = chooseAdaptiveQuestion(
   aiQuestions,
   ["ai-why"],
