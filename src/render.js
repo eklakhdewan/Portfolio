@@ -317,11 +317,11 @@ export function renderAboutView() {
 
         <section class="about-portrait-gallery" aria-label="Portrait gallery">
           <figure class="about-portrait about-portrait-primary in-view">
-            <img src="${import.meta.env.BASE_URL}Image1.jpg" alt="Eklakh Dewan in a charcoal suit" loading="lazy" />
+            <img src="${import.meta.env.BASE_URL}assets/Image1.jpg" alt="Eklakh Dewan in a charcoal suit" loading="lazy" />
             <figcaption>Professional portrait</figcaption>
           </figure>
           <figure class="about-portrait about-portrait-secondary in-view">
-            <img src="${import.meta.env.BASE_URL}Image2.png" alt="Eklakh Dewan outdoors in a navy suit" loading="lazy" />
+            <img src="${import.meta.env.BASE_URL}assets/Image2.png" alt="Eklakh Dewan outdoors in a navy suit" loading="lazy" />
             <figcaption>Outside the workspace</figcaption>
           </figure>
         </section>
