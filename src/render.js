@@ -223,7 +223,7 @@ export function renderRoleView(roleId) {
       </div>
     </section>
 
-    <section class="section container"><div class="info-grid in-view">${educationHtml(role)}${credentialsHtml(role)}</div></section>
+    
 
     <section id="contact" class="section contact-section container">
       <div class="contact-card contact-intro in-view">
@@ -319,14 +319,13 @@ export function renderAboutView() {
           <h2>A little about me.</h2>
           <p>I’m Eklakh Dewan, an AI Systems Engineer based in Coimbatore, Tamil Nadu, India. I’m pursuing a B.Tech in Artificial Intelligence and Data Science at KPR Institute of Engineering and Technology, with a strong interest in building practical software and intelligent systems.</p>
           <p>My work spans AI engineering, machine learning, retrieval-augmented generation (RAG), backend development, and agentic workflows. I enjoy understanding how the pieces of a system fit together—from data and retrieval to APIs, evaluation, and the user experience—and turning that understanding into projects people can inspect and use.</p>
-          <p>I’ve gained industry exposure as an Artificial Intelligence Intern at Flowrage Technology, where I worked with Gemini API integration, resume parsing, and job-matching workflows using text processing and embeddings.</p>
+          <p>I gained industry exposure as an AI Intern at Flowrage Technology, working across Python data processing, API integration, model inference, a job-recommendation mini-project, and interactive analytics.</p>
           <p>Outside individual implementations, I’m interested in trustworthy AI research: how retrieval, reasoning, and evaluation can make AI systems more reliable and useful in real-world settings. I value curiosity, hands-on experimentation, and being clear about what I’ve built, what I’ve learned, and what I’m still improving.</p>
 
-          <section class="about-personal-details" aria-label="Personal and professional background">
-            <div class="about-detail-row"><span>Education</span><strong>B.Tech, Artificial Intelligence &amp; Data Science</strong></div>
-            <div class="about-detail-row"><span>Institution</span><strong>KPR Institute of Engineering and Technology</strong></div>
+          <section class="about-personal-details" aria-label="Background and credentials">
+            <div class="about-detail-row"><span>Education</span><strong>B.Tech · Artificial Intelligence &amp; Data Science<br />KPR Institute of Engineering and Technology · Expected 2027<br />CGPA: 8.55</strong></div>
+            <div class="about-detail-row"><span>Credential</span><strong>Artificial Intelligence Internship · Flowrage Technology<br />10 Jan – 11 Feb 2025 · Virtual<br />Certificate ID: FTAI002</strong></div>
             <div class="about-detail-row"><span>Based in</span><strong>Coimbatore, Tamil Nadu, India</strong></div>
-            <div class="about-detail-row"><span>Experience</span><strong>Artificial Intelligence Intern · Flowrage Technology</strong></div>
             <div class="about-detail-row"><span>Interests</span><strong>AI systems, RAG, machine learning, backend engineering, trustworthy AI research</strong></div>
           </section>
 
