@@ -152,8 +152,8 @@ const roleQuestions = {
 };
 
 // Consolidate the interview bank into the three portfolio career views.
-roleQuestions["ai-systems"] = [...roleQuestions["ai-engineer"], ...roleQuestions["ai-systems"]];
-roleQuestions["data-ml-engineer"] = [...roleQuestions["ml-engineer"], ...roleQuestions["data-science"], ...roleQuestions["data-analyst"]];
+roleQuestions["ai-systems"] = [...roleQuestions["ai-engineer"].slice(0, 4), ...roleQuestions["ai-systems"].slice(0, 4)];
+roleQuestions["data-ml-engineer"] = [...roleQuestions["ml-engineer"].slice(0, 3), ...roleQuestions["data-science"].slice(0, 3), ...roleQuestions["data-analyst"].slice(0, 2)];
 roleQuestions["software-engineer"] = [...roleQuestions["web-developer"]];
 delete roleQuestions["ai-engineer"];
 delete roleQuestions["ml-engineer"];
