@@ -281,7 +281,7 @@ export function renderLandingView() {
       <div class="container">
         <div class="section-heading in-view"><p class="eyebrow">Proof-first portfolio</p><h2>Two projects establish the engineering baseline.</h2><p>Start with the retrieval/evaluation flagship, then inspect the verified application engineering in TaxTrace.</p></div>
         <div class="landing-project-grid">
-          <article class="landing-project-card flagship-card"><p class="eyebrow">01 · AI / Retrieval</p><h3>${esc(flagship.name)}</h3><p>${esc(flagship.description)}</p><div class="landing-metrics">${flagship.metrics.slice(0,4).map(m=>`<span>${esc(m)}</span>`).join("")}</div><a class="text-link" href="#ai-systems">Open AI systems evidence ↗</a></article>
+          <article class="landing-project-card flagship-card"><p class="eyebrow">01 · AI / Retrieval</p><h3>${esc(flagship.name)}</h3><p>${esc(flagship.description)}</p><div class="landing-metrics">${flagship.metrics.slice(0,4).map(m=>`<span>${esc(m)}</span>`).join("")}</div><a class="text-link" href="#software-engineer">Open Software Engineering evidence ↗</a></article>
           <article class="landing-project-card"><p class="eyebrow">02 · Systems / Product</p><h3>${esc(taxtrace.name)}</h3><p>${esc(taxtrace.description)}</p><div class="landing-metrics">${taxtrace.metrics.slice(0,4).map(m=>`<span>${esc(m)}</span>`).join("")}</div><a class="text-link" href="#ai-systems">Open AI systems evidence ↗</a></article>
         </div>
       </div>
