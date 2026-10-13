@@ -43,13 +43,32 @@ Repository: https://github.com/Eklakh-AI-Engineer/AI-Job-Agent
 
 ### 3. APX — Accounts Payable Exception Resolution Agent
 
-Evidence-driven exception-resolution architecture developed through deterministic foundation, retrieval, agent, decision-pipeline, and persistence phases.
+APX is an **evidence-grounded Accounts Payable exception-resolution system** designed to structure the investigation of invoice mismatches, missing documentation, and policy exceptions. It gathers and ranks supporting evidence, then prepares a reviewable decision proposal rather than treating model output as financial authorization.
 
 Repository: https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent
 
-#### Release boundary
+#### Architecture and control boundaries
 
-APX is a phased engineering system. Its latest documented milestone is Phase 6D (Observability & Security); the README records 180 passing tests in its regression accounting and a separately reported API suite of 60 passing tests with one expected skip. Production readiness, production ERP integration, and deployment-specific authorization are not claimed.
+```text
+Exception intake
+  → Deterministic validation
+  → BM25 + dense retrieval
+  → Hybrid/RRF fusion + cross-encoder reranking
+  → Bounded agentic investigation
+  → Evidence-backed decision proposal
+  → Separate authorization / approval boundary
+  → Persistence + observability
+```
+
+The architecture separates **decision**, **authorization**, and **execution**. Deterministic checks constrain the workflow; retrieval supplies evidence; bounded investigation can gather context; and approval controls are intended to prevent an agent's proposal from becoming an authorized financial action by itself. Persistence and observability provide foundations for inspecting the workflow. These are implementation/design descriptions, not independent proof of end-to-end resolution quality.
+
+#### Current status and release boundary
+
+**Status: Core engineering foundations implemented; release validation remains in progress.**
+
+The current portfolio does not claim production readiness, proven autonomous resolution quality, production ERP integration, or live financial execution. Reproducible test and benchmark results should be reported with their exact test scope, fixture/data context, and limitations. A passing CI run is useful engineering evidence but is not, by itself, release acceptance.
+
+Remaining release validation includes confirming the final regression/evaluation contract, checking decision and approval behavior across adversarial and failure cases, verifying persistence and observability evidence, and recording an explicit release decision. See the repository README for implementation details, current test commands, and the latest project evidence.
 
 ### 4. TaxTrace
 

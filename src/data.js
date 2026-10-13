@@ -325,23 +325,23 @@ export const PROJECTS = {
   apx: {
     id: "apx",
     name: "APX — Accounts Payable Exception Resolution Agent",
-    subtitle: "Evidence-constrained agentic workflow",
-    category: "Agentic Systems / Financial Automation",
-    status: "Phased system · development",
+    subtitle: "Evidence-grounded AP exception investigation",
+    category: "Agentic Systems / Financial Operations",
+    status: "Core foundations implemented · release validation in progress",
     repo: "https://github.com/Eklakh-AI-Engineer/APX-Autonomous-Accounts-Payable-Exception-Resolution-Agent",
-    description: "Evidence-driven accounts-payable exception-resolution system built around controlled retrieval, validation, decision logic, guardrails, and persistence.",
-    problem: "Accounts-payable exceptions need evidence gathering and controlled resolution rather than unconstrained LLM decisions.",
-    architecture: "Evidence corpus → BM25 + dense retrieval → hybrid/RRF fusion → cross-encoder reranking → evidence validity checks → deterministic decision pipeline → persistence.",
-    engineering: ["Deterministic foundation", "Hybrid evidence retrieval", "RRF fusion", "Cross-encoder reranking", "Evidence validity checks", "Guardrails", "Persistence"],
-    evidence: "Documented phased progression from deterministic foundation through retrieval, agent, decision pipeline, and persistence. Production scale is not claimed.",
-    metrics: ["5 documented implementation phases", "Hybrid evidence retrieval", "Evidence validity gates"],
-    stack: ["Python", "BM25", "Dense Retrieval", "Reranking", "LLMs", "SQLite"],
+    description: "Evidence-grounded Accounts Payable exception-resolution system that organizes invoice exceptions, gathers supporting evidence, and prepares reviewable decisions behind explicit authorization boundaries.",
+    problem: "Accounts Payable teams must investigate mismatches, missing documents, and policy exceptions across fragmented evidence. APX is designed to make that investigation structured and auditable without treating an LLM proposal as financial authorization.",
+    architecture: "Exception intake → deterministic validation → BM25 + dense retrieval → hybrid/RRF fusion → cross-encoder reranking → bounded agentic investigation → evidence-backed decision proposal → authorization/approval controls → persistence and observability. Decision, authorization, and execution are separate boundaries.",
+    engineering: ["Deterministic input and policy validation", "Hybrid lexical + dense evidence retrieval", "RRF fusion and cross-encoder reranking", "Bounded agentic investigation", "Decision rationale separated from authorization", "Approval-gated action boundary", "Persistence and observability foundations"],
+    evidence: "Core engineering foundations are implemented, but release validation remains in progress. These controls describe the current design and implementation; they do not independently establish resolution accuracy, production readiness, or live financial execution. CI success alone is not release acceptance.",
+    metrics: ["Release validation in progress", "Evidence-grounded decisions", "Approval boundary implemented"],
+    stack: ["Python", "BM25", "Dense Retrieval", "RRF", "Cross-Encoder Reranking", "LLMs", "Persistence"],
     roleFocus: {
-      "ai-engineer": "Bounded agentic resolution with evidence and guardrails.",
-      "ai-systems": "Decision pipeline, failure boundaries, persistence, and controlled execution."
+      "ai-engineer": "Evidence-grounded exception investigation with bounded agentic reasoning and explicit controls.",
+      "ai-systems": "Deterministic validation, retrieval, decision/authorization separation, persistence, and observability."
     },
     gallery: [
-      { src: "/evidence/apx-product-visual.svg", alt: "APX evidence-constrained agent architecture diagram" }
+      { src: "/evidence/apx-product-visual.svg", alt: "APX evidence-grounded exception-resolution architecture diagram" }
     ]
   },
   claimAI: {
